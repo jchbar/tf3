@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<?php 
+include('head.html'); 
+include ('header.html');
+/*
+<html class="boxed">
+	<head>
+
+		<!-- Basic -->
+		<meta charset="utf-8">
+		<title>Terminos y Condiciones de Uso </title>
+	</head>
+*/
+?>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-sm-12" style="margin:0px">
+				<p>
+					Estos Terminos y Condiciones de Uso, o TDS (Terminos de Servicio), es un contrato entre usted y xxxxx, C.A xxxxx, nosotros, o nuestra). 
+					Todos los clientes de xxxxx aceptan acatar estas políticas. Todos los clientes de xxxxx 
+					también garantizan que son al menos 18 años de edad, y que tienen el derecho y la autoridad para obligar 
+					a sí mismos, o la empresa que representan, a los términos de este TDS. Este TDS, puede ser modificada de 
+					vez en cuando. Todos los clientes de xxxxx acepta que quedará vinculado por estas modificaciones. 
+					La versión más reciente de este TDS siempre se puede encontrar aquí.
+				</p>
+				</div>
+			</div>
+		</div>		
+	</body>
+</html>

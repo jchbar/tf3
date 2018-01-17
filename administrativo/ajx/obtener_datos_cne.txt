@@ -1,0 +1,39 @@
+
+
+public function executeSearchCNE($request)
+{
+// Capturo la cedula que viene por el request
+$nac = $request[‘nacionalidad’];
+$cedula = $request[‘cedula’];
+// Consulto la cedula con el recurso de la pagina del CNE
+$url=”http://www.cne.gov.ve/web/registro_electoral/ce.php?nacionalidad=$nac&cedula=$cedula”;
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // almacene en una variable
+curl_setopt($ch, CURLOPT_HEADER, true);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+$xxx1 = curl_exec($ch);
+curl_close($ch);
+$xxx = explode(““, $xxx1);
+
+$datos1 = explode(” “, $xxx[4]);
+$error=0;
+$menj=”;
+
+// Lo paso a un arreglo para que pueda tomarlo cuando lo convierto a json
+$datosJson[‘nacionalidad’] = $nac; //htmlentities(strip_tags(self::limpiarCampos($nacionalida)));
+$datosJson[‘cedula’] = $cedula; //htmlentities(strip_tags(self::limpiarCampos($cedula)));
+$datosJson[‘fecha_nacimiento’] = ”;
+
+$vowels = array(“\n”, “\t”, “i”);
+$datosJson[‘apellidos’] = strip_tags($datos1[2]).’ ‘.str_replace($vowels,”,htmlentities(strip_tags($datos1[3])));
+//strip_tags(trim(self::limpiarCampos($nombres)));
+$datosJson[‘nombres’] = strip_tags($datos1[0]).’ ‘.htmlentities(strip_tags($datos1[1]));
+//strip_tags(trim(self::limpiarCampos($apellidos)));
+$datosJson[‘mensaje’] = $menj;
+$datosJson[‘error’] = $error;
+// Devuelvo el resultado en estructura de JSON
+echo json_encode($datosJson);
+exit();
+}

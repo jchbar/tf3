@@ -1,0 +1,41 @@
+[09-Nov-2016 18:29:42 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/heroscom/public_html/tf/dondevoy.php:4) in /home/heroscom/public_html/tf/tributos.php on line 2
+[13-Nov-2016 06:34:23 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/heroscom/public_html/tf/dondevoy.php:4) in /home/heroscom/public_html/tf/tributos.php on line 2
+[15-Nov-2016 06:31:20 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/heroscom/public_html/tf/dondevoy.php:4) in /home/heroscom/public_html/tf/tributos.php on line 2
+[15-Nov-2016 07:19:58 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/heroscom/public_html/tf/dondevoy.php:4) in /home/heroscom/public_html/tf/tributos.php on line 2
+[15-Nov-2016 07:21:17 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/heroscom/public_html/tf/dondevoy.php:4) in /home/heroscom/public_html/tf/tributos.php on line 21
+[15-Nov-2016 07:39:01 America/Chicago] PHP Parse error:  syntax error, unexpected '=', expecting ')' in /home/heroscom/public_html/tf/prueba_email.php on line 11
+[15-Nov-2016 07:40:15 America/Chicago] PHP Parse error:  syntax error, unexpected '=', expecting ')' in /home/heroscom/public_html/tf/prueba_email.php on line 11
+[15-Nov-2016 07:40:31 America/Chicago] PHP Warning:  include_once(classemail.php): failed to open stream: No such file or directory in /home/heroscom/public_html/tf/prueba_email.php on line 2
+[15-Nov-2016 07:40:31 America/Chicago] PHP Warning:  include_once(): Failed opening 'classemail.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/heroscom/public_html/tf/prueba_email.php on line 2
+[15-Nov-2016 07:40:31 America/Chicago] PHP Fatal error:  Class 'classemail' not found in /home/heroscom/public_html/tf/prueba_email.php on line 3
+[15-Nov-2016 07:40:43 America/Chicago] PHP Warning:  include_once(classemail.php): failed to open stream: No such file or directory in /home/heroscom/public_html/tf/prueba_email.php on line 2
+[15-Nov-2016 07:40:43 America/Chicago] PHP Warning:  include_once(): Failed opening 'classemail.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/heroscom/public_html/tf/prueba_email.php on line 2
+[15-Nov-2016 07:40:43 America/Chicago] PHP Fatal error:  Class 'classemail' not found in /home/heroscom/public_html/tf/prueba_email.php on line 3
+[15-Nov-2016 07:42:28 America/Chicago] PHP Parse error:  syntax error, unexpected 'protect' (T_STRING), expecting function (T_FUNCTION) in /home/heroscom/public_html/tf/classemail.php on line 4
+[15-Nov-2016 07:43:36 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/heroscom/public_html/tf/classemail.php on line 41
+[15-Nov-2016 07:44:05 America/Chicago] PHP Parse error:  syntax error, unexpected 'function' (T_FUNCTION) in /home/heroscom/public_html/tf/classemail.php on line 42
+[15-Nov-2016 07:44:14 America/Chicago] PHP Parse error:  syntax error, unexpected 'function' (T_FUNCTION) in /home/heroscom/public_html/tf/classemail.php on line 42
+[15-Nov-2016 07:44:21 America/Chicago] PHP Parse error:  syntax error, unexpected '$respondera' (T_VARIABLE) in /home/heroscom/public_html/tf/classemail.php on line 93
+[15-Nov-2016 07:45:34 America/Chicago] PHP Parse error:  syntax error, unexpected '$respondera' (T_VARIABLE) in /home/heroscom/public_html/tf/classemail.php on line 93
+[15-Nov-2016 07:46:58 America/Chicago] PHP Parse error:  syntax error, unexpected '$respondera' (T_VARIABLE) in /home/heroscom/public_html/tf/classemail.php on line 94
+[15-Nov-2016 07:47:01 America/Chicago] PHP Parse error:  syntax error, unexpected '$respondera' (T_VARIABLE) in /home/heroscom/public_html/tf/classemail.php on line 94
+[15-Nov-2016 07:47:26 America/Chicago] PHP Parse error:  syntax error, unexpected '$respondera' (T_VARIABLE) in /home/heroscom/public_html/tf/classemail.php on line 94
+[15-Nov-2016 07:53:53 America/Chicago] PHP Parse error:  syntax error, unexpected '$respondera' (T_VARIABLE) in /home/heroscom/public_html/tf/classemail.php on line 94
+[15-Nov-2016 07:54:21 America/Chicago] PHP Parse error:  syntax error, unexpected '?>', expecting function (T_FUNCTION) in /home/heroscom/public_html/tf/classemail.php on line 107
+[15-Nov-2016 07:56:34 America/Chicago] PHP Fatal error:  Class 'classemail' not found in /home/heroscom/public_html/tf/prueba_email.php on line 3
+[15-Nov-2016 07:58:26 America/Chicago] PHP Fatal error:  Class 'classemail' not found in /home/heroscom/public_html/tf/prueba_email.php on line 3
+[15-Nov-2016 07:58:53 America/Chicago] PHP Fatal error:  Class 'classemail' not found in /home/heroscom/public_html/tf/prueba_email.php on line 3
+[15-Nov-2016 07:59:06 America/Chicago] PHP Fatal error:  Class 'classemail' not found in /home/heroscom/public_html/tf/prueba_email.php on line 3
+[15-Nov-2016 07:59:56 America/Chicago] PHP Fatal error:  Call to undefined function enviar_email() in /home/heroscom/public_html/tf/classemail.php on line 39
+[15-Nov-2016 08:00:42 America/Chicago] PHP Fatal error:  Call to undefined function enviar_email() in /home/heroscom/public_html/tf/classemail.php on line 39
+[15-Nov-2016 08:01:17 America/Chicago] PHP Warning:  Missing argument 7 for classemail::enviar_email(), called in /home/heroscom/public_html/tf/prueba_email.php on line 13 and defined in /home/heroscom/public_html/tf/classemail.php on line 43
+[15-Nov-2016 08:01:17 America/Chicago] PHP Warning:  mail() expects parameter 2 to be string, array given in /home/heroscom/public_html/tf/classemail.php on line 103
+[15-Nov-2016 08:03:07 America/Chicago] PHP Warning:  mail() expects parameter 2 to be string, array given in /home/heroscom/public_html/tf/classemail.php on line 103
+[15-Nov-2016 08:04:42 America/Chicago] PHP Warning:  mail() expects parameter 2 to be string, array given in /home/heroscom/public_html/tf/classemail.php on line 106
+[15-Nov-2016 08:33:18 America/Chicago] PHP Fatal error:  Call to undefined function enviar_email() in /home/heroscom/public_html/tf/prueba_email.php on line 5
+[15-Nov-2016 08:33:54 America/Chicago] PHP Warning:  mail() expects parameter 2 to be string, array given in /home/heroscom/public_html/tf/classemail.php on line 106
+[15-Nov-2016 08:34:35 America/Chicago] PHP Fatal error:  Call to undefined method classemail::classemail() in /home/heroscom/public_html/tf/prueba_email.php on line 5
+[15-Nov-2016 08:35:16 America/Chicago] PHP Fatal error:  Call to undefined function classemail() in /home/heroscom/public_html/tf/prueba_email.php on line 5
+[16-Nov-2016 09:04:13 America/Caracas] PHP Warning:  include_once(classbasededatos.php): failed to open stream: No such file or directory in /home/heroscom/public_html/tf/opciones.php on line 245
+[16-Nov-2016 09:04:13 America/Caracas] PHP Warning:  include_once(): Failed opening 'classbasededatos.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/heroscom/public_html/tf/opciones.php on line 245
+[16-Nov-2016 09:04:13 America/Caracas] PHP Fatal error:  Class 'classbasededatos' not found in /home/heroscom/public_html/tf/opciones.php on line 246

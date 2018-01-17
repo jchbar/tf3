@@ -1,0 +1,1112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>..::Sistema de Venta de Timbres Electr&oacute;nicos::..</title>
+
+<script language="JavaScript" type="text/javascript">
+function Solo_Numerico(variable){
+        Numer=parseFloat(variable);
+        Numer=variable;
+        if(isNaN(Numer)){
+        	alert('Debe ingresar solo numeros, y utilice el punto (.) como separador de decimales');
+        	return "";
+        }
+        return Numer;
+    }
+function ValNumero(Control){
+    Control.value=Solo_Numerico(Control.value);
+}
+
+</script>
+
+<script type='text/javascript'>
+
+
+function cuenta(F){
+
+F.cuenta2.value = F.bancod.options[F.bancod.selectedIndex].value;
+
+}
+
+function operacion(F){
+
+F.val.value = F.oper.options[F.oper.selectedIndex].value;
+
+}
+
+function ut(F){
+
+numero=eval(F.uts.value) * eval(F.unidadt.value);
+F.bs.value = numero.toFixed(2);
+
+}
+
+function bs_ut(F){
+
+numero=eval(F.bs.value) / eval(F.unidadt.value);
+//F.uts.value = numero;
+F.uts.value = numero.toFixed(4);
+
+var bs = eval(F.bs.value);
+//F.bs.value = bs.toFixed(2);
+
+var longstring=""+bs+"";
+var brokenstring=longstring.split(".");
+var length = brokenstring[1].length;
+if(length > 2){
+	F.bs.value = bs.toFixed(2);
+
+	/*var decimales = parseInt(''+brokenstring[1]+'').toPrecision(3);
+	var strLen = decimales.length;
+	decimales = decimales.slice (0, strLen-1);
+    F.bs.value = brokenstring[0]+'.'+decimales;*/
+
+	alert('Solo se permite agregar dos decimales');
+}
+
+}
+
+//Con evento onchange pasar valor de ente2 (ajax) a un hidden, directamente en el formulario de pagina3
+
+function formu(F){
+
+	var bs = eval(document.getElementById('bs').value);
+	document.getElementById('bs').value = bs.toFixed(2);
+
+//F.ban.value = document.getElementById('bancod').options[document.getElementById('bancod').selectedIndex].value;
+//F.cuen.value = document.getElementById('cuenta2').value;
+
+F.en1.value = document.getElementById('nro').options[document.getElementById('nro').selectedIndex].text;
+F.nom.value = document.getElementById('nombre').value;
+F.ced.value = document.getElementById('cedula').value;
+F.mon.value = document.getElementById('bs').value;
+F.un.value = document.getElementById('uts').value;
+
+
+
+//alert(document.getElementById('en').value = F.ente2.options[F.ente2.selectedIndex].value);
+}
+
+function fun(F){
+
+document.getElementById('en').value = F.ente2.options[F.ente2.selectedIndex].text;
+
+
+}
+
+function confirmar(F){
+	var bs = eval(document.getElementById('bs').value);
+	document.getElementById('bs').value = bs.toFixed(2);
+
+//if(document.getElementById('cuenta2').value == 'Numero de cuenta'){
+
+//alert('Olvido seleccionar el banco!');
+//return false;
+
+//}
+if(document.getElementById('uts').value == ''){
+
+alert('Ingrese el monto de unidades tributarias!');
+return false;
+
+}
+
+if(document.getElementById('nombre').value == ''){
+
+alert('Ingrese su nombre!');
+return false;
+
+}
+if(document.getElementById('cedula').value == '' || document.getElementById('cedula').length < 6){
+
+alert('Ingrese su cedula!');
+return false;
+
+}
+
+if(document.getElementById('nro').options[document.getElementById('nro').selectedIndex].value == 'nada'){
+
+alert('Seleccione un ente!');
+return false;
+
+}
+if(document.getElementById('en').value == ''){
+
+alert('Seleccione el ente especifco de su tramite!');
+return false;
+
+}
+
+if(document.getElementById('oper').value == ''){
+
+alert('Seleccione el tipo de tramite!');
+return false;
+
+}
+
+
+
+if (confirm('¿Estas seguro de enviar este formulario?')){
+       F.submit();
+    }else{return false;}
+
+}
+
+</script>
+
+<script type='text/javascript' src='calendar.js'></script>
+			<script type='text/javascript' src='calendar-setup.js'></script>
+			<script type='text/javascript' src='calendar-es.js'></script>
+			<LINK HREF='calendar.css' TYPE='text/css' REL='stylesheet'>
+
+
+
+            <style type='text/css'>
+<!--
+body {
+	background-color: #EBEBEB;
+	background-image: url(Imagenes/fondo.png);
+	background-repeat: repeat;
+}
+.style19 {font-size: small; font-family: Arial, Helvetica, sans-serif; font-weight: bold; color: #FFFFFF; }
+.style21 {
+	font-size: large;
+	color: #000000;
+}
+body,td,th {
+	color: #000000;
+}
+.style22 {color: #000000}
+.style23 {font-family: Arial, Helvetica, sans-serif; font-size: small;}
+.style24 {font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: small;}
+-->
+            </style>
+
+<script src="funciones.js" language="JavaScript"></script>
+<script language="JavaScript">
+
+function charcode(evt){
+
+
+     //Validar la existencia del objeto event
+     evt = (evt) ? evt : event;
+
+     //Extraer el codigo del caracter de uno de los diferentes grupos de codigos
+     var charCode = (evt.charCode) ? evt.charCode : ((evt.keyCode) ? evt.keyCode : ((evt.which) ? evt.which : 0));
+
+     //Predefinir como valido
+     var respuesta = true;
+
+     //Validar si el codigo corresponde a los NO aceptables
+     if (charCode > 31 && (charCode < 48 || charCode > 57))
+     {
+         //Asignar FALSE a la respuesta si es de los NO aceptables
+        respuesta = false;
+
+     }
+
+ if (charCode == 45 || charCode == 69 || charCode == 71 || charCode == 74 || charCode == 84 || charCode == 86  || charCode == 101 || charCode == 103 || charCode == 106 || charCode == 118)
+     {
+         //Asignar FALSE a la respuesta si es de los NO aceptables
+        respuesta = true;
+		//alert("Solo se permiten numeros y letras (J, V, G)");
+     }
+
+if(respuesta == false){ alert("Solo se permiten numeros y letras (J, V, G, E)");}
+     //Regresar la respuesta
+     return respuesta;
+ }
+
+
+
+</script>
+<style type="text/css">
+<!--
+body,td,th {
+	font-family: Arial, Helvetica, sans-serif;
+}
+-->
+</style>
+
+<script language="javascript" src="js/jquery-1.2.6.min.js"></script>
+<script language="JavaScript" type="text/javascript">
+<!--
+
+function recargar(num1){
+	$.post("pagina1.php", { variable: num1 }, function(data){
+	$("#resultados").html(data);
+	});
+}
+
+function recargar_item(num){
+	$.post("recargar_item.php", { variable: num }, function(data){
+	$("#recargar_item").html(data);
+	});
+}
+
+function PopWindow()
+{
+window.open('consulta.php','Consulta de tramite','width=850,height=500,menubar=no,scrollbars=yes,toolbar=no,location=no,directories=no,resizable=yes,top=200,left=100');
+}
+//-->
+</script>
+</script>
+
+</head>
+<body><div align="center">
+<div align="center">
+  <p align="center"><img src="Imagenes/membrete.png" alt="Membrete" width="846" height="89"></p>
+
+
+  </div>
+
+
+  <fieldset style="border: 1px solid #000000; width:970px; background-color:#EBEBEB;"><legend class="style19 style21">Datos de Consultas</legend>
+
+
+
+		<a href="http://www.satar.gob.ve/descargas/Instructivo Timbre Electronicox.pdf"> <img src="Imagenes/info.png" width="" height="" align="RIGHT" title="Ayuda" alt="Ayuda" /> </a>
+
+<script type = "text/javascript">
+
+function operacionCon(F){
+
+//alert(F.oper.options[F.oper.selectedIndex].value);
+var longstring = F.oper.options[F.oper.selectedIndex].value;
+var brokenstring=longstring.split('-');
+//var length = brokenstring[1].length;
+//alert(brokenstring[0]);
+//alert(brokenstring[1]);
+
+//F.val.value = F.oper.options[F.oper.selectedIndex].value;
+F.val.value = brokenstring[0];
+
+numero=eval(F.val.value) * eval(document.getElementById('utcam').value);
+document.getElementById('bs').value = numero.toFixed(2);
+//document.getElementById('uts').value = F.oper.options[F.oper.selectedIndex].value;
+document.getElementById('uts').value = brokenstring[0];
+
+calcular_ut_metros();
+
+document.getElementById('hecho_imponible').value = brokenstring[1];
+}
+
+function calcular_ut_metros(){
+	var ut = document.getElementById('utcam').value;
+	var valor = document.getElementById('val').value;
+	var metros = document.getElementById('metros').value;
+
+	if(metros == ''){
+		metros = 1;
+	}
+
+	var bs = eval(valor) * eval(metros) * eval(ut);
+	var uts = eval(valor) * eval(metros);
+
+	document.getElementById('bs').value = bs.toFixed(2);
+	document.getElementById('uts').value = uts.toFixed(4);
+}
+
+function id_hecho_imponible(hecho_imponible){
+	document.getElementById('hecho_imponible').value = hecho_imponible;
+}
+
+</script>
+  <div align = 'left'><center><h2>Consulte aca el valor de su tramite</h2></center>
+  <form action="#" method="post" id="formularioCon">
+
+  	<strong>Ente</strong>
+     		<select name="filtro_ente" id="filtro_ente" onchange="recargar_item(document.getElementById('filtro_ente').value);">
+	<option value = ''>Todos</option><option value = ''></option><option value = 'Alcaldías'>Alcaldías</option><option value = 'bomberos'>bomberos</option><option value = 'CAVIM'>CAVIM</option><option value = 'colegios profesionales'>colegios profesionales</option><option value = 'contraloria de salud'>contraloria de salud</option><option value = 'contraloria sanitaria'>contraloria sanitaria</option><option value = 'corposalud'>corposalud</option><option value = 'Educación'>Educación</option><option value = 'Ingeniería'>Ingeniería</option><option value = 'insopesca'>insopesca</option><option value = 'INTT'>INTT</option><option value = 'ministerio de ambiente'>ministerio de ambiente</option><option value = 'prefectura'>prefectura</option><option value = 'PROTECCION CIVIL'>PROTECCION CIVIL</option><option value = 'registros'>registros</option><option value = 'SAIME'>SAIME</option><option value = 'SAREN'>SAREN</option><option value = 'secretaria de ambiente'>secretaria de ambiente</option><option value = 'seguro social'>seguro social</option><option value = 'sencamer'>sencamer</option><option value = 'seniat'>seniat</option><option value = 'SETA'>SETA</option><option value = 'universidades'>universidades</option></select>
+      <br/><br/>
+
+	<div id="recargar_item">
+		  <strong>Tipo de Tramite:</strong> &nbsp;<select name= 'oper' id='oper' style='width:500px; display:scroll;' onChange='operacionCon(this.form);' ><option value = ''></option>				<option value = '0-1% del capital' onClick='id_hecho_imponible("1% del capital");'>1% del capital</option>
+							<option value = '3-263' onClick='id_hecho_imponible("263");'>Acarreo de carnes  por cada vehículo  de 0 a 500 toneladas</option>
+							<option value = '20-265' onClick='id_hecho_imponible("265");'>Acarreo de carnes  por cada vehículo  de 2.501 a 5.000 toneladas</option>
+							<option value = '8-264' onClick='id_hecho_imponible("264");'>Acarreo de carnes  por cada vehículo  de 501 a 2.500 toneladas </option>
+							<option value = '50-266' onClick='id_hecho_imponible("266");'>Acarreo de carnes  por cada vehículo  mas de 5.001 toneladas </option>
+							<option value = '5-267' onClick='id_hecho_imponible("267");'>Acarreo de carnes  por cada vehículo  Otros servicios</option>
+							<option value = '0.2-573' onClick='id_hecho_imponible("573");'>Actas de Asambleas ordinarias o extraordinarias   (4) Folios</option>
+							<option value = '0.24-574' onClick='id_hecho_imponible("574");'>Actas de Asambleas ordinarias o extraordinarias   (5) Folios </option>
+							<option value = '0.32-576' onClick='id_hecho_imponible("576");'>Actas de Asambleas ordinarias o extraordinarias   (7) Folios </option>
+							<option value = '0.16-572' onClick='id_hecho_imponible("572");'>Actas de Asambleas ordinarias o extraordinarias  (3) Folios </option>
+							<option value = '0.28-575' onClick='id_hecho_imponible("575");'>Actas de Asambleas ordinarias o extraordinarias (6) Folios </option>
+							<option value = '2-571' onClick='id_hecho_imponible("571");'>Actas de Asambleas ordinarias o extraordinarias por folio</option>
+							<option value = '10-actos de Inspección ' onClick='id_hecho_imponible("actos de Inspección ");'>actos de Inspección </option>
+							<option value = '10-actos de mantenimiento' onClick='id_hecho_imponible("actos de mantenimiento");'>actos de mantenimiento</option>
+							<option value = '6-276' onClick='id_hecho_imponible("276");'>actos Por las  autorizaciones para la apertura de picas y construcción de vías de acceso</option>
+							<option value = '400-277' onClick='id_hecho_imponible("277");'>actos Por otorgamiento de declaraciones de impacto ambiental</option>
+							<option value = '0.05-288' onClick='id_hecho_imponible("288");'>Almacén de productos cosméticos </option>
+							<option value = '10-282' onClick='id_hecho_imponible("282");'>Análisis Biológicos</option>
+							<option value = '2-382' onClick='id_hecho_imponible("382");'>Análisis Evaluación y estudio de laboratorio de control de plaguicidas en alimentos y de tipo ambiental</option>
+							<option value = '5-278' onClick='id_hecho_imponible("278");'>Análisis físico-químico básico y de metales</option>
+							<option value = '10-279' onClick='id_hecho_imponible("279");'>Análisis físico-químico especiales</option>
+							<option value = '5-280' onClick='id_hecho_imponible("280");'>Análisis físico-químico sobre  compuestos orgánicos especiales</option>
+							<option value = '3-281' onClick='id_hecho_imponible("281");'>Análisis Microbiológicos</option>
+							<option value = '10-126' onClick='id_hecho_imponible("126");'>aplicación en las relaciones comerciales </option>
+							<option value = '0.5-112' onClick='id_hecho_imponible("112");'>Autenticación de Títulos</option>
+							<option value = '0.5-671' onClick='id_hecho_imponible("671");'>Autenticacion Fototastica de Titulos</option>
+							<option value = '0.3-670' onClick='id_hecho_imponible("670");'>Autenticacion Fototastica de Titulos Liceo / TSU</option>
+							<option value = '4-337' onClick='id_hecho_imponible("337");'>Autobuses de uso privado</option>
+							<option value = '5-335' onClick='id_hecho_imponible("335");'>Automóviles y camionetas de pasajeros no comerciales o sin fines de lucro, cuya edad vehículos es de cero "0" </option>
+							<option value = '10-641' onClick='id_hecho_imponible("641");'>Autorización de funcionamiento para el Instituto de Educación Náutica</option>
+							<option value = '1500-autor prod alcohol G' onClick='id_hecho_imponible("autor prod alcohol G");'>autorización de industrias productoras  especies alcohólicas  grandes</option>
+							<option value = '500-autor prod alcohol M' onClick='id_hecho_imponible("autor prod alcohol M");'>autorización de industrias productoras  especies alcohólicas  Medianas</option>
+							<option value = '150-autor prod alcohol P' onClick='id_hecho_imponible("autor prod alcohol P");'>autorización de industrias productoras especies alcohólicas  pequeña </option>
+							<option value = '5-616' onClick='id_hecho_imponible("616");'>Autorización de visas en el exterior a ciudadanos extranjeros</option>
+							<option value = '0.2-174' onClick='id_hecho_imponible("174");'>autorizacion Movimientos de tierrras construccion  oficinas comercios  xm2</option>
+							<option value = '5-195' onClick='id_hecho_imponible("195");'>autorización para  la ubicación de nuevos servicios dentro del derecho de vías xm2</option>
+							<option value = '50-187' onClick='id_hecho_imponible("187");'>autorización para el almacenamiento y vertido de residuos</option>
+							<option value = '5-283' onClick='id_hecho_imponible("283");'>Autorización para el registro de productos cosméticos</option>
+							<option value = '150-autor expendio z urbana' onClick='id_hecho_imponible("autor expendio z urbana");'>autorización para instalación de expendio de bebidas alcohólicas Zona urbana</option>
+							<option value = '100-autor expendio z sub U' onClick='id_hecho_imponible("autor expendio z sub U");'>autorización para instalación de expendio de bebidas alcohólicas zonas sub urbanas</option>
+							<option value = '0.5-196' onClick='id_hecho_imponible("196");'>autorización para la apertura de zanjas, calicatas y calas en terrenos de uso público Xm2</option>
+							<option value = '0.5-194' onClick='id_hecho_imponible("194");'>autorización para la incorporación y desincorporación vial </option>
+							<option value = '5-255' onClick='id_hecho_imponible("255");'>Autorización y registro sanitario de productos</option>
+							<option value = '80-libro de control' onClick='id_hecho_imponible("libro de control");'>autorizaciones para instalación de expendio de bebidas alcohólicas  grandes eventos </option>
+							<option value = '15-050' onClick='id_hecho_imponible("050");'>autorizaciones para instalación de expendio de bebidas alcohólicas  pequeños eventos</option>
+							<option value = '25-libro de control x folio ' onClick='id_hecho_imponible("libro de control x folio ");'>autorizaciones para instalación de expendio de bebidas alcohólicas medianos eventos</option>
+							<option value = '1-218' onClick='id_hecho_imponible("218");'>autorizaciones referidas al uso de parques, plazas, plazoletas </option>
+							<option value = '150-autor tmp expendio event P' onClick='id_hecho_imponible("autor tmp expendio event P");'>autorizaciones temporales para expendio de bebidas alcohólicas  grandes eventos </option>
+							<option value = '100-autor inst expendio event P' onClick='id_hecho_imponible("autor inst expendio event P");'>autorizaciones temporales para expendio de bebidas alcohólicas  grandes eventos </option>
+							<option value = '100-autor tmp expendio event M' onClick='id_hecho_imponible("autor tmp expendio event M");'>autorizaciones temporales para expendio de bebidas alcohólicas  medianos eventos</option>
+							<option value = '70-autor inst expendio event M' onClick='id_hecho_imponible("autor inst expendio event M");'>autorizaciones temporales para expendio de bebidas alcohólicas  medianos eventos</option>
+							<option value = '50-autor tmp expendio event G' onClick='id_hecho_imponible("autor tmp expendio event G");'>autorizaciones temporales para expendio de bebidas alcohólicas  pequeños eventos</option>
+							<option value = '30-autor inst expendio event G' onClick='id_hecho_imponible("autor inst expendio event G");'>autorizaciones temporales para expendio de bebidas alcohólicas  pequeños eventos</option>
+							<option value = '0.006-454' onClick='id_hecho_imponible("454");'>Bejuco de mamure, matapalo y otras especies, palma de cualquier especie (Por Unidad Autorizada)</option>
+							<option value = '30-491' onClick='id_hecho_imponible("491");'>Cabo de pesca</option>
+							<option value = '5-494' onClick='id_hecho_imponible("494");'>Cabo de pesca</option>
+							<option value = '40-372' onClick='id_hecho_imponible("372");'>Calificación de ingredientes activos de plaguicidas, productos químicos.</option>
+							<option value = '1.5-577' onClick='id_hecho_imponible("577");'>Cambio de denominación comercial</option>
+							<option value = '10-215' onClick='id_hecho_imponible("215");'>Cambio de establecimientos distribuidores</option>
+							<option value = '10-214' onClick='id_hecho_imponible("214");'>Cambio de fabricante</option>
+							<option value = '1-296' onClick='id_hecho_imponible("296");'>Cambio de fórmula cosmética (Reformulación) </option>
+							<option value = '10-216' onClick='id_hecho_imponible("216");'>Cambio de latrocinante</option>
+							<option value = '1-353' onClick='id_hecho_imponible("353");'>Cambio de placas</option>
+							<option value = '0.02-114' onClick='id_hecho_imponible("114");'>Cambios de Datos</option>
+							<option value = '0.05-285' onClick='id_hecho_imponible("285");'>Casas de representación, Droguerías y Distribuidoras </option>
+							<option value = '10-269' onClick='id_hecho_imponible("269");'>Certificación de calidad de productos o servicios</option>
+							<option value = '200-certif. de explotacion' onClick='id_hecho_imponible("certif. de explotacion");'>certificacion de explotacion</option>
+							<option value = '200-554' onClick='id_hecho_imponible("554");'>Certificación de explotación de conformidad con la Ley de Minas Estadal</option>
+							<option value = '2-623' onClick='id_hecho_imponible("623");'>Certificación de libros de control de extranjeros en hoteles: dos Unidades Tributarias </option>
+							<option value = '10-268' onClick='id_hecho_imponible("268");'>Certificación de lotes o partidas para productos, materiales</option>
+							<option value = '0.3-110' onClick='id_hecho_imponible("110");'>Certificación de Notas</option>
+							<option value = '0.5-407' onClick='id_hecho_imponible("407");'>Certificación de ubicación en áreas bajo régimen de administración especial (Hasta por 1 Hectárea)</option>
+							<option value = '5-466' onClick='id_hecho_imponible("466");'>Certificación de ubicación en áreas bajo régimen de administración especial (Hasta por 1 Hectárea)</option>
+							<option value = '0.75-122' onClick='id_hecho_imponible("122");'>Certificaciones</option>
+							<option value = '0.5-631' onClick='id_hecho_imponible("631");'>Certificado de actas de inhumación o exhumación</option>
+							<option value = '0.5-628' onClick='id_hecho_imponible("628");'>Certificado de inhumación o exhumación.</option>
+							<option value = '2.5-375' onClick='id_hecho_imponible("375");'>certificado de libre venta de plaguicida, productos químicos, tóxicos </option>
+							<option value = '30-210' onClick='id_hecho_imponible("210");'>Certificado de Registro de marcas o lemas</option>
+							<option value = '30-054' onClick='id_hecho_imponible("054");'>Certificado de Registro marcas </option>
+							<option value = '0.5-630' onClick='id_hecho_imponible("630");'>Certificado de traslados a otros cementerios</option>
+							<option value = '0.5-629' onClick='id_hecho_imponible("629");'>Certificado de traslados internos de inhumación y exhumación.</option>
+							<option value = '0.3-certificado  médicos ' onClick='id_hecho_imponible("certificado  médicos ");'>certificados médicos </option>
+							<option value = '0.75-184' onClick='id_hecho_imponible("184");'>conformación sanitaria de instalación Grandes industrias xm2</option>
+							<option value = '0.5-185' onClick='id_hecho_imponible("185");'>conformación sanitaria de instalación medianas industrias xm2</option>
+							<option value = '0.25-186' onClick='id_hecho_imponible("186");'>conformación sanitaria de instalación pequeñas industrias  xm2</option>
+							<option value = '3-182' onClick='id_hecho_imponible("182");'>conformación sanitaria de proyectos de sistemas de tratamiento de aguas  xm2</option>
+							<option value = '0.01-181' onClick='id_hecho_imponible("181");'>conformidad sanitari integracion parcela xm2</option>
+							<option value = '10-180' onClick='id_hecho_imponible("180");'>conformidad sanitaria  desarrollo urbanistico</option>
+							<option value = '2-179' onClick='id_hecho_imponible("179");'>conformidad sanitaria cambio uso local</option>
+							<option value = '2-178' onClick='id_hecho_imponible("178");'>conformidad sanitaria condominio</option>
+							<option value = '0.5-const. de no contribuyente ' onClick='id_hecho_imponible("const. de no contribuyente ");'>const. de no contribuyente </option>
+							<option value = '0.1-163' onClick='id_hecho_imponible("163");'>constancia autor, permiso de construc modificacion mayor rural </option>
+							<option value = '1-166' onClick='id_hecho_imponible("166");'>constancia autorizacion, permiso de construccion o modificacion mayor comerciales</option>
+							<option value = '0.4-165' onClick='id_hecho_imponible("165");'>constancia autorizacion, permiso de construccion o modificacion mayor residenciales </option>
+							<option value = '0.2-164' onClick='id_hecho_imponible("164");'>constancia autorizacion, permiso de construccion o modificacion mayor urbanas</option>
+							<option value = '10-57' onClick='id_hecho_imponible("57");'>Constancia de   fórmula aprobada</option>
+							<option value = '10-213' onClick='id_hecho_imponible("213");'>Constancia de   fórmula aprobada</option>
+							<option value = '0.03-const. de buena conducta' onClick='id_hecho_imponible("const. de buena conducta");'>Constancia de buena conducta</option>
+							<option value = '0.01-Constancia  buena conducta' onClick='id_hecho_imponible("Constancia  buena conducta");'>Constancia de buena conducta: </option>
+							<option value = '0.01-Constancia céd extraviada' onClick='id_hecho_imponible("Constancia céd extraviada");'>Constancia de cédula extraviada:</option>
+							<option value = '0.01-Constancia de convivencia' onClick='id_hecho_imponible("Constancia de convivencia");'>Constancia de convivencia</option>
+							<option value = '0.3-Constancia convivencia' onClick='id_hecho_imponible("Constancia convivencia");'>Constancia de convivencia:</option>
+							<option value = '0.02-Constancia dep. económica' onClick='id_hecho_imponible("Constancia dep. económica");'>Constancia de dependencia económica: </option>
+							<option value = '0.01-Constancia  fiel cumplimiento' onClick='id_hecho_imponible("Constancia  fiel cumplimiento");'>Constancia de fiel cumplimiento</option>
+							<option value = '0.01-Constancia hab.de fallecido' onClick='id_hecho_imponible("Constancia hab.de fallecido");'>Constancia de habitación de fallecido:</option>
+							<option value = '0.3-687' onClick='id_hecho_imponible("687");'>Constancia de Inscripcion de inmueble </option>
+							<option value = '0.01-Constancia  matrimonio' onClick='id_hecho_imponible("Constancia  matrimonio");'>Constancia de matrimonio: </option>
+							<option value = '0.5-constancia de no contribuyente ' onClick='id_hecho_imponible("constancia de no contribuyente ");'>constancia de no contribuyente </option>
+							<option value = '0.01-Constancia de no poseer vivienda' onClick='id_hecho_imponible("Constancia de no poseer vivienda");'>Constancia de no poseer vivienda</option>
+							<option value = '0.03-const. de residencia' onClick='id_hecho_imponible("const. de residencia");'>constancia de residencia</option>
+							<option value = '0.5-const.  resid. post-Morten' onClick='id_hecho_imponible("const.  resid. post-Morten");'>constancia de residencia post-Morten</option>
+							<option value = '1-Constancia de Riesgos Controlados' onClick='id_hecho_imponible("Constancia de Riesgos Controlados");'>Constancia de Riesgos Controlados</option>
+							<option value = '0.01-Constancia de solteria' onClick='id_hecho_imponible("Constancia de solteria");'>Constancia de solteria</option>
+							<option value = '0.01-Constancia de viudez' onClick='id_hecho_imponible("Constancia de viudez");'>Constancia de viudez:</option>
+							<option value = '0.01-Constancias de Domicilio' onClick='id_hecho_imponible("Constancias de Domicilio");'>Constancias de Domicilio</option>
+							<option value = '50-139' onClick='id_hecho_imponible("139");'>construcción  de  centros  comerciales</option>
+							<option value = '0.5-Consultas' onClick='id_hecho_imponible("Consultas");'>Consultas</option>
+							<option value = '0.5-124' onClick='id_hecho_imponible("124");'>Contratos por servicios prestados</option>
+							<option value = '0.1-Copia Certificada' onClick='id_hecho_imponible("Copia Certificada");'>Copia Certificada</option>
+							<option value = '1-299' onClick='id_hecho_imponible("299");'>Copia certificada de documento de productos cosméticos</option>
+							<option value = '1-298' onClick='id_hecho_imponible("298");'>Copia certificada de registro de productos cosméticos</option>
+							<option value = '0.5-111' onClick='id_hecho_imponible("111");'>Copia Certificada de Registro de Títulos</option>
+							<option value = '0.21-594' onClick='id_hecho_imponible("594");'>Copias certificadas de actas constitutivas, asambleas y documentos  (12) Folios</option>
+							<option value = '0.12-585' onClick='id_hecho_imponible("585");'>Copias certificadas de actas constitutivas, asambleas y documentos  (3) Folios </option>
+							<option value = '0.17-590' onClick='id_hecho_imponible("590");'>Copias certificadas de actas constitutivas, asambleas y documentos  (8) Folios </option>
+							<option value = '0.19-592' onClick='id_hecho_imponible("592");'>Copias certificadas de actas constitutivas, asambleas y documentos (10) Folios</option>
+							<option value = '0.2-593' onClick='id_hecho_imponible("593");'>Copias certificadas de actas constitutivas, asambleas y documentos (11) Folios</option>
+							<option value = '0.22-595' onClick='id_hecho_imponible("595");'>Copias certificadas de actas constitutivas, asambleas y documentos (13) Folios</option>
+							<option value = '0.24-597' onClick='id_hecho_imponible("597");'>Copias certificadas de actas constitutivas, asambleas y documentos (15) Folios</option>
+							<option value = '0.11-584' onClick='id_hecho_imponible("584");'>Copias certificadas de actas constitutivas, asambleas y documentos (2) Folios</option>
+							<option value = '0.29-602' onClick='id_hecho_imponible("602");'>Copias certificadas de actas constitutivas, asambleas y documentos (20) Folios</option>
+							<option value = '0.13-586' onClick='id_hecho_imponible("586");'>Copias certificadas de actas constitutivas, asambleas y documentos (4) Folios</option>
+							<option value = '0.14-587' onClick='id_hecho_imponible("587");'>Copias certificadas de actas constitutivas, asambleas y documentos (5) Folios </option>
+							<option value = '0.15-588' onClick='id_hecho_imponible("588");'>Copias certificadas de actas constitutivas, asambleas y documentos (6) Folios </option>
+							<option value = '0.16-589' onClick='id_hecho_imponible("589");'>Copias certificadas de actas constitutivas, asambleas y documentos (7) Folios </option>
+							<option value = '0.18-591' onClick='id_hecho_imponible("591");'>Copias certificadas de actas constitutivas, asambleas y documentos (9) Folios</option>
+							<option value = '0.23-596' onClick='id_hecho_imponible("596");'>Copias certificadas de actas constitutivas, asambleas y documentos(14) Folios</option>
+							<option value = '0.25-598' onClick='id_hecho_imponible("598");'>Copias certificadas de actas constitutivas, asambleas y documentos(16) Folios</option>
+							<option value = '0.26-599' onClick='id_hecho_imponible("599");'>Copias certificadas de actas constitutivas, asambleas y documentos(17) Folios</option>
+							<option value = '0.27-600' onClick='id_hecho_imponible("600");'>Copias certificadas de actas constitutivas, asambleas y documentos(18) Folios</option>
+							<option value = '0.28-601' onClick='id_hecho_imponible("601");'>Copias certificadas de actas constitutivas, asambleas y documentos(19) Folios</option>
+							<option value = '0.5-607' onClick='id_hecho_imponible("607");'>Cualquier solicitud que dirija el interesado </option>
+							<option value = '0.5-686' onClick='id_hecho_imponible("686");'>Cualquier solicitud que dirija el interesado </option>
+							<option value = '0.2-declaracion I.B' onClick='id_hecho_imponible("declaracion I.B");'>declaracion de ingresos brutos</option>
+							<option value = '0.05-684' onClick='id_hecho_imponible("684");'>Declaracion jurada </option>
+							<option value = '15-615' onClick='id_hecho_imponible("615");'>Declaratoria de naturalización y de las relativas a manifestaciones de voluntad en los casos regulados </option>
+							<option value = '1-Demolicion de vivienda' onClick='id_hecho_imponible("Demolicion de vivienda");'>Demolicion de vivienda</option>
+							<option value = '50-483' onClick='id_hecho_imponible("483");'>Deportivas turístico-recreacionales no lucrativas extranjeras</option>
+							<option value = '25-482' onClick='id_hecho_imponible("482");'>Deportivas turístico-recreacionales no lucrativas nacionales</option>
+							<option value = '0.5-191' onClick='id_hecho_imponible("191");'>Descripción de la deuda inmobiliaria</option>
+							<option value = '0.5-354' onClick='id_hecho_imponible("354");'>Desincorporación de datos de vehículos</option>
+							<option value = '0.5-desinc.  de vehiculo' onClick='id_hecho_imponible("desinc.  de vehiculo");'>desincorporacion de vehiculo</option>
+							<option value = '0.2-611' onClick='id_hecho_imponible("611");'>Duplicado de la cédula de identidad personal</option>
+							<option value = '15-545' onClick='id_hecho_imponible("545");'>el otorgamiento de guía de movilización de la fauna silvestre y sus productos</option>
+							<option value = '7.5-445' onClick='id_hecho_imponible("445");'>el otorgamiento y autorizaciones de funcionamiento a personas naturales y jurídicas</option>
+							<option value = '100-479' onClick='id_hecho_imponible("479");'>Embarcaciones pesqueras extranjeras dedicadas a  y la pesca industrial</option>
+							<option value = '500-480' onClick='id_hecho_imponible("480");'>Embarcaciones pesqueras extranjeras dedicadas a  y la pesca industrial</option>
+							<option value = '0.5-604' onClick='id_hecho_imponible("604");'>Emisión de Auto Notarial</option>
+							<option value = '0.25-118' onClick='id_hecho_imponible("118");'>Emisión de carnet de agremiado</option>
+							<option value = '1.5-120' onClick='id_hecho_imponible("120");'>Emisión de constancia de reciprocidad</option>
+							<option value = '0.5-117' onClick='id_hecho_imponible("117");'>Emisión de constancias</option>
+							<option value = '2-511' onClick='id_hecho_imponible("511");'>equino: </option>
+							<option value = '500-Espc  tabaco y cigarrillo' onClick='id_hecho_imponible("Espc  tabaco y cigarrillo");'>Especies de tabaco y cigarrillo</option>
+							<option value = '10-415' onClick='id_hecho_imponible("415");'>Estudio, análisis y evaluación permanente de actividades en el estado Aragua </option>
+							<option value = '5.4-447' onClick='id_hecho_imponible("447");'>Estudio, análisis y evaluación permanente de actividades susceptibles de degradar el ambiente </option>
+							<option value = '3-446' onClick='id_hecho_imponible("446");'>Estudio, análisis y evaluación tendiente al otorgamiento de registros de actividades </option>
+							<option value = '1-270' onClick='id_hecho_imponible("270");'>Evaluación del control de calidad</option>
+							<option value = '2-383' onClick='id_hecho_imponible("383");'>Evaluación y estudio de laboratorio de residuos de plaguicidas en muestras de sangre biológica </option>
+							<option value = '12.5-440' onClick='id_hecho_imponible("440");'>evaluación y estudio de laboratorio de suelos Análisis de  calícata</option>
+							<option value = '7.5-443' onClick='id_hecho_imponible("443");'>evaluación y estudio de laboratorio de suelos Análisis de fertilidad</option>
+							<option value = '8.5-442' onClick='id_hecho_imponible("442");'>evaluación y estudio de laboratorio de suelos Análisis de física de suelos</option>
+							<option value = '4.5-439' onClick='id_hecho_imponible("439");'>evaluación y estudio de laboratorio de suelos Análisis de rutina</option>
+							<option value = '7.5-441' onClick='id_hecho_imponible("441");'>evaluación y estudio de laboratorio de suelos Análisis de salinidad</option>
+							<option value = '20-295' onClick='id_hecho_imponible("295");'>Evaluación y estudio de proyecto de instalación, reforma o modificación de establecimiento de producción</option>
+							<option value = '0.01-247' onClick='id_hecho_imponible("247");'>Evaluación y estudio higiénico-sanitario de empresas  Industriales por productos  Micro  </option>
+							<option value = '0.05-250' onClick='id_hecho_imponible("250");'>Evaluación y estudio higiénico-sanitario de empresas  Industriales por productos Grandes </option>
+							<option value = '0.03-249' onClick='id_hecho_imponible("249");'>Evaluación y estudio higiénico-sanitario de empresas  Industriales por productos Medianas </option>
+							<option value = '0.02-248' onClick='id_hecho_imponible("248");'>Evaluación y estudio higiénico-sanitario de empresas  Industriales por productos Pequeñas  </option>
+							<option value = '0.05-242' onClick='id_hecho_imponible("242");'>Evaluación y estudio higiénico-sanitario de empresas comerciales Grandes </option>
+							<option value = '0.03-241' onClick='id_hecho_imponible("241");'>Evaluación y estudio higiénico-sanitario de empresas comerciales Medianas </option>
+							<option value = '0.01-239' onClick='id_hecho_imponible("239");'>Evaluación y estudio higiénico-sanitario de empresas comerciales Micro  </option>
+							<option value = '0.02-240' onClick='id_hecho_imponible("240");'>Evaluación y estudio higiénico-sanitario de empresas comerciales Pequeñas  </option>
+							<option value = '0.2-254' onClick='id_hecho_imponible("254");'>Evaluación y estudio higiénico-sanitario de empresas otros   Grandes </option>
+							<option value = '0.1-253' onClick='id_hecho_imponible("253");'>Evaluación y estudio higiénico-sanitario de empresas otros Medianas </option>
+							<option value = '0.01-251' onClick='id_hecho_imponible("251");'>Evaluación y estudio higiénico-sanitario de empresas otros Micro  </option>
+							<option value = '0.03-252' onClick='id_hecho_imponible("252");'>Evaluación y estudio higiénico-sanitario de empresas otros Pequeñas </option>
+							<option value = '0.05-246' onClick='id_hecho_imponible("246");'>Evaluación y estudio higiénico-sanitario de empresas prestación de Servicios  Grandes </option>
+							<option value = '0.01-243' onClick='id_hecho_imponible("243");'>Evaluación y estudio higiénico-sanitario de empresas prestación de Servicios  Micro  </option>
+							<option value = '0.02-244' onClick='id_hecho_imponible("244");'>Evaluación y estudio higiénico-sanitario de empresas prestación de Servicios  Pequeñas  </option>
+							<option value = '0.03-245' onClick='id_hecho_imponible("245");'>Evaluación y estudio higiénico-sanitario de empresas prestación de Servicios Medianas</option>
+							<option value = '0.05-238' onClick='id_hecho_imponible("238");'>Evaluación y estudio sanitario sobre proyectos Grandes</option>
+							<option value = '0.02-236' onClick='id_hecho_imponible("236");'>Evaluación y estudio sanitario sobre proyectos Pequeñas  </option>
+							<option value = '0.2-examen obtener licencia ' onClick='id_hecho_imponible("examen obtener licencia ");'>Examen para obtener licencia para conducir vehículo de tracción de sangre o vehículo de motor</option>
+							<option value = '2-613' onClick='id_hecho_imponible("613");'>Expedición a ciudadanos extranjeros de la constancia de fecha de ingreso y permanencia </option>
+							<option value = '0.1-096' onClick='id_hecho_imponible("096");'>Expedición de copias Certificaciones  funcionario</option>
+							<option value = '0.2-097' onClick='id_hecho_imponible("097");'>Expedición de Copias Certificadas planos</option>
+							<option value = '0.5-098' onClick='id_hecho_imponible("098");'>Expedición de Información o Cuadros Estadísticos</option>
+							<option value = '0.8-licencia conducir 3° 4°' onClick='id_hecho_imponible("licencia conducir 3° 4°");'>Expedición de licencia de Tercero y Cuarto Grado:</option>
+							<option value = '0.5-licencia conducir 1° 2°' onClick='id_hecho_imponible("licencia conducir 1° 2°");'>Expedición de licencia para conducir de Primer Grado y Segundo Grado</option>
+							<option value = '1-licencia conducir 5°' onClick='id_hecho_imponible("licencia conducir 5°");'>Expedición de licencia para conducir de Quinto Grado</option>
+							<option value = '3-licencia conducir 7°' onClick='id_hecho_imponible("licencia conducir 7°");'>Expedición de licencia para conducir de Séptimo Grado</option>
+							<option value = '2-licencia conducir 6°' onClick='id_hecho_imponible("licencia conducir 6°");'>Expedición de licencia para conducir de Sexto Grado:</option>
+							<option value = '7-licencia inst de manejo' onClick='id_hecho_imponible("licencia inst de manejo");'>Expedición de licencia para instructor de manejo</option>
+							<option value = '3-622' onClick='id_hecho_imponible("622");'>Expedición de movimiento migratorio a ciudadanos y ciudadanas extranjeras: tres Unidades Tributarias</option>
+							<option value = '1-621' onClick='id_hecho_imponible("621");'>Expedición de movimiento migratorio a ciudadanos y ciudadanas venezolanas: una Unidad Tributaria </option>
+							<option value = '2.5-334' onClick='id_hecho_imponible("334");'>Expedición de placas ordinarias  Automóviles y camionetas de pasajeros no comerciales o sin fines de lucro,</option>
+							<option value = '2-333' onClick='id_hecho_imponible("333");'>Expedición de placas ordinarias de motocicletas de lujo</option>
+							<option value = '3-626' onClick='id_hecho_imponible("626");'>Expedición de tarjeta de tripulante terrestre</option>
+							<option value = '1.5-614' onClick='id_hecho_imponible("614");'>Expedición de tarjetas de permanencia, credenciales o licencias otorgadas por organismos oficiales </option>
+							<option value = '3-612' onClick='id_hecho_imponible("612");'>Expedición y renovación de pasaporte </option>
+							<option value = '5-617' onClick='id_hecho_imponible("617");'>Expedición, renovación, prorroga y cambio de visa en el país</option>
+							<option value = '2-287' onClick='id_hecho_imponible("287");'>Expendios de medicinas</option>
+							<option value = '100-548' onClick='id_hecho_imponible("548");'>exploracion de minerales metálicos, oro, diamante y otras piedras preciosas</option>
+							<option value = '500-549' onClick='id_hecho_imponible("549");'>explotacion de minerales metálicos, oro, diamante y otras piedras preciosas</option>
+							<option value = '150-550' onClick='id_hecho_imponible("550");'>extracion de minerales metálicos, oro, diamante y otras piedras preciosas</option>
+							<option value = '0.03-Fe de Vida' onClick='id_hecho_imponible("Fe de Vida");'>Fe de Vida</option>
+							<option value = '0.05-455' onClick='id_hecho_imponible("455");'>Fibra de palma de chiguichigui (Por Kg Autorizado)</option>
+							<option value = '0.01-ficha catastral S' onClick='id_hecho_imponible("ficha catastral S");'>ficha catastral  sub urbana</option>
+							<option value = '0.02-ficha catastral U' onClick='id_hecho_imponible("ficha catastral U");'>ficha catastral  urbana </option>
+							<option value = '0.2-ficha catastral C' onClick='id_hecho_imponible("ficha catastral C");'>ficha catastral comerciales</option>
+							<option value = '0.15-144' onClick='id_hecho_imponible("144");'>ficha catastral fines industriales</option>
+							<option value = '0.2-ficha catastral industriales para otros productos' onClick='id_hecho_imponible("ficha catastral industriales para otros productos");'>ficha catastral industriales para otros productos</option>
+							<option value = '0.2-ficha catastral R' onClick='id_hecho_imponible("ficha catastral R");'>ficha catastral residenciales </option>
+							<option value = '5-125' onClick='id_hecho_imponible("125");'>Fijación directa o indirecta,  de compra o venta de bienes o servicios</option>
+							<option value = '0.02-folio R' onClick='id_hecho_imponible("folio R");'>folio</option>
+							<option value = '0.02-folio S' onClick='id_hecho_imponible("folio S");'>folio</option>
+							<option value = '0.05-148' onClick='id_hecho_imponible("148");'>fondo de comercio</option>
+							<option value = '1-154' onClick='id_hecho_imponible("154");'>fondo de comercio artesanales  xmt2</option>
+							<option value = '20-153' onClick='id_hecho_imponible("153");'>fondo de comercio industriales  xmt2</option>
+							<option value = '4-151' onClick='id_hecho_imponible("151");'>fondo de comercio zonificacion de terreno  residenciales   xmt2</option>
+							<option value = '6-152' onClick='id_hecho_imponible("152");'>fondo de comercio zonificacion de terreno comerciales xmt2</option>
+							<option value = '0.02-149' onClick='id_hecho_imponible("149");'>fondo de comercio zonificacion de terreno rural o sub urbana  xmt2</option>
+							<option value = '0.2-150' onClick='id_hecho_imponible("150");'>fondo de comercio zonificacion de terreno urbanas  xmt2</option>
+							<option value = '1-506' onClick='id_hecho_imponible("506");'>Guía de transportes de productos pesqueros (5.000 Kg.</option>
+							<option value = '2-507' onClick='id_hecho_imponible("507");'>Guía de transportes de productos pesqueros (5.000 Kg.</option>
+							<option value = '5-625' onClick='id_hecho_imponible("625");'>Habilitación portuaria, ciudadanos y ciudadanas extranjeros</option>
+							<option value = '3-624' onClick='id_hecho_imponible("624");'>Habilitación portuaria, ciudadanos y ciudadanas venezolanos </option>
+							<option value = '0.02-habitabilidad mayor' onClick='id_hecho_imponible("habitabilidad mayor");'>habitabilidad mayor</option>
+							<option value = '0.02-habitabilidad menor' onClick='id_hecho_imponible("habitabilidad menor");'>habitabilidad menor</option>
+							<option value = '0.2-663' onClick='id_hecho_imponible("663");'>Habitabilidad y conf sanitaria  fines comerciales  grands</option>
+							<option value = '0.1-662' onClick='id_hecho_imponible("662");'>Habitabilidad y conf sanitaria  fines comerciales  med</option>
+							<option value = '0.01-660' onClick='id_hecho_imponible("660");'>Habitabilidad y conf sanitaria  fines comerciales  micro </option>
+							<option value = '0.01-661' onClick='id_hecho_imponible("661");'>Habitabilidad y conf sanitaria  fines comerciales  peq</option>
+							<option value = '0.15-669' onClick='id_hecho_imponible("669");'>Habitabilidad y conf sanitaria  fines industriales grands</option>
+							<option value = '0.01-666' onClick='id_hecho_imponible("666");'>Habitabilidad y conf sanitaria  fines industriales micro</option>
+							<option value = '0.2-673' onClick='id_hecho_imponible("673");'>Habitabilidad y conf sanitaria  fines industriales otros grand</option>
+							<option value = '0.1-672' onClick='id_hecho_imponible("672");'>Habitabilidad y conf sanitaria  fines industriales otros med</option>
+							<option value = '0.01-667' onClick='id_hecho_imponible("667");'>Habitabilidad y conf sanitaria  fines industriales peq</option>
+							<option value = '0.1-664' onClick='id_hecho_imponible("664");'>Habitabilidad y conf sanitaria  fines prest de Servicios med</option>
+							<option value = '0.1-674' onClick='id_hecho_imponible("674");'>Habitabilidad y conf sanitaria  fines prest de Servicios micro</option>
+							<option value = '0.1-675' onClick='id_hecho_imponible("675");'>Habitabilidad y conf sanitaria  fines prest de Servicios peq</option>
+							<option value = '0.02-668' onClick='id_hecho_imponible("668");'>Habitabilidad y conf sanitaria fines industriales medianas</option>
+							<option value = '0.1-690' onClick='id_hecho_imponible("690");'>Habitabilidad y conf sanitaria fines industriales otros productos micro</option>
+							<option value = '0.1-691' onClick='id_hecho_imponible("691");'>Habitabilidad y conf sanitaria fines industriales otros productos peq</option>
+							<option value = '0.2-665' onClick='id_hecho_imponible("665");'>Habitabilidad y conf sanitaria fines prest de Servicios Grand</option>
+							<option value = '0.2-177' onClick='id_hecho_imponible("177");'>habitabilidad y conformacion sanitaria  industrial  xm2</option>
+							<option value = '0.1-176' onClick='id_hecho_imponible("176");'>habitabilidad y conformacion sanitaria de comercio </option>
+							<option value = '0.01-175' onClick='id_hecho_imponible("175");'>habitabilidad y conformacion sanitaria de vivienda  </option>
+							<option value = '0.03-453' onClick='id_hecho_imponible("453");'>Horcones, vigas, viguetones, tirantes, soleras, costillas, madrinas, puntales y esquineros (Por Unidad Autorizada)</option>
+							<option value = '5-202' onClick='id_hecho_imponible("202");'>informes técnicos de avalúo de riesgos en espectáculos y atracciones en espacios públicos  </option>
+							<option value = '0.25-204' onClick='id_hecho_imponible("204");'>informes técnicos o dictámenes periciales de investigación de incendios u otros siniestros </option>
+							<option value = '1-Inscripcion del (RIM)' onClick='id_hecho_imponible("Inscripcion del (RIM)");'>inscrip. en el registro y subregistro de informacion minera (RIM)</option>
+							<option value = '1-608' onClick='id_hecho_imponible("608");'>Inscripción de documento que deba asentarse en los distintos Registros </option>
+							<option value = '1-inscripcion de vehiculo' onClick='id_hecho_imponible("inscripcion de vehiculo");'>inscripcion de vehiculo</option>
+							<option value = '1-351' onClick='id_hecho_imponible("351");'>Inscripción en el registro municipal de vehículos</option>
+							<option value = '10-449' onClick='id_hecho_imponible("449");'>Inscripción para el uso y manipulación o manejo de sustancias, materiales o desechos peligrosos</option>
+							<option value = '5-448' onClick='id_hecho_imponible("448");'>Inscripción para la realización de Actividades susceptibles de degradar el ambiente</option>
+							<option value = '0.2-108' onClick='id_hecho_imponible("108");'>Inscripción y Otorgamiento de Matrículas o Colegiados</option>
+							<option value = '0.5-115' onClick='id_hecho_imponible("115");'>Inscripción y Otorgamiento de Matrículas o Registros a Titulo de Profesionales de la Salud </option>
+							<option value = '10-208' onClick='id_hecho_imponible("208");'>Inspección de vehículos, calderas de vapor, motores, transformadores, ascensores, montacargas </option>
+							<option value = '0.25-297' onClick='id_hecho_imponible("297");'>Inspección para instalación de establecimientos distribuidores de productos cosméticos </option>
+							<option value = '2-286' onClick='id_hecho_imponible("286");'>Inspección y evaluación para la instalación de establec farmacéuticos Farmacias</option>
+							<option value = '0.02-284' onClick='id_hecho_imponible("284");'>Inspección y evaluación para la instalación de establec farmacéuticos Laboratorios </option>
+							<option value = '0.2-prevencion P grande' onClick='id_hecho_imponible("prevencion P grande");'>inspecciones  de  prevención,  protección  contra  incendios   prestación  de  Servicios  grande  </option>
+							<option value = '0.2-prevencion P med' onClick='id_hecho_imponible("prevencion P med");'>inspecciones  de  prevención,  protección  contra  incendios   prestación  de  Servicios  mediana   xm2</option>
+							<option value = '0.01-prevencion P micro ' onClick='id_hecho_imponible("prevencion P micro ");'>inspecciones  de  prevención,  protección  contra  incendios   prestación  de  Servicios  micro   xm2</option>
+							<option value = '0.02-prevencion P peq' onClick='id_hecho_imponible("prevencion P peq");'>inspecciones  de  prevención,  protección  contra  incendios   prestación  de  Servicios  pequeña  xm2</option>
+							<option value = '0.01-prevencion C micro ' onClick='id_hecho_imponible("prevencion C micro ");'>inspecciones  de  prevención,  protección  contra  incendios  Comerciales micro  xm2</option>
+							<option value = '0.01-prevencion I micro ' onClick='id_hecho_imponible("prevencion I micro ");'>inspecciones  de  prevención,  protección  contra  incendios  fines  Industriales   micro   xm2 (Productos de primera necesidad)</option>
+							<option value = '0.02-prevencion I med' onClick='id_hecho_imponible("prevencion I med");'>inspecciones  de  prevención,  protección  contra  incendios  fines  Industriales  mediana xm2 (Productos de primera necesidad)</option>
+							<option value = '0.15-prevencion I grande' onClick='id_hecho_imponible("prevencion I grande");'>inspecciones  de  prevención,  protección  contra  incendios  fines  Industriales grande    xm2 (Productos de primera necesidad)</option>
+							<option value = '0.01-prevencion I pequeña ' onClick='id_hecho_imponible("prevencion I pequeña ");'>inspecciones  de  prevención,  protección  contra  incendios  fines  Industriales pequeña  xm2 (Productos de primera necesidad)</option>
+							<option value = '0.2-prevencion C grande' onClick='id_hecho_imponible("prevencion C grande");'>inspecciones  de  prevención,  protección  contra  incendios Comerciales grande xm2</option>
+							<option value = '0.1-prevencion Cmediana ' onClick='id_hecho_imponible("prevencion Cmediana ");'>inspecciones  de  prevención,  protección  contra  incendios Comerciales mediana  xm2</option>
+							<option value = '0.02-prevencion C peq  ' onClick='id_hecho_imponible("prevencion C peq  ");'>inspecciones  de  prevención,  protección  contra  incendios Comerciales pequeña  xm2</option>
+							<option value = '0.2-prevencion O grande' onClick='id_hecho_imponible("prevencion O grande");'>inspecciones  de  prevención,  protección  contra  incendios otros  grande  xm2</option>
+							<option value = '0.1-prevencion O med' onClick='id_hecho_imponible("prevencion O med");'>inspecciones  de  prevención,  protección  contra  incendios otros  mediana   xm2</option>
+							<option value = '0.1-prevencion O pequeña ' onClick='id_hecho_imponible("prevencion O pequeña ");'>inspecciones  de  prevención,  protección  contra  incendios otros  pequeña    xm2</option>
+							<option value = '0.1-prevencion O micro ' onClick='id_hecho_imponible("prevencion O micro ");'>inspecciones  de  prevención,  protección  contra  incendios otros micro    xm2</option>
+							<option value = '0.2-prevencion I grande OP' onClick='id_hecho_imponible("prevencion I grande OP");'>inspecciones de prevención, protección contra incendios fines Industriales grande xm2 (Otros Productos)</option>
+							<option value = '0.1-prevencion I mediana OP' onClick='id_hecho_imponible("prevencion I mediana OP");'>inspecciones de prevención, protección contra incendios fines Industriales mediana xm2 (Otros Productos)</option>
+							<option value = '0.1-prevencion I micro OP' onClick='id_hecho_imponible("prevencion I micro OP");'>inspecciones de prevención, protección contra incendios fines Industriales micro xm2 (Otros Productos)</option>
+							<option value = '0.1-prevencion I pequeña OP' onClick='id_hecho_imponible("prevencion I pequeña OP");'>inspecciones de prevención, protección contra incendios fines Industriales pequeña xm2 (Otros Productos)</option>
+							<option value = '20-257' onClick='id_hecho_imponible("257");'>Inspecciones de reconocimiento considerados de lujo</option>
+							<option value = '0.5-294' onClick='id_hecho_imponible("294");'>Inspecciones de reconocimiento de materias primas en las adua </option>
+							<option value = '5-256' onClick='id_hecho_imponible("256");'>Inspecciones de reconocimiento por millar </option>
+							<option value = '20-licenc. act econ I PN P' onClick='id_hecho_imponible("licenc. act econ I PN P");'>iones fines industriales primera necesidad pequeña</option>
+							<option value = '0.2-290' onClick='id_hecho_imponible("290");'>ispeccion y evaluacion  Farmacias  </option>
+							<option value = '0.75-291' onClick='id_hecho_imponible("291");'>ispeccion y evaluacion  Industrias de Productos Naturales </option>
+							<option value = '0.5-292' onClick='id_hecho_imponible("292");'>ispeccion y evaluacion  Laboratorios  </option>
+							<option value = '0.25-293' onClick='id_hecho_imponible("293");'>ispeccion y evaluacion  Laboratorios de Farmacias </option>
+							<option value = '0.1-289' onClick='id_hecho_imponible("289");'>ispeccion y evaluacion Industrias farmacéuticas  </option>
+							<option value = '0.42-099' onClick='id_hecho_imponible("099");'>Legalización de Firmas de Funcionario (a)s Público (a)s</option>
+							<option value = '1-051' onClick='id_hecho_imponible("051");'>Libros de control de especies alcohólicas</option>
+							<option value = '80-licenc. act econ I PN Grand' onClick='id_hecho_imponible("licenc. act econ I PN Grand");'>licenc. act econ I PN Grand</option>
+							<option value = '40-licenc. act econ I PN Med' onClick='id_hecho_imponible("licenc. act econ I PN Med");'>licenc. act econ I PN Med</option>
+							<option value = '2-licencia activ econ C micro' onClick='id_hecho_imponible("licencia activ econ C micro");'>licencias o autorizaciones fines comerciales  micro </option>
+							<option value = '30-licencia activ econ C grand' onClick='id_hecho_imponible("licencia activ econ C grand");'>licencias o autorizaciones fines comerciales grande</option>
+							<option value = '20-licencia activ econ C med' onClick='id_hecho_imponible("licencia activ econ C med");'>licencias o autorizaciones fines comerciales mediana </option>
+							<option value = '10-licencia activ econ C peq' onClick='id_hecho_imponible("licencia activ econ C peq");'>licencias o autorizaciones fines comerciales pequeña </option>
+							<option value = '30-licencia activ econ I Ogrand' onClick='id_hecho_imponible("licencia activ econ I Ogrand");'>licencias o autorizaciones fines industriales   primera necesidad  Otros  grande</option>
+							<option value = '2-licencia activ econ I O micro' onClick='id_hecho_imponible("licencia activ econ I O micro");'>licencias o autorizaciones fines industriales  primera necesidad  micro </option>
+							<option value = '5-licencia activ econ I O peq' onClick='id_hecho_imponible("licencia activ econ I O peq");'>licencias o autorizaciones fines industriales  primera necesidad  Otros  pequeña </option>
+							<option value = '10-licencia activ econ I O med' onClick='id_hecho_imponible("licencia activ econ I O med");'>licencias o autorizaciones fines industriales  primera necesidad Otros  mediana </option>
+							<option value = '40-licencia activ econ I peq' onClick='id_hecho_imponible("licencia activ econ I peq");'>licencias o autorizaciones fines industriales otros  pequeña </option>
+							<option value = '160-licencia activ econ I grand' onClick='id_hecho_imponible("licencia activ econ I grand");'>licencias o autorizaciones fines industriales otros grande</option>
+							<option value = '80-licencia activ econ I med' onClick='id_hecho_imponible("licencia activ econ I med");'>licencias o autorizaciones fines industriales otros mediana </option>
+							<option value = '10-licencia activ econ I micro' onClick='id_hecho_imponible("licencia activ econ I micro");'>licencias o autorizaciones fines industriales otros micro </option>
+							<option value = '5-licenc. act econ I PN M' onClick='id_hecho_imponible("licenc. act econ I PN M");'>licencias o autorizaciones fines industriales primera necesidad micro </option>
+							<option value = '30-licencia activ econ P grand' onClick='id_hecho_imponible("licencia activ econ P grand");'>licencias o autorizaciones prestación de Servicios  grande</option>
+							<option value = '10-licencia activ econ P peq' onClick='id_hecho_imponible("licencia activ econ P peq");'>licencias o autorizaciones prestación de Servicios  pequeña </option>
+							<option value = '20-licencia activ econ P med' onClick='id_hecho_imponible("licencia activ econ P med");'>licencias o autorizaciones prestación de Servicios mediana </option>
+							<option value = '2-licencia activ econ P micro' onClick='id_hecho_imponible("licencia activ econ P micro");'>licencias o autorizaciones prestación de Servicios micro </option>
+							<option value = '10-209' onClick='id_hecho_imponible("209");'>Mantenimiento del servicio y la cesión del uso de maquinarias y equipos adscritos a los servicios públicos </option>
+							<option value = '1-146' onClick='id_hecho_imponible("146");'>medidas de linderos   industrias o manufactueras artesanales  xmt2</option>
+							<option value = '0.5-147' onClick='id_hecho_imponible("147");'>medidas de linderos   integracion o desintegracion de parcelas  xmt2</option>
+							<option value = '0.2-145' onClick='id_hecho_imponible("145");'>medidas de linderos   zona rural  xmt2</option>
+							<option value = '15-055' onClick='id_hecho_imponible("055");'>mejora de modelos, artes</option>
+							<option value = '3.5-336' onClick='id_hecho_imponible("336");'>Minibuses de uso privado</option>
+							<option value = '1-352' onClick='id_hecho_imponible("352");'>Modificación de datos respecto a cambio de propietario o de placas</option>
+							<option value = '0.3-Notas Certificadas L' onClick='id_hecho_imponible("Notas Certificadas L");'>Notas Certificadas L</option>
+							<option value = '0.5-193' onClick='id_hecho_imponible("193");'>obras de vialidades </option>
+							<option value = '50-473' onClick='id_hecho_imponible("473");'>otorgamientgo Para  actividades industriales (Hasta por 1 Hectárea)</option>
+							<option value = '2-471' onClick='id_hecho_imponible("471");'>otorgamientgo Para actividades agrosilvopastoriales (Hasta por 1 Hectárea)</option>
+							<option value = '50-472' onClick='id_hecho_imponible("472");'>otorgamientgo Para actividades residenciales, turísticas y recreacionales (Hasta por 1 Hectárea)</option>
+							<option value = '10-274' onClick='id_hecho_imponible("274");'>Otorgamiento de análisis químico o físico-químico de productos y mercancías</option>
+							<option value = '150-272' onClick='id_hecho_imponible("272");'>Otorgamiento de análisis químicos o físico-químicos de sustancias elaboración de bebidas alcohólicas</option>
+							<option value = '10-271' onClick='id_hecho_imponible("271");'>Otorgamiento de aprobación de cada diseño de propaganda para inserción de cajetillas de fósforos</option>
+							<option value = '10-273' onClick='id_hecho_imponible("273");'>Otorgamiento de aprobación de etiquetas para bebidas alcohólicas y marquillas  de cigarrillos</option>
+							<option value = '10-374' onClick='id_hecho_imponible("374");'>Otorgamiento de aprobación para publicidad de plaguicidas, sustancias químicas,</option>
+							<option value = '0.75-603' onClick='id_hecho_imponible("603");'>Otorgamiento de Autenticaciones</option>
+							<option value = '0.1-220' onClick='id_hecho_imponible("220");'>Otorgamiento de autorización  para la colocación de afiches  y pendones publicitarios</option>
+							<option value = '1-221' onClick='id_hecho_imponible("221");'>Otorgamiento de autorización  para la colocación de vallas publicitarias en los laterales de  las vías, </option>
+							<option value = '150-646' onClick='id_hecho_imponible("646");'>Otorgamiento de autorización a personas jurídicas para operar como Agentes de Aduanas</option>
+							<option value = '120-645' onClick='id_hecho_imponible("645");'>Otorgamiento de autorización a personas naturales para operar como Agentes de Aduanas </option>
+							<option value = '100-362' onClick='id_hecho_imponible("362");'>Otorgamiento de autorización de venta de plaguicidas, productos químicos,  Grandes</option>
+							<option value = '80-361' onClick='id_hecho_imponible("361");'>Otorgamiento de autorización de venta de plaguicidas, productos químicos,  Medianas</option>
+							<option value = '10-359' onClick='id_hecho_imponible("359");'>Otorgamiento de autorización de venta de plaguicidas, productos químicos,  Micro:</option>
+							<option value = '40-360' onClick='id_hecho_imponible("360");'>Otorgamiento de autorización de venta de plaguicidas, productos químicos,  Pequeñas</option>
+							<option value = '10-532' onClick='id_hecho_imponible("532");'>Otorgamiento de autorización para la posesión de aves de cetrerías</option>
+							<option value = '30-Autor.Ocup.Terre.' onClick='id_hecho_imponible("Autor.Ocup.Terre.");'>Otorgamiento de autorización para ocupación de terrenos de uso público con puestos, barracas, ventas</option>
+							<option value = '200-647' onClick='id_hecho_imponible("647");'>Otorgamiento de autorización para operar como Almacenes Generales </option>
+							<option value = '1-347' onClick='id_hecho_imponible("347");'>Otorgamiento de autorización parailizar en placas, patentes y otros distintivos análogos al Escudo del estado Aragua</option>
+							<option value = '50-413' onClick='id_hecho_imponible("413");'>otorgamiento de autorizaciones a personas naturales o jurídicas </option>
+							<option value = '5-396' onClick='id_hecho_imponible("396");'>Otorgamiento de autorizaciones para el expendio, aplicación comercial, operación de depósito comercial, publicidad, </option>
+							<option value = '30-659' onClick='id_hecho_imponible("659");'>otorgamiento de autorizaciones para la explotacion de minerales no metalicos o de mancomunidades minera</option>
+							<option value = '30-558' onClick='id_hecho_imponible("558");'>Otorgamiento de autorizaciones para la explotación de minerales no metálicos o de mancomunidades mineras</option>
+							<option value = '10-395' onClick='id_hecho_imponible("395");'>Otorgamiento de autorizaciones para la fabricación de plaguicidas de uso agrícola, fertilizantes y abonos</option>
+							<option value = '1-217' onClick='id_hecho_imponible("217");'>Otorgamiento de autorizaciones para la ocupación de terrenos estadales de uso público con mercancías</option>
+							<option value = '2.5-400' onClick='id_hecho_imponible("400");'>Otorgamiento de calificación previa de ingredientes de productos para uso agropecuario</option>
+							<option value = '2.5-438' onClick='id_hecho_imponible("438");'>Otorgamiento de calificación previa de ingredientes de productos para usos agropecuario</option>
+							<option value = '5-326' onClick='id_hecho_imponible("326");'>Otorgamiento de certificación de ingredientes para lailización en la elaboración de alimentos</option>
+							<option value = '30-654' onClick='id_hecho_imponible("654");'>Otorgamiento de certificación de operatividad de pista</option>
+							<option value = '5-323' onClick='id_hecho_imponible("323");'>Otorgamiento de certificación sanitaria de la calidad de alimentos Comercios </option>
+							<option value = '1-324' onClick='id_hecho_imponible("324");'>Otorgamiento de certificación sanitaria de la calidad de alimentos Domésticos</option>
+							<option value = '10-322' onClick='id_hecho_imponible("322");'>Otorgamiento de certificación sanitaria de la calidad de alimentos Franquicias Alimenticias</option>
+							<option value = '15-321' onClick='id_hecho_imponible("321");'>Otorgamiento de certificación sanitaria de la calidad de alimentos Industrias</option>
+							<option value = '5-327' onClick='id_hecho_imponible("327");'>Otorgamiento de certificación sanitaria de materiales que estén en contacto con alimentos</option>
+							<option value = '4-328' onClick='id_hecho_imponible("328");'>Otorgamiento de certificación sanitaria para equipos yensilios </option>
+							<option value = '5-509' onClick='id_hecho_imponible("509");'>Otorgamiento de certificaciones sanitarias</option>
+							<option value = '15-318' onClick='id_hecho_imponible("318");'>Otorgamiento de certificado de libre venta y consumo  Comercios </option>
+							<option value = '2.5-319' onClick='id_hecho_imponible("319");'>Otorgamiento de certificado de libre venta y consumo  Domésticos</option>
+							<option value = '30-317' onClick='id_hecho_imponible("317");'>Otorgamiento de certificado de libre venta y consumo  Franquicias Alimenticias</option>
+							<option value = '50-316' onClick='id_hecho_imponible("316");'>Otorgamiento de certificado de libre venta y consumo  Industrias</option>
+							<option value = '50-306' onClick='id_hecho_imponible("306");'>Otorgamiento de certificado internacional de desratización en buques</option>
+							<option value = '2-402' onClick='id_hecho_imponible("402");'>Otorgamiento de certificados de cuarentena animal</option>
+							<option value = '5-403' onClick='id_hecho_imponible("403");'>Otorgamiento de certificados de inspección sanitaria en transporte internacional de productos</option>
+							<option value = '2.5-401' onClick='id_hecho_imponible("401");'>Otorgamiento de certificados de libre venta de plaguicidas de usos agrícola o pecuario,</option>
+							<option value = '5-404' onClick='id_hecho_imponible("404");'>Otorgamiento de certificados fito y zoosanitarios de exportación de animales y vegetales</option>
+							<option value = '1-116' onClick='id_hecho_imponible("116");'>Otorgamiento de Colegiatura de técnicos y profesionales</option>
+							<option value = '3-312' onClick='id_hecho_imponible("312");'>Otorgamiento de conformación sanitaria de ambientes con equipos productores de radiaciones ionizantes</option>
+							<option value = '10-314' onClick='id_hecho_imponible("314");'>Otorgamiento de conformación sanitaria de sistema de control de contaminación</option>
+							<option value = '30-313' onClick='id_hecho_imponible("313");'>Otorgamiento de conformación sanitaria de sistemas de tratamiento de desech</option>
+							<option value = '2-637' onClick='id_hecho_imponible("637");'>Otorgamiento de credencial de perito naval y de inspector de radio comunicaciones marinas</option>
+							<option value = '100-412' onClick='id_hecho_imponible("412");'>otorgamiento de declaraciones de impacto ambiental</option>
+							<option value = '15-643' onClick='id_hecho_imponible("643");'>Otorgamiento de exoneraciones de aranceles y derechos de importación</option>
+							<option value = '0.3-510' onClick='id_hecho_imponible("510");'>Otorgamiento de guía para trasladar ganado vivo, vacuno o bovino, porcino, ovino, caprino, equino:</option>
+							<option value = '1-474' onClick='id_hecho_imponible("474");'>Otorgamiento de la Constancia de Registro de Hierros</option>
+							<option value = '0.5-475' onClick='id_hecho_imponible("475");'>Otorgamiento de la Constancia de Registro de Señal</option>
+							<option value = '20-530' onClick='id_hecho_imponible("530");'>Otorgamiento de licencia de caza con fines deportivos Clase “A”: </option>
+							<option value = '25-531' onClick='id_hecho_imponible("531");'>Otorgamiento de licencia de caza con fines deportivos Clase “B”: </option>
+							<option value = '10-544' onClick='id_hecho_imponible("544");'>otorgamiento de licencia para ejercer el comercio e industria</option>
+							<option value = '20-528' onClick='id_hecho_imponible("528");'>Otorgamiento de licencias Clase “C”  Aves</option>
+							<option value = '25-527' onClick='id_hecho_imponible("527");'>Otorgamiento de licencias Clase “C”  Mamíferos</option>
+							<option value = '15-529' onClick='id_hecho_imponible("529");'>Otorgamiento de licencias Clase “C”  Reptiles</option>
+							<option value = '10-521' onClick='id_hecho_imponible("521");'>Otorgamiento de licencias de caza de la fauna   Mamíferos  otros estado</option>
+							<option value = '30-522' onClick='id_hecho_imponible("522");'>Otorgamiento de licencias de caza de la fauna   Mamíferos  primer setado  estado</option>
+							<option value = '25-519' onClick='id_hecho_imponible("519");'>Otorgamiento de licencias de caza de la fauna  De carácter  especial  Aves</option>
+							<option value = '20-518' onClick='id_hecho_imponible("518");'>Otorgamiento de licencias de caza de la fauna  De carácter  especial  Mamíferos</option>
+							<option value = '15-520' onClick='id_hecho_imponible("520");'>Otorgamiento de licencias de caza de la fauna  De carácter  especial  Reptiles</option>
+							<option value = '30-515' onClick='id_hecho_imponible("515");'>Otorgamiento de licencias de caza de la fauna  De carácter general  Clase 1ºestado  “B”</option>
+							<option value = '20-516' onClick='id_hecho_imponible("516");'>Otorgamiento de licencias de caza de la fauna  De carácter general  Clase 2ºestado  “B”</option>
+							<option value = '6-517' onClick='id_hecho_imponible("517");'>Otorgamiento de licencias de caza de la fauna  De carácter general  Clase “c”</option>
+							<option value = '50-514' onClick='id_hecho_imponible("514");'>Otorgamiento de licencias de caza de la fauna  De carácter general Clase “A”</option>
+							<option value = '10-523' onClick='id_hecho_imponible("523");'>Otorgamiento de licencias de caza de la fauna Aves estados adicionales </option>
+							<option value = '30-524' onClick='id_hecho_imponible("524");'>Otorgamiento de licencias de caza de la fauna Aves estados principal</option>
+							<option value = '25-526' onClick='id_hecho_imponible("526");'>Otorgamiento de licencias de caza de la fauna Reptiles</option>
+							<option value = '5-525' onClick='id_hecho_imponible("525");'>Otorgamiento de licencias de caza de la fauna Reptiles estados adicionales </option>
+							<option value = '5-513' onClick='id_hecho_imponible("513");'>Otorgamiento de licencias de caza de la fauna silvestre con fines comerciales cada 1</option>
+							<option value = '30-538' onClick='id_hecho_imponible("538");'>Otorgamiento de licencias de caza para la recolección de productos naturales de animales de la fauna silvestre</option>
+							<option value = '3-344' onClick='id_hecho_imponible("344");'>Otorgamiento de licencias o autorizaciones administrativas para el funcionamiento de líneas de taxis </option>
+							<option value = '15-644' onClick='id_hecho_imponible("644");'>Otorgamiento de licencias y delegaciones de importación: quince Unidades Tributarias </option>
+							<option value = '0.5-488' onClick='id_hecho_imponible("488");'>Otorgamiento de permiso Científica  por persona</option>
+							<option value = '25-652' onClick='id_hecho_imponible("652");'>Otorgamiento de permiso de construcción aeroportuaria para edificaciones:    </option>
+							<option value = '25-655' onClick='id_hecho_imponible("655");'>Otorgamiento de permiso de construcción de helipuerto</option>
+							<option value = '30-653' onClick='id_hecho_imponible("653");'>Otorgamiento de permiso de construcción para pista aeroportuaria: </option>
+							<option value = '0.25-417' onClick='id_hecho_imponible("417");'>Otorgamiento de permiso de dotación de agua para uso sanitario doméstico en zona rural o sub urbana</option>
+							<option value = '20-420' onClick='id_hecho_imponible("420");'>Otorgamiento de permiso de dotación de agua para uso sanitario en centros comerciales</option>
+							<option value = '3-418' onClick='id_hecho_imponible("418");'>Otorgamiento de permiso de dotación de agua para uso sanitario en comercios</option>
+							<option value = '20-419' onClick='id_hecho_imponible("419");'>Otorgamiento de permiso de dotación de agua para uso sanitario en industrias</option>
+							<option value = '2.5-435' onClick='id_hecho_imponible("435");'>Otorgamiento de permiso de exportación de insumo agrícolas o pecuarios</option>
+							<option value = '5-423' onClick='id_hecho_imponible("423");'>Otorgamiento de permiso de operación de sistema de tratamiento de aguas blancas y servidas</option>
+							<option value = '3-424' onClick='id_hecho_imponible("424");'>Otorgamiento de permiso de operación para empresas de limpieza y desinfección de estanques de agua potable</option>
+							<option value = '50-421' onClick='id_hecho_imponible("421");'>Otorgamiento de permiso de perforación de pozos profundos</option>
+							<option value = '0.25-484' onClick='id_hecho_imponible("484");'>Otorgamiento de permiso de pesca  Pescadores modalidad “Volapié”</option>
+							<option value = '5-422' onClick='id_hecho_imponible("422");'>Otorgamiento de permiso de uso de agua, distintos al doméstico e industrial con fines comerciales</option>
+							<option value = '20-309' onClick='id_hecho_imponible("309");'>Otorgamiento de permiso para clínicas y hospitales privados en radio física sanitaria</option>
+							<option value = '10-311' onClick='id_hecho_imponible("311");'>Otorgamiento de permiso para el funcionamiento de laboratorios de dosimetría personal</option>
+							<option value = '120-381' onClick='id_hecho_imponible("381");'>Otorgamiento de permiso para fumigaciones aéreas con plaguicidas, productos químicos, tóxicos </option>
+							<option value = '0.1-302' onClick='id_hecho_imponible("302");'>Otorgamiento de permiso para la compra-venta de sustancias psicotrópicas y estupefacientes de lícito comercio</option>
+							<option value = '20-310' onClick='id_hecho_imponible("310");'>Otorgamiento de permiso para la disposición final de desechos radioactivos</option>
+							<option value = '100-373' onClick='id_hecho_imponible("373");'>Otorgamiento de permiso para la importación de materia prima para plaguicidas, productos químicos.</option>
+							<option value = '10-308' onClick='id_hecho_imponible("308");'>Otorgamiento de permiso para la importación o exportación, transporte, almacenamiento de productos radioactivos</option>
+							<option value = '5-307' onClick='id_hecho_imponible("307");'>Otorgamiento de permiso para lailización de productos radioactivos y equipos productores de radiaciones </option>
+							<option value = '0.5-485' onClick='id_hecho_imponible("485");'>Otorgamiento de permiso Personas dedicadas a la pesca deportiva</option>
+							<option value = '1-486' onClick='id_hecho_imponible("486");'>Otorgamiento de permiso Personas dedicadas a la pesca deportiva extranjeras</option>
+							<option value = '5-330' onClick='id_hecho_imponible("330");'>Otorgamiento de permiso sanitario para el funcionamiento de expendio y almacenamiento de alimentos</option>
+							<option value = '5-331' onClick='id_hecho_imponible("331");'>Otorgamiento de permiso sanitario para el funcionamiento de expendios ambulantes y transporte de alimentos</option>
+							<option value = '20-329' onClick='id_hecho_imponible("329");'>Otorgamiento de permiso sanitario para el funcionamiento de industria de alimentos</option>
+							<option value = '5-325' onClick='id_hecho_imponible("325");'>Otorgamiento de permiso sanitario para importación de alimentos</option>
+							<option value = '0.5-430' onClick='id_hecho_imponible("430");'>Otorgamiento de permiso sanitarios para el traslado de animales doméstico</option>
+							<option value = '4-635' onClick='id_hecho_imponible("635");'>Otorgamiento de permiso temporal para titular extranjero de marina mercante</option>
+							<option value = '1-633' onClick='id_hecho_imponible("633");'>Otorgamiento de permiso temporal para titular venezolano de marina mercante</option>
+							<option value = '4-501' onClick='id_hecho_imponible("501");'>Otorgamiento de permisos  Cultivo de crustáceos marítimos continentales por hectaria </option>
+							<option value = '2-502' onClick='id_hecho_imponible("502");'>Otorgamiento de permisos  Cultivo de moluscos por hectaria </option>
+							<option value = '2.5-500' onClick='id_hecho_imponible("500");'>Otorgamiento de permisos  Piscicultura intensiva por hectaria </option>
+							<option value = '5-508' onClick='id_hecho_imponible("508");'>Otorgamiento de permisos de exportación de especies acuáticas vivas</option>
+							<option value = '200-505' onClick='id_hecho_imponible("505");'>Otorgamiento de permisos de exportación y/o levantamiento de fondos marinos</option>
+							<option value = '5-503' onClick='id_hecho_imponible("503");'>Otorgamiento de permisos de importación y/o introducción al país de especies acuáticas vivas</option>
+							<option value = '0.275-476' onClick='id_hecho_imponible("476");'>Otorgamiento de permisos de pesca para embarcaciones Cerqueras cañeras,  x T.R.B</option>
+							<option value = '2.5-481' onClick='id_hecho_imponible("481");'>Otorgamiento de permisos de pesca para embarcaciones comercial</option>
+							<option value = '0.5-478' onClick='id_hecho_imponible("478");'>Otorgamiento de permisos de pesca para embarcaciones Peñeros yolas y afines menores de doce metros (12 mts.) </option>
+							<option value = '15-504' onClick='id_hecho_imponible("504");'>Otorgamiento de permisos especiales de pesca y acuicultura</option>
+							<option value = '5-305' onClick='id_hecho_imponible("305");'>Otorgamiento de permisos especiales para rociamiento en buques y aeronaves</option>
+							<option value = '5-355' onClick='id_hecho_imponible("355");'>otorgamiento de permisos para la entrada de vehículos a través de las aceras y reservas de vía pública de 0 a 500 toneladas</option>
+							<option value = '20-357' onClick='id_hecho_imponible("357");'>otorgamiento de permisos para la entrada de vehículos a través de las aceras y reservas de vía pública de 2.501 a 5.000 toneladas</option>
+							<option value = '50-358' onClick='id_hecho_imponible("358");'>otorgamiento de permisos para la entrada de vehículos a través de las aceras y reservas de vía pública mas de 5.001 toneladas </option>
+							<option value = '10-356' onClick='id_hecho_imponible("356");'>otorgamiento de permisos para la entrada de vehículos a través de las aceras y reservas de vía públicade 501 a 2.500 toneladas</option>
+							<option value = '5-262' onClick='id_hecho_imponible("262");'>otorgamiento de permisos sanitarios AL DETAL</option>
+							<option value = '20-261' onClick='id_hecho_imponible("261");'>otorgamiento de permisos sanitarios Comercialización de carnes al mayor</option>
+							<option value = '0.5-432' onClick='id_hecho_imponible("432");'>Otorgamiento de permisos sanitarios de exportación de animales y vegetales, productos, sub-productos,</option>
+							<option value = '5-429' onClick='id_hecho_imponible("429");'>Otorgamiento de permisos sanitarios de importación de animales o vegetales, productos, subproductos, partes o residuo</option>
+							<option value = '5-433' onClick='id_hecho_imponible("433");'>Otorgamiento de permisos sanitarios de importación de plaguicidas de usos agrícolas o pecuarios, </option>
+							<option value = '50-260' onClick='id_hecho_imponible("260");'>otorgamiento de permisos sanitarios Distribuidores</option>
+							<option value = '20-259' onClick='id_hecho_imponible("259");'>otorgamiento de permisos sanitarios Lonjas</option>
+							<option value = '100-258' onClick='id_hecho_imponible("258");'>otorgamiento de permisos sanitarios Mataderos industriales</option>
+							<option value = '0.5-431' onClick='id_hecho_imponible("431");'>Otorgamiento de permisos sanitarios para el tránsito de animales y vegetales, productos y sub-productos, </option>
+							<option value = '1-499' onClick='id_hecho_imponible("499");'>Otorgamiento de permisos v Piscicultura extensiva por hectaria </option>
+							<option value = '5-533' onClick='id_hecho_imponible("533");'>Otorgamiento de renovación de la autorización para la posesión de aves de cetrerías</option>
+							<option value = '120-555' onClick='id_hecho_imponible("555");'>Otorgamiento de títulos de concesiones de exploración y subsiguiente explotación de minerales no metálicos</option>
+							<option value = '120-658' onClick='id_hecho_imponible("658");'>Otorgamiento de titulos de concesiones de explotacion de minerales no metalicos</option>
+							<option value = '120-557' onClick='id_hecho_imponible("557");'>Otorgamiento del título de concesiones caducas</option>
+							<option value = '120-556' onClick='id_hecho_imponible("556");'>Otorgamiento del título de concesiones de explotación de minerales no metálicos</option>
+							<option value = '1-Otorg.Manif.Bailes F' onClick='id_hecho_imponible("Otorg.Manif.Bailes F");'>Otorgamiento para la  realización de bailes o manifestaciones folklóricas que no incluyan espectáculos </option>
+							<option value = '7-Otorg.Conciert.Musi' onClick='id_hecho_imponible("Otorg.Conciert.Musi");'>Otorgamiento para la realización de conciertos musicales de cualquier género,</option>
+							<option value = '50-Otorg.conciert.Cobro entr' onClick='id_hecho_imponible("Otorg.conciert.Cobro entr");'>Otorgamiento para la realización de conciertos musicales de cualquier género, con cobro de entradas</option>
+							<option value = '80-Otorg.Conciert.Inter/Esp/Publ' onClick='id_hecho_imponible("Otorg.Conciert.Inter/Esp/Publ");'>Otorgamiento para la realización de conciertos musicales de cualquier género, internacionales  espacios públicos</option>
+							<option value = '10-Otorg.Conciert.Via publ' onClick='id_hecho_imponible("Otorg.Conciert.Via publ");'>Otorgamiento para la realización de conciertos musicales en espacios públicos</option>
+							<option value = '1-Otorg.Espec no este en ley' onClick='id_hecho_imponible("Otorg.Espec no este en ley");'>Otorgamiento para la realización de cualquier otro espectáculo público que no esté en la Ley </option>
+							<option value = '0.5-Propag.Comer.' onClick='id_hecho_imponible("Propag.Comer.");'>Otorgamiento por concepto de propaganda comercial en comercios (avisos luminosos y no luminosos,  </option>
+							<option value = '5-Propag.Moviles' onClick='id_hecho_imponible("Propag.Moviles");'>Otorgamiento por concepto de propagandas Móviles (trípticos, dípticos folletos, entre otros.)</option>
+							<option value = '0.5-Publi.Automotor' onClick='id_hecho_imponible("Publi.Automotor");'>Otorgamiento por concepto de publicidad en automotores</option>
+							<option value = '10-Otorg.Even.Depor' onClick='id_hecho_imponible("Otorg.Even.Depor");'>Otorgamientoa realización de eventos deportivos, verbenas  que requieran el cierre de la vía pública</option>
+							<option value = '4.5-339' onClick='id_hecho_imponible("339");'>Otros aparatos aptos para circular y tractores agrícolas</option>
+							<option value = '1-192' onClick='id_hecho_imponible("192");'>Otros no contemplados en la ley</option>
+							<option value = '10-056' onClick='id_hecho_imponible("056");'>Otros referidos a este ramo</option>
+							<option value = '10-212' onClick='id_hecho_imponible("212");'>Otros referidos a este ramo</option>
+							<option value = '10-492' onClick='id_hecho_imponible("492");'>Otros tripulantes</option>
+							<option value = '2-495' onClick='id_hecho_imponible("495");'>Otros tripulantes</option>
+							<option value = '0.02-Papel Sellado' onClick='id_hecho_imponible("Papel Sellado");'>Papel Sellado por Folio</option>
+							<option value = '22.5-444' onClick='id_hecho_imponible("444");'>Para  evaluación y estudio de análisis integrados de suelos y aguas</option>
+							<option value = '100-411' onClick='id_hecho_imponible("411");'>Para actividades relacionadas con la explotación y extracción de minerales no metálicos (Hasta por 1 Hectárea)</option>
+							<option value = '2-427' onClick='id_hecho_imponible("427");'>Para aprovechamiento hídrico por organismos públicos</option>
+							<option value = '10-428' onClick='id_hecho_imponible("428");'>Para aprovechamiento hídrico por personas naturales y jurídicas</option>
+							<option value = '1-219' onClick='id_hecho_imponible("219");'>para eventos o reuniones privadas con fines comerciales ).</option>
+							<option value = '2-632' onClick='id_hecho_imponible("632");'>Para la expedición o renovación de tenencia, empadronamiento y porte de armas, se pagará la cantidad </option>
+							<option value = '35-543' onClick='id_hecho_imponible("543");'>para personas naturales o jurídicas extranjeras no domiciliadas en el estado</option>
+							<option value = '10-537' onClick='id_hecho_imponible("537");'>Para personas naturales o jurídicas extranjeras o no domiciliadas en  Venezuela x pieza</option>
+							<option value = '25-541' onClick='id_hecho_imponible("541");'>para personas naturales o jurídicas no domiciliadas en el estado</option>
+							<option value = '15-536' onClick='id_hecho_imponible("536");'>Para personas naturales o jurídicas, nacionales o extranjeras, domiciliadas en Venezuela</option>
+							<option value = '0.25-201' onClick='id_hecho_imponible("201");'>para usos comerciales o privados de uso público  </option>
+							<option value = '30-Patente de invención' onClick='id_hecho_imponible("Patente de invención");'>Patente de invención</option>
+							<option value = '1-Per.Const.Menor comer' onClick='id_hecho_imponible("Per.Const.Menor comer");'>permiso de construccion o modificacion menor comerciales</option>
+							<option value = '0.2-Per.Const.menor demolic' onClick='id_hecho_imponible("Per.Const.menor demolic");'>permiso de construccion o modificacion menor demolicion total de imueble </option>
+							<option value = '2-Per.Const. menor Indust' onClick='id_hecho_imponible("Per.Const. menor Indust");'>permiso de construccion o modificacion menor industriales </option>
+							<option value = '2-172' onClick='id_hecho_imponible("172");'>permiso de construccion o modificacion menor industriales</option>
+							<option value = '0.8-Per.Const.Menor resd' onClick='id_hecho_imponible("Per.Const.Menor resd");'>permiso de construccion o modificacion menor residenciales </option>
+							<option value = '0.2-Per.Const.Menor Rural/S' onClick='id_hecho_imponible("Per.Const.Menor Rural/S");'>permiso de construccion o modificacion menor rural o sub urbana </option>
+							<option value = '0.4-Per.Const. Menor urb' onClick='id_hecho_imponible("Per.Const. Menor urb");'>permiso de construccion o modificacion menor urbanas</option>
+							<option value = '0.04-permiso de mudanza' onClick='id_hecho_imponible("permiso de mudanza");'>permiso de mudanza</option>
+							<option value = '0.8-367' onClick='id_hecho_imponible("367");'>permiso para almacenar plaguicidas, productos químicos, tóxicos  x mts2</option>
+							<option value = '20-547' onClick='id_hecho_imponible("547");'>permiso para exportar animales vivos y productos de la fauna silvestre con fines comerciales</option>
+							<option value = '0.02-Permiso mudanzas traslado' onClick='id_hecho_imponible("Permiso mudanzas traslado");'>Permiso para la mudanzas y traslado de bienes muebles</option>
+							<option value = '50-368' onClick='id_hecho_imponible("368");'>permiso para transporte de plaguicida, productos químicos, sanitario o industrial</option>
+							<option value = '5-370' onClick='id_hecho_imponible("370");'>permiso para transporte de plaguicida, productos químicos, sanitario o industrial De uso doméstico</option>
+							<option value = '10-371' onClick='id_hecho_imponible("371");'>permiso para transporte de plaguicida, productos químicos, sanitario o industrial De uso sanitario o industrial</option>
+							<option value = '2-369' onClick='id_hecho_imponible("369");'>permiso para transporte de plaguicida, productos químicos, sanitario o industrial Salud</option>
+							<option value = '2-685' onClick='id_hecho_imponible("685");'>permiso sanitario para vehiculo </option>
+							<option value = '5-300' onClick='id_hecho_imponible("300");'>Permisos de exportación de productos farmacéuticos (Por cada cien o menos de cien productos)</option>
+							<option value = '0.3-465' onClick='id_hecho_imponible("465");'>Permisos y/o autorización de deforestación y roza de vegetación </option>
+							<option value = '1-406' onClick='id_hecho_imponible("406");'>Permisos y/o autorizaciones de deforestación y tala de vegetación  </option>
+							<option value = '2.5-487' onClick='id_hecho_imponible("487");'>Personas dedicadas a la extracción o recolección de especies declaradas bajo “Norma Especial”</option>
+							<option value = '100-387' onClick='id_hecho_imponible("387");'>Plaguicidas, fertilizantes y productos de uso agrícola y pecuario Grandes</option>
+							<option value = '80-386' onClick='id_hecho_imponible("386");'>Plaguicidas, fertilizantes y productos de uso agrícola y pecuario Medianas</option>
+							<option value = '10-384' onClick='id_hecho_imponible("384");'>Plaguicidas, fertilizantes y productos de uso agrícola y pecuario Micro</option>
+							<option value = '40-385' onClick='id_hecho_imponible("385");'>Plaguicidas, fertilizantes y productos de uso agrícola y pecuario Pequeñas</option>
+							<option value = '1-Poderes J' onClick='id_hecho_imponible("Poderes J");'>Poderes Juridicos</option>
+							<option value = '0.5-Poderes N' onClick='id_hecho_imponible("Poderes N");'>Poderes Naturales</option>
+							<option value = '0.01-566' onClick='id_hecho_imponible("566");'>por aumento del capital de dichas sociedades </option>
+							<option value = '2-512' onClick='id_hecho_imponible("512");'>por cada ejemplar; aves, peces, abejas, conejos y liebres, camarones, crustáceos y moluscos</option>
+							<option value = '0.4-563' onClick='id_hecho_imponible("563");'>por cada folio de Inscripcion </option>
+							<option value = '0.1-581' onClick='id_hecho_imponible("581");'>por cada folio de Inscripcion </option>
+							<option value = '20-540' onClick='id_hecho_imponible("540");'>por cada temporada anual, para personas naturales o jurídicas, nacionales o extranjeras domiciliadas en el estado:</option>
+							<option value = '30-542' onClick='id_hecho_imponible("542");'>por cada temporada anual, para personas naturales o jurídicas, nacionales o extranjeras, domiciliadas en el estado</option>
+							<option value = '2-408' onClick='id_hecho_imponible("408");'>Por el otorgamiento de autorizaciones  Para actividades agrosilvopasteriles (Hasta por 1 Hectárea)</option>
+							<option value = '11-410' onClick='id_hecho_imponible("410");'>Por el otorgamiento de autorizaciones  Para actividades industriales (Hasta por 1 Hectárea)</option>
+							<option value = '5-409' onClick='id_hecho_imponible("409");'>Por el otorgamiento de autorizaciones  Para actividades residenciales, turísticas y recreacionales (Hasta por 1 Hectárea)</option>
+							<option value = '0.1-579' onClick='id_hecho_imponible("579");'>por folio adicional </option>
+							<option value = '0.5-206' onClick='id_hecho_imponible("206");'>Por la  aprobación o autorización para la quema de basura o desechopúblicos o privados x por kilo</option>
+							<option value = '10-315' onClick='id_hecho_imponible("315");'>Por la autorización  y por el registro sanitario </option>
+							<option value = '15-546' onClick='id_hecho_imponible("546");'>Por la autorización para curtir pieles de la especie baba</option>
+							<option value = '0.3-234' onClick='id_hecho_imponible("234");'>Por la emisión de certificados médicos de salud integral para conducir vehículos a motor</option>
+							<option value = '2-470' onClick='id_hecho_imponible("470");'>Por la emisión del otorgamiento de autorización para la instalación y funcionamiento de aserraderos </option>
+							<option value = '2-203' onClick='id_hecho_imponible("203");'>Por la prestación del servicio de guardias de  2 xpor funcionario</option>
+							<option value = '0.5-606' onClick='id_hecho_imponible("606");'>Por los actos o documentos elaborados o expedidos, si es persona natural </option>
+							<option value = '1-605' onClick='id_hecho_imponible("605");'>Por los actos o documentos elaborados o expedidos,(SI ES ES PERSONA JURIDICA)</option>
+							<option value = '0.01-200' onClick='id_hecho_imponible("200");'>Por los informes técnicos de avalúo de riesgos para uso doméstico  </option>
+							<option value = '2-450' onClick='id_hecho_imponible("450");'>Por los servicios técnicos forestales  Por metro cúbico (m3) de las especies de caoba, cedro x m3</option>
+							<option value = '2-451' onClick='id_hecho_imponible("451");'>Por los servicios técnicos forestales  Por metro cúbico Por el resto de las especies forestales autorizadas x m3</option>
+							<option value = '0.01-452' onClick='id_hecho_imponible("452");'>Por los servicios técnicos forestales Estantes, estantillos, viguetas, varas, linetones de mangle y de otras especies</option>
+							<option value = '0.35-464' onClick='id_hecho_imponible("464");'>Por los servicios técnicos forestales originados por las inspecciones Carbon Vegetal x Tonelada</option>
+							<option value = '0.05-459' onClick='id_hecho_imponible("459");'>Por los servicios técnicos forestales originados por las inspecciones Cogollos de palmito</option>
+							<option value = '0.015-458' onClick='id_hecho_imponible("458");'>Por los servicios técnicos forestales originados por las inspecciones Estantes, estantillos y otras especies</option>
+							<option value = '0.08-460' onClick='id_hecho_imponible("460");'>Por los servicios técnicos forestales originados por las inspecciones Fibras de palma chiguichigui x Kg</option>
+							<option value = '0.25-463' onClick='id_hecho_imponible("463");'>Por los servicios técnicos forestales originados por las inspecciones Leña x Tonelada</option>
+							<option value = '0.9-457' onClick='id_hecho_imponible("457");'>Por los servicios técnicos forestales originados por las inspecciones Madera Aserrada x m3</option>
+							<option value = '1-456' onClick='id_hecho_imponible("456");'>Por los servicios técnicos forestales originados por las inspecciones Madera en rolas y escuadrada x m3</option>
+							<option value = '0.2-462' onClick='id_hecho_imponible("462");'>Por los servicios técnicos forestales originados por las inspecciones Postes</option>
+							<option value = '0.05-461' onClick='id_hecho_imponible("461");'>Por los servicios técnicos forestales originados por las inspeccionesHorcones, vigas, viguetones, tirantes, soleras</option>
+							<option value = '15-414' onClick='id_hecho_imponible("414");'>Por los servicios técnicos originados por las inspecciones, evaluaciones y supervisiones</option>
+							<option value = '15-211' onClick='id_hecho_imponible("211");'>Por mejora de modelos, dibujos o artes</option>
+							<option value = '30- inspeccion de campo' onClick='id_hecho_imponible(" inspeccion de campo");'>practica de inspecciones de campo</option>
+							<option value = '0.5-190' onClick='id_hecho_imponible("190");'>Preinscripción de la deuda</option>
+							<option value = '5-Propagandas Moviles' onClick='id_hecho_imponible("Propagandas Moviles");'>Propagandas Moviles (tripticos,dipticos folletos, otros))</option>
+							<option value = '0.5-301' onClick='id_hecho_imponible("301");'>Publicación de productos cosméticos</option>
+							<option value = '0.5-publicidad' onClick='id_hecho_imponible("publicidad");'>publicidad</option>
+							<option value = '0.5-123' onClick='id_hecho_imponible("123");'>Reconocimientos de Estudios y Especialidades</option>
+							<option value = '0.2-155' onClick='id_hecho_imponible("155");'>reconsideracion de uso conforme </option>
+							<option value = '0.5-198' onClick='id_hecho_imponible("198");'>Reductores de velocidad</option>
+							<option value = '1-638' onClick='id_hecho_imponible("638");'>Refrendo de título de marina mercante, licencia de radio de comunicaciones marinas </option>
+							<option value = '10-568' onClick='id_hecho_imponible("568");'>Registro de consorcios </option>
+							<option value = '3-580' onClick='id_hecho_imponible("580");'>Registro de documentos constitutivos de sociedades de comercio</option>
+							<option value = '20-391' onClick='id_hecho_imponible("391");'>Registro de interesado para la aplicación de plaguicidas de uso agrícola o pecuario, fertilizantes,</option>
+							<option value = '20-388' onClick='id_hecho_imponible("388");'>Registro de interesado para la distribución, expendio, publicidad, almacenamiento y transporte de plaguicidas </option>
+							<option value = '20-390' onClick='id_hecho_imponible("390");'>Registro de interesado para la formulación y envase de plaguicidas de uso agrícola o pecuario, </option>
+							<option value = '20-389' onClick='id_hecho_imponible("389");'>Registro de interesado para la importación de plaguicidas de uso agrícola o pecuario, fertilizantes, </option>
+							<option value = '30-363' onClick='id_hecho_imponible("363");'>Registro de interesado para la importación de plaguicidas de uso agrícola o pecuario, gran industria: </option>
+							<option value = '20-364' onClick='id_hecho_imponible("364");'>Registro de interesado para la importación de plaguicidas de uso agrícola o pecuario, mediana industria</option>
+							<option value = '10-365' onClick='id_hecho_imponible("365");'>Registro de interesado para la importación de plaguicidas de uso agrícola o pecuario, pequeña industria</option>
+							<option value = '10-366' onClick='id_hecho_imponible("366");'>Registro de interesado para la importación de plaguicidas de uso agrícola o pecuario, personas naturales</option>
+							<option value = '5-569' onClick='id_hecho_imponible("569");'>Registro de la venta de un fondo de comercio o la de sus existencias en totalidades o en lotes, </option>
+							<option value = '10-436' onClick='id_hecho_imponible("436");'>Registro de laboratorio que realicen diagnósticos fito y zoosanitarios</option>
+							<option value = '10-437' onClick='id_hecho_imponible("437");'>Registro de laboratorios de bacteriología</option>
+							<option value = '20-399' onClick='id_hecho_imponible("399");'>Registro de laboratorios de biotecnología</option>
+							<option value = '20-397' onClick='id_hecho_imponible("397");'>Registro de laboratorios que realicen actividades de plaguicidas de uso agrícola o Pecuario, fertilizantes abonos</option>
+							<option value = '10-398' onClick='id_hecho_imponible("398");'>Registro de laboratorios que realicen diagnósticos fito y zoosanitarios</option>
+							<option value = '0.01-564' onClick='id_hecho_imponible("564");'>registro de las sociedades de comercio, asi como la inscripcion que revistan algunas de las formas establecidas</option>
+							<option value = '5-393' onClick='id_hecho_imponible("393");'>Registro de productos biológicos agrícolas, fertilizantes y abonos</option>
+							<option value = '5-394' onClick='id_hecho_imponible("394");'>Registro de productos biológicos medicamentos y alimentos para uso animal</option>
+							<option value = '10-392' onClick='id_hecho_imponible("392");'>Registro de productos para plaguicidas de uso agrícola o pecuario</option>
+							<option value = '0.2-162' onClick='id_hecho_imponible("162");'>registro de proyectos  para el establecimiento de  ampliacion de construc</option>
+							<option value = '0.2-159' onClick='id_hecho_imponible("159");'>registro de proyectos  para el establecimiento de  establecimientos comerciales </option>
+							<option value = '0.2-160' onClick='id_hecho_imponible("160");'>registro de proyectos  para el establecimiento de  Establecimientos de centros comerciales </option>
+							<option value = '0.5-161' onClick='id_hecho_imponible("161");'>registro de proyectos  para el establecimiento de  establecimientos industriales  </option>
+							<option value = '5-158' onClick='id_hecho_imponible("158");'>registro de proyectos  para el establecimiento de  nuevas viviendas residenciales por vivienda </option>
+							<option value = '1-156' onClick='id_hecho_imponible("156");'>registro de proyectos  para el establecimiento de  nuevas viviendas rurales </option>
+							<option value = '10-157' onClick='id_hecho_imponible("157");'>registro de proyectos  para el establecimiento de  nuevas viviendas urbanas</option>
+							<option value = '2-582' onClick='id_hecho_imponible("582");'>Registro de Sentencias de Divorcio</option>
+							<option value = '0.5-350' onClick='id_hecho_imponible("350");'>Registro de traspaso de propiedad y compra venta de vehículo</option>
+							<option value = '1-346' onClick='id_hecho_imponible("346");'>Registro de vehículo de motor y remolque</option>
+							<option value = '0.4-345' onClick='id_hecho_imponible("345");'>Registro de vehículo de tracción de sangre</option>
+							<option value = '0.5-348' onClick='id_hecho_imponible("348");'>Registro de vehículo por cambio de algunas de las características del mismo o por reasignación de placas identificadoras</option>
+							<option value = '0.4-349' onClick='id_hecho_imponible("349");'>Registro de vehículo por cambio de la dirección del propietario</option>
+							<option value = '10-434' onClick='id_hecho_imponible("434");'>Registro de viveros y expendios de plantas</option>
+							<option value = '25-640' onClick='id_hecho_imponible("640");'>Registro del Instituto de Educación Náutica</option>
+							<option value = '40-380' onClick='id_hecho_imponible("380");'>Registro del interesado para la aplicación de plaguicidas, productos químicos, tóxicos </option>
+							<option value = '20-377' onClick='id_hecho_imponible("377");'>Registro del interesado para la distribución, expendio, publicidad y almacenamiento de plaguicidas, productos químicos, </option>
+							<option value = '40-376' onClick='id_hecho_imponible("376");'>Registro del interesado para la fabricación de plaguicidas, productos químicos,</option>
+							<option value = '40-379' onClick='id_hecho_imponible("379");'>Registro del interesado para la formulación y envasado de plaguicidas, productos químicos, </option>
+							<option value = '40-378' onClick='id_hecho_imponible("378");'>Registro del interesado para la importación de plaguicidas, productos químicos, tóxicos </option>
+							<option value = '50-553' onClick='id_hecho_imponible("553");'>Registro para la comercialización de oro y piedras preciosas</option>
+							<option value = '10-304' onClick='id_hecho_imponible("304");'>Registro y control de laboratorios ambientales privados</option>
+							<option value = '0.3-303' onClick='id_hecho_imponible("303");'>Registro, autenticación y sellado de libros para el control de sustancias estupefacientes y psicotrópicas </option>
+							<option value = '5-562' onClick='id_hecho_imponible("562");'>Registros de sociedades extranjeras, domiciliaciones o establecimientos de agencias, sucursales </option>
+							<option value = '1-189' onClick='id_hecho_imponible("189");'>regulación de canon de arrendamiento</option>
+							<option value = '30-renovacion licores' onClick='id_hecho_imponible("renovacion licores");'>renovacion  autorización para instalación de expendio de bebidas alcohólicas</option>
+							<option value = '8-642' onClick='id_hecho_imponible("642");'>Renovacion de autorizacion funcionamiento para el Instituto de Educación Náutica</option>
+							<option value = '20-188' onClick='id_hecho_imponible("188");'>Renovación de la autorización para el almacenamiento y vertido de residuos</option>
+							<option value = '1-634' onClick='id_hecho_imponible("634");'>renovacion de permiso temporal para titular venezolano de marina mercante</option>
+							<option value = '3-636' onClick='id_hecho_imponible("636");'>renovacion otorgamiento  temporal para titular extranjero de marina mercante</option>
+							<option value = '20-127' onClick='id_hecho_imponible("127");'>Representaciones territoriales exclusivas y las franquicias </option>
+							<option value = '2-reserva de nombres' onClick='id_hecho_imponible("reserva de nombres");'>Reserva de Nombres y Denominaciones de empresas mercantiles y firmas comerciales</option>
+							<option value = '0.02-199' onClick='id_hecho_imponible("199");'>revisiones y evaluaciones de proyectos, planos y ejecución de obras de construcción  o  remodelación    xm2</option>
+							<option value = '1-197' onClick='id_hecho_imponible("197");'>Ruptura de asfalto Ruptura de asfalto Ruptura de asfalto x m</option>
+							<option value = '1-sellado de libro ' onClick='id_hecho_imponible("sellado de libro ");'>Sellado de libro de Control Administrativo </option>
+							<option value = '1-sellado libro ' onClick='id_hecho_imponible("sellado libro ");'>sellado libro </option>
+							<option value = '6-servicios particulares' onClick='id_hecho_imponible("servicios particulares");'>servicios particulares</option>
+							<option value = '6-205' onClick='id_hecho_imponible("205");'>servicios particulares que beneficien directamente a personas jurídicas,foros o similares</option>
+							<option value = '0.2-solic. vivienda principa' onClick='id_hecho_imponible("solic. vivienda principa");'>solic. vivienda principa</option>
+							<option value = '0.04-129' onClick='id_hecho_imponible("129");'>Solicitud  de  constancia  para  evacuar  titulo supleatorio</option>
+							<option value = '0.05-132' onClick='id_hecho_imponible("132");'>Solicitud  para  la  inscripción  catastral</option>
+							<option value = '0.02-651' onClick='id_hecho_imponible("651");'>Solicitud de autorización para exportar mercancías bajo el régimen de exportación tempora</option>
+							<option value = '0.02-650' onClick='id_hecho_imponible("650");'>Solicitud de autorización para exportar mercancías bajo el régimen de exportación temporal</option>
+							<option value = '0.02-649' onClick='id_hecho_imponible("649");'>Solicitud de autorización para introducir mercancías bajo el régimen de admisión </option>
+							<option value = '0.02-648' onClick='id_hecho_imponible("648");'>Solicitud de autorización para introducir mercancías bajo el régimen de admisión temporal</option>
+							<option value = '4-133' onClick='id_hecho_imponible("133");'>Solicitud de compra de terreno del dominio público</option>
+							<option value = '4-134' onClick='id_hecho_imponible("134");'>Solicitud de compra de terreno del dominio público  rural o sub urbana</option>
+							<option value = '6-135' onClick='id_hecho_imponible("135");'>Solicitud de compra de terreno del dominio público  urbanas</option>
+							<option value = '22-137' onClick='id_hecho_imponible("137");'>Solicitud de compra de terreno del dominio público comerciales</option>
+							<option value = '20-138' onClick='id_hecho_imponible("138");'>Solicitud de compra de terreno del dominio público empresariales</option>
+							<option value = '20-136' onClick='id_hecho_imponible("136");'>Solicitud de compra de terreno del dominio público residenciales</option>
+							<option value = '5-131' onClick='id_hecho_imponible("131");'>Solicitud de concesión de uso  parcela no desarrollada del dominio público</option>
+							<option value = '10-130' onClick='id_hecho_imponible("130");'>Solicitud de concesión de uso de parcela desarrollada del dominio público</option>
+							<option value = '2-128' onClick='id_hecho_imponible("128");'>Solicitud de contrato de arrendamiento de terrenos del dominio publico</option>
+							<option value = '1.5-121' onClick='id_hecho_imponible("121");'>Solicitud de convenios internacionales</option>
+							<option value = '20-solic. inscrip ficha catastral estacionamients' onClick='id_hecho_imponible("solic. inscrip ficha catastral estacionamients");'>Solicitud de inscripción catastral para estacionamientos comerciales</option>
+							<option value = '0.1-Solicitud de Solvencias' onClick='id_hecho_imponible("Solicitud de Solvencias");'>Solicitud de Solvencias</option>
+							<option value = '20-solic.uso conform estacionamients' onClick='id_hecho_imponible("solic.uso conform estacionamients");'>Solicitud de uso conforme a los estacionamientos comerciales</option>
+							<option value = '0.25-119' onClick='id_hecho_imponible("119");'>Solvencia por cuota o membrecía </option>
+							<option value = '0.25-Solvencias' onClick='id_hecho_imponible("Solvencias");'>Solvencias</option>
+							<option value = '0.3-suceciones' onClick='id_hecho_imponible("suceciones");'>suceciones</option>
+							<option value = '4-468' onClick='id_hecho_imponible("468");'>Tala Comercialad de Árbol</option>
+							<option value = '20-467' onClick='id_hecho_imponible("467");'>Tala Doméstica</option>
+							<option value = '3-469' onClick='id_hecho_imponible("469");'>Tala Industrialad de Árbol</option>
+							<option value = '0.2-106' onClick='id_hecho_imponible("106");'>Tiítulo por Universidades, Instituciones Académicas.</option>
+							<option value = '1-102' onClick='id_hecho_imponible("102");'>Título Científico</option>
+							<option value = '1-100' onClick='id_hecho_imponible("100");'>Titulo de Doctorado</option>
+							<option value = '0.1-107' onClick='id_hecho_imponible("107");'>Título de Educación Media y Diversificada</option>
+							<option value = '0.5-101' onClick='id_hecho_imponible("101");'>Título de Maestría o Especialización</option>
+							<option value = '1-103' onClick='id_hecho_imponible("103");'>Título Eclesiástico</option>
+							<option value = '0.75-105' onClick='id_hecho_imponible("105");'>Título Licenciatura</option>
+							<option value = '0.2-Titulo T.S.U ' onClick='id_hecho_imponible("Titulo T.S.U ");'>Titulo T.S.U </option>
+							<option value = '0.1-109' onClick='id_hecho_imponible("109");'>Títulos de cualquier naturaleza con validez legal</option>
+							<option value = '1-104' onClick='id_hecho_imponible("104");'>Títulos o Despachos de Grados Militares</option>
+							<option value = '0-titulos TSU' onClick='id_hecho_imponible("titulos TSU");'>titulos TSU</option>
+							<option value = '3-620' onClick='id_hecho_imponible("620");'>Tramitación de datos filiatorios a ciudadanos y ciudadanas extranjeras: tres Unidades Tributarias </option>
+							<option value = '1-619' onClick='id_hecho_imponible("619");'>Tramitación de datos filiatorios a ciudadanos y ciudadanas venezolanas</option>
+							<option value = '2-618' onClick='id_hecho_imponible("618");'>Tramitación de orden de cédula para extranjeros</option>
+							<option value = '0.02-113' onClick='id_hecho_imponible("113");'>Transcripción de Notas</option>
+							<option value = '0.8-Traspaso' onClick='id_hecho_imponible("Traspaso");'>Traspaso</option>
+							<option value = '3-342' onClick='id_hecho_imponible("342");'>Traspaso de placas de alquiler y colectivo</option>
+							<option value = '1-657' onClick='id_hecho_imponible("657");'>tripulante de nave aérea o marítima  comercial de pasajeros o de carga</option>
+							<option value = '15-490' onClick='id_hecho_imponible("490");'>Tripulantes de cerqueros mayores de seiscientas toneladas de registro bruto (600 T.R.B)</option>
+							<option value = '3-493' onClick='id_hecho_imponible("493");'>Tripulantes de embarcaciones cerqueras  con tonelaje hasta (600 T.R.B) palangreras, cañeras y arrastreras</option>
+							<option value = '2-496' onClick='id_hecho_imponible("496");'>Tripulantes de embarcaciones dedicadas  Cabo de pesca y/o patrón de pesca</option>
+							<option value = '1-497' onClick='id_hecho_imponible("497");'>Tripulantes de embarcaciones dedicadas  Otros tripulantes</option>
+							<option value = '0.25-498' onClick='id_hecho_imponible("498");'>Tripulantes de embarcaciones dedicadas  Personas dedicadas a la pesca comercial-artesanal</option>
+							<option value = '1-656' onClick='id_hecho_imponible("656");'>Tripulantes y viajeros condición de pasajero en nave aérea o marítima.</option>
+							<option value = '0.01-uso conforme P. micro' onClick='id_hecho_imponible("uso conforme P. micro");'>uso conforme  Prestaciones de Servicios micro </option>
+							<option value = '0.01-uso conforme C. micro' onClick='id_hecho_imponible("uso conforme C. micro");'>uso conforme fines comerciales  micro </option>
+							<option value = '0.2-uso conforme C. grand' onClick='id_hecho_imponible("uso conforme C. grand");'>uso conforme fines comerciales grandes </option>
+							<option value = '0.03-uso conforme C. med' onClick='id_hecho_imponible("uso conforme C. med");'>uso conforme fines comerciales medianas  </option>
+							<option value = '0.02-uso conforme C. peq' onClick='id_hecho_imponible("uso conforme C. peq");'>uso conforme fines comerciales pequeñas </option>
+							<option value = '0.02-uso conforme O. peq' onClick='id_hecho_imponible("uso conforme O. peq");'>uso conforme industriales de otros productos  pequeñas  XM2</option>
+							<option value = '0.2-uso conforme O. grand' onClick='id_hecho_imponible("uso conforme O. grand");'>uso conforme industriales de otros productos grandes  XM2</option>
+							<option value = '0.03-uso conforme O. med' onClick='id_hecho_imponible("uso conforme O. med");'>uso conforme industriales de otros productos medianas  XM2</option>
+							<option value = '0.02-uso conforme O. micro' onClick='id_hecho_imponible("uso conforme O. micro");'>uso conforme industriales de otros productos micro  XM2</option>
+							<option value = '0.15-uso conforme I. grand' onClick='id_hecho_imponible("uso conforme I. grand");'>uso conforme industriales de primera necesidad grandes  </option>
+							<option value = '0.02-uso conforme I. med' onClick='id_hecho_imponible("uso conforme I. med");'>uso conforme industriales de primera necesidad medianas  </option>
+							<option value = '0.01-uso conforme I. micro' onClick='id_hecho_imponible("uso conforme I. micro");'>uso conforme industriales de primera necesidad micro </option>
+							<option value = '0.01-uso conforme I. peq' onClick='id_hecho_imponible("uso conforme I. peq");'>uso conforme industriales de primera necesidad pequeñas </option>
+							<option value = '0.2-uso conforme P. grand' onClick='id_hecho_imponible("uso conforme P. grand");'>uso conforme Prestaciones de Servicios  grandes </option>
+							<option value = '0.03-uso conforme P. med' onClick='id_hecho_imponible("uso conforme P. med");'>uso conforme Prestaciones de Servicios  medianas  </option>
+							<option value = '0.02-uso conforme P. peq' onClick='id_hecho_imponible("uso conforme P. peq");'>uso conforme Prestaciones de Servicios  pequeñas </option>
+							<option value = '5-340' onClick='id_hecho_imponible("340");'>Vehículos de carga cuyo peso bruto vehicular este comprendido entre (4.601 Kg.), hasta (12.500 Kg.)</option>
+							<option value = '10-338' onClick='id_hecho_imponible("338");'>Vehículos de carga cuyo peso bruto vehicular sea menor de cuatro mil seiscientos Kilogramos (4.600 Kg.)</option>
+							<option value = '6-341' onClick='id_hecho_imponible("341");'>Vehículos de carga cuyo peso bruto vehicular sea superior a  (12.501 Kg.): </option>
+							<option value = '0.02-vivienda principal ' onClick='id_hecho_imponible("vivienda principal ");'>vivienda principal </option>
+							<option value = '0.1-609' onClick='id_hecho_imponible("609");'> Inscripción de documento  por cada folio adicional</option>
+							<option value = '0.2-610' onClick='id_hecho_imponible("610");'>    Expedición y renovación de la cédula de identidad personal:</option>
+			</select>	</div>
+  <br><br>
+  	<strong>Valor en U.T:</strong> &nbsp;<input type = 'text' name = 'val' id='val' readonly />
+  	<strong>Cantidad / Metros:</strong> &nbsp;<input type = 'text' name = 'metros' id='metros' onkeyUp="ValNumero(this); calcular_ut_metros(this);"/>
+  </form>
+  </div>
+  <br>
+  <!--<hr>-->
+  </fieldset>
+<br/>
+<fieldset style="border: 1px solid #000000; width:970px; background-color:#EBEBEB;"><legend class="style19 style21">Datos para la compra</legend>
+
+
+	</script>
+
+  <br>
+
+  <form action="pagina1.php" method="post" id="formulario">
+  <table width="95%" border="0" align="center" cellpadding="0" cellspacing="2">
+    <input type = 'hidden' name = 'unidadt' id = "utcam" value = '177'/>
+       <tr>
+      <th class="style22" scope="row">&nbsp;</th>
+      <th height="35" class="style22" scope="row"><div align="left" class="style23">Ente</div></th>
+      <td class="style22"><select name="nro" id="nro"  onchange="recargar(document.getElementById('nro').value);">
+	  <option value = "nada" selected>-Seleccione ente-</option>
+        <option value = "notaria">Notaria</option>
+        <option value = "registros">Registro</option>
+		<option value = "municipios">Alcaldia</option>
+        <option value = "prefectura">Prefectura</option>
+        <option value = "bombero">bombero</option>
+        <option value = "instituciones_educativas">Instituciones Educativas</option>
+       <option value = "otros">Otros</option>
+      </select>
+      <!--<input name="bo" type="submit" id = 'b' value="-&gt;&gt;"/>--></td>
+      <td class="style22"><div id="resultados"></div></td>
+    </tr>
+
+	<tr>
+      <th class="style22" scope="row">&nbsp;</th>
+      <th height="31" class="style22" scope="row"><div align="left" class="style23">Monto en U.T </div></th>
+      <td class="style22"><input name="uts" type="text" id="uts" onkeyUp="ValNumero(this); ut(this.form);"></td>
+      <td class="style22"><span class="style24">Bs.F:
+        <input name="bs" type="text" id="bs" size='15' value = "0.00" onkeyUp="ValNumero(this); bs_ut(this.form);"/>
+      </span></td>
+    </tr>
+
+    <tr>
+      <th class="style22" scope="row">&nbsp;</th>
+      <th height="31" class="style22" scope="row"><div align="left" class="style23">Nombre/Raz&oacute;n Social </div></th>
+      <td class="style22"><input name="nombre" type="text" id="nombre" size="40" value = '' readonly /></td>
+      <td class="style22">&nbsp;</td>
+    </tr>
+    <tr>
+      <th class="style22" scope="row">&nbsp;</th>
+      <th height="31" class="style22" scope="row"><div align="left" class="style23">Cedula/Rif:</div></th>
+      <td class="style22"><input name="cedula" type="text" id="cedula" maxlength = "11" value = '' readonly /></td>
+      <td class="style22">&nbsp;</td>
+    </tr>
+
+
+
+  </table>
+
+  <p>
+
+ </form>
+
+
+  <form name = 'f3' method = "post" action = 'datos.php' onSubmit='return confirmar(this.form);'>
+  <input type = 'hidden' name = "ban" id = "ban"/>
+  <input type = 'hidden' name = "cuen" id = "cuen"/>
+  <input type = 'hidden' name = "en" id = "en"/>
+   <input type = 'hidden' name = "en1" id = "en1"/>
+  <input type = 'hidden' name = "nom" id = "nom"/>
+  <input type = 'hidden' name = "ced" id = "ced"/>
+  <input type = 'hidden' name = "mon" id = "mon"/>
+  <input type = 'hidden' name = "un" id = "un"/>
+  <input type = 'hidden' name = "hecho_imponible" id = "hecho_imponible"/>
+
+    <input name="bo" type="submit" id = "b1" value="Enviar" onClick = "formu(this.form);"/>
+
+
+</form>
+</p>
+</fieldset>
+</div>
+</body>
+</html>

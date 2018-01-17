@@ -1,0 +1,37 @@
+.form-table
+{
+    width:350px;
+    margin-left: auto;
+    margin-right: auto;
+}
+ 
+label{
+    font-weight: bold;
+}
+ 
+#form_submission_ajax{
+    background-color: #eee;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+ 
+.error{
+    color: #ff0000;
+}
+ 
+input {
+    border: 2px solid #531EBF;
+    padding: 4px;
+}
+ 
+input[type="submit"] {
+    padding: 5px 15px;
+    background-color: #531EBF;
+    border: 2px solid #531EBF;
+    color: #fff;
+    border-radius: 5px;
+}
+ 
+h1 {
+    color: #531EBF;
+}

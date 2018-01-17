@@ -1,0 +1,775 @@
+<?php
+include_once('classbasededatos.php');
+
+class classtributos
+{
+
+	function __construct ()
+	{
+		// nada 
+	}
+	
+	function pedir_rif()
+	{
+		// echo '<section class="row">';
+		// echo '<div class="form-group">';
+//			echo '<div class="col-xs-12 col-sm-2 col-md-1 col-lg-1" >';
+				echo '<input type="hidden" id="adquiRir" name="adquiRir" value="adquiRir">';
+				if ($_SESSION['rif'])
+				{
+					echo '<input class="form-control" type="hidden" name="nacionalidad" id="nacionalidad" value="'.$_POST['nacionalidad'].'">';
+					echo '<label>RIF </label>';
+					echo $_SESSION['rif'];
+					echo '<label>Nombre/Raz&oacute;n Social</label>';
+					$con = new classbasededatos();
+					$con->conectar();
+					$comando = "select * from usuarios where rif_usuario = '".$_SESSION['rif']."'";
+					$resultado=$con->consulta($comando);
+					$fila=$con->fetch_assoc($resultado);
+					echo $fila['nombre_usuario'];
+					echo '<input type="hidden" name="razon" id="razon" value="'.$fila['nombre_usuario'].'">';
+					$con->desconectar();
+				}
+				else {
+					echo '<label>Nacionalidad</label>';
+					$comando="select * from configuracion where nombreparametro = 'nacionalidad' order by valorparametro" ;
+					$res=mysql_query($comando);
+					echo '<select class="form-control" name="nacionalidad" id="nacionalidad" size="1">';
+					while ($fila = mysql_fetch_assoc($res)) {
+						echo '<option '.($fila['valorparametro']=='V'?' selected="selected" ':'') .' value="'.$fila['valorparametro'].'">'.$fila['valorparametro'].' </option>'; 
+					}
+					echo '</select>'; 
+				}
+//			echo '</div>';
+//			echo '<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2" >';
+				if ($_SESSION['rif'])
+				{
+					// echo '<input type="hidden" name="numero" id="numero" value="'.$_POST['numero'].'">';
+					// echo $_POST['numero'];
+				}
+				else
+				{					
+					echo '<label>N&uacute;mero</label>';
+					echo '<input class="form-control" align="right" name="numero" type="text" id="numero" size="9" maxlength="9" value ="093773884" onchange="validarsinumero(this.value);"  title="se necesita el numero de cedula" onblur="ajax_call_rif()" required>';
+				}
+//			echo '</div>';
+/*
+			echo '<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2" >';
+				echo 'Digito';
+				if ($_POST['digito'])
+				{
+					echo '<input type="hidden" name="digito" id="digito" value="'.$_POST['digito'].'">';
+					echo $_POST['digito'];
+				}
+				else {
+				// echo '<select class="form-control" name="digito" id="digito" size="1">'; // onblur="ajax_call_rif()">';
+				echo '<select class="form-control" name="digito" id="digito" size="1" onblur="ajax_call_rif()">';
+				echo '<option value="0" selected >0 </option>'; 
+				for ($elfactor=1; $elfactor < 10; $elfactor++)
+					echo '<option value='.$elfactor.' >'.$elfactor.' </option>'; 
+				echo '</select>'; 
+				}
+			echo '</div>';
+*/
+
+			echo '<div id="resultado"> </div>';
+/*
+			echo '</section>';
+			echo '<section class="row">';
+
+			echo '<div class="col-xs-12 col-sm-2 col-md-4 col-lg-4" >';
+*/
+				if ($_SESSION['rif'])
+				{
+					// echo '<input type="hidden" name="razon" id="razon" value="'.$_POST['razon'].'">';
+					// echo $_SESSION['rif'];
+				}
+				else {
+					echo '<label>Nombre/Raz&oacute;n Social</label>';
+					echo '<input class="form-control" align="right" name="nombre" type="text" id="nombre" size="30" maxlength="100" value ="" readonly="readonly" title="se necesita un nombre">'; // required onfocus="refrescar_select();">'; onchange="validarnom_ape(this.value);" 
+				}	
+//			echo '</div>';
+/*
+			echo '<div class="col-xs-12 col-sm-2 col-md-1 col-lg-2" >';
+				echo '<div id="btntramites" class="collapse">';
+				// echo '<button class="btn btn-primary" value="VerTramites" name="VerTramites" onclick="cargarContenidoReloj(\'cargartributos.php?rif=V093773884\')" data-toggle="collapse" data-target="#mostrartributosadq">Ver Tr&aacute;mites Realizados ';
+				// echo '<span class="badge"><div id="botontramites" name="botontramites">.</div></span></button>';
+		//	 	echo '<a href="cargarContenidoReloj(\'cargartributos.php?rif=V093773884\')" class="btn btn-primary" data-toggle="collapse" data-target="#mostrartributosadq">Ver Tr&aacute;mites Realizados </a>';
+
+					echo '<div class=\'link btn btn-primary\' onclick="cargarContenidoReloj(\'cargartributos.php?rif=V093773884\')">Ver <span class="badge"><div id="botontramites" name="botontramites"></span> Tr&aacute;mites </div>';
+				// pulsa aqui para cargar <b>pagina3.php</b> dentro del div <b>contenido</b>. Se muestra un reloj mientras se carga.</div>';
+				echo '</div>';
+			echo '</div>';
+		echo '</div>';
+*/
+		// echo '</section>';
+	}
+	
+	function normal()
+	{ 
+		$con = new classbasededatos();
+		$con->conectar();
+	?>
+		<section class="row">
+		<div class="form-group">
+		<div class="col-xs-12 col-sm-3 col-md-2" >
+		<label for="ts" class="control-label">Tributo Solicitado</label>
+		</div>
+		<div class="col-xs-12 col-sm-4 col-md-5" >
+		<?php
+			$sql="select *, concat(substr(concepto,1,70),'...') as cuento from campos order by articulo "; // limit 20"; where articulo < '12' 
+			echo '<select class="form-control" name="tributo" id="tributo" size="1" onkeyUp="ajax_call_tributo()" onchange="ajax_call_tributo()">';
+			$resultado=$con->consulta($sql);
+			while ($fila2 = $con->fetch_assoc($resultado)) {
+				echo '<option value="'.$fila2['idregistro'].'">'.$fila2['articulo'].'-'.$fila2['cuento'].'</option>'; 		
+			}
+			echo '</select> *'; 
+		?>
+		</div>
+		</div>
+		</section>
+
+		<section class="row">
+			<div class="col-xs-12 col-sm-4 col-md-4">
+				<label for="valor" class="control-label">Valor Actual (BsF) de la UT</label>
+				<input class="form-control" align="right" name="valorut" type="text" id="valorut" size="10" maxlength="10" value ="" title="cantidad de ut" readonly="readonly" required>
+			</div>
+			<div class="col-xs-12 col-sm-4 col-md-4">
+				<label for="cantidad" class="control-label">Cantidad de UT</label>
+				<input class="form-control" align="right" name="ut" type="text" id="ut" size="10" maxlength="10" value ="" title="cantidad de ut" readonly="readonly" required>
+			</div>
+			<div class="col-xs-12 col-sm-4 col-md-4 well">
+				<label for="subt" class="control-label">SubTotal BsF</label>
+				<input class="form-control"  align="right" name="subtotal" type="text" id="subtotal" size="10" maxlength="10" value ="" title="cantidad de ut" readonly="readonly"required>
+			</div>
+		</section>
+
+
+		<section class="row">
+			<!-- <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#mostrable">
+				Mostrar/Ocultar Cantidad (boton temporal ..... esto es para ser automatico)
+			</button> -->
+			<div id='mostrablerango' class="collapse-in">
+				<div class="form-group col-xs-12 col-sm-4 col-md-2" id="cntminimo">
+					<label for="cntmi" class="control-label">Cantidad M&iacute;nima</label>
+					<input class="form-control" align="right" name="utminimo" type="text" id="utminimo" size="5" maxlength="5" value ="" title="Cantidad UT M&iacute;nimas" readonly disabled required>
+				</div>
+				<div class="form-group  col-xs-12 col-sm-4 col-md-2 " id="cntmaximo">
+					<label for="cntma" class="control-label">Cantidad M&aacute;xima</label>
+					<input class="form-control" align="right" name="utmaximo" type="text" id="utmaximo" size="5" maxlength="5" value ="" title="Cantidad UT M&aacute;xima" readonly disabled required>
+				</div>
+				<div class="col-xs-12 col-sm-4 col-md-3 ">
+				<div id="descripcionmedida"> ...</div>
+					<input align="right" type="hidden" name="medidasfijas" id="medidasfijas" size="20" maxlength="30" value ="" title="cantidad de ut" >
+					<select class="form-control" name="requeridas" id="requeridas" size="1"  onchange="bs_ut(this.form);" onblur="bs_ut(this.form);" disabled>';
+					</select> <br> 
+				</div>
+			</div>
+		</section>
+
+		<section class="row">
+			<div id='mostrablecantidad' class="collapse">
+			<div class="col-xs-12 col-sm-3 col-md-3 ">
+			<div id="descripcionmedidac"> ...</div>
+				<input align="right" type="hidden" name="medidasvariables" id="medidasvariables" size="20" maxlength="30" value ="" title="cantidad de ut" >
+				<input class="form-control" align="right" name="requerido" type="text" id="requerido" size="10" maxlength="10" value ="0" title="cantidad de ut" disabled required  onchange="ValNumero(this, this.form);" onkeyUp="ValNumero(this, this.form); bs_ut(this.form);">
+			</div>
+			</div>
+		</section>
+		
+<!--
+		<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#control">
+			Mostrar/Ocultar Variables de control (de caracter temporal ..... esto es solo para desarrollo)
+		</button>
+-->
+		<div id='control' class="collapse well">
+			<div class="col-xs-12 col-sm-4 col-md-8 ">
+				Porcentaje Aplicado
+				<input align="right" name="porcentajeaplicado" type="text" id="porcentajeaplicado" size="10" maxlength="10" value ="xxxx" title="cantidad de ut" required disabled>
+				funcionalidad<input align="right" name="funcionalidad" type="text" id="funcionalidad" size="10" maxlength="10" value ="x" title="cantidad de ut" required>
+				valor fraccion<input align="right" name="valorfraccion" type="text" id="valorfraccion" size="10" maxlength="10" value ="x" title="cantidad de ut" required>
+				valor fijo<input align="right" name="valorfijo" type="text" id="valorfijo" size="10" maxlength="10" value ="x" title="cantidad de ut" required>
+			</div>
+		</div>
+	<?php
+	}
+	
+	function ahora()
+{
+	$fechactual="select now() as hoy";
+	$fechactual=mysql_query($fechactual);
+	$fechactual=mysql_fetch_assoc($fechactual);
+	$fechactual=$fechactual['hoy'];
+	return $fechactual;
+}
+
+	function strToHex($string){
+		$hex='';
+		for ($i=0; $i < strlen($string); $i++){
+			$hex .= dechex(ord($string[$i]));
+		}
+		return $hex;
+	}
+
+
+	function hexToStr($hex){
+		$string='';
+		for ($i=0; $i < strlen($hex)-1; $i+=2){
+			$string .= chr(hexdec($hex[$i].$hex[$i+1]));
+		}
+		return $string;
+	}
+	
+	function agregar_tf()
+	{
+		$con = new classbasededatos();
+		$con->conectar();
+		if (($_POST['razon']!='') and ($_POST['subtotal'] > 0))
+		{
+			// echo 'estoy en agregar';
+			$ahora=$this->ahora();
+			$elrif=$_SESSION['rif']; // $_POST['nacionalidad'].$_POST['numero'].$_POST['digito'];
+			$ip = $_SERVER['HTTP_CLIENT_IP'];
+			if (!$ip) {$ip = $_SERVER['REMOTE_ADDR'];}
+			$comando="INSERT INTO timbresfiscales (fechatimbre, codigoente, riftimbre, nombretimbre, montobs, montout, fechavence, fechagenerada, ipgenerada, medidasfijas, requeridas, medidasvariables, requerido) VALUES 
+			('$ahora', '".$_POST['tributo']."', '$elrif', '".$_POST['razon']."', '".$_POST['subtotal']."', '".$_POST['ut']."', DATE_ADD('".$ahora."', INTERVAL 30 DAY), '$ahora', '$ip', '".$_POST['medidasfijas']."', '".$_POST['requeridas']."', '".$_POST['medidasvariables']."', '".$_POST['requerido']."')";
+			// echo $comando;
+			$resul=$con->consulta($comando) or die('fallo '.$comando);
+			if ($resul > 0)
+			{
+				$this->ventana_alerta('info', 'Informacion!!!', 'Se ha agregado su requerimiento....');
+				$envio = $this->enviar_mail_compra($con, $_POST['tributo'], $_POST['subtotal'], '30 Dias');
+//				die(' el envio '.$envio);
+				if ($envio > 0)
+				{
+					$this->ventana_alerta('success', 'Informacion!!!', 'Se ha enviado email con su requerimiento....');
+				}
+				else{
+					$this->ventana_alerta('warning', 'Aviso!!!', 'No se pudo enviar email con su requerimiento....');
+				}
+			}
+		}
+		else 
+		{
+			$this->ventana_alerta('warning', 'Aviso!!!', 'No se pudo agregar el requerimiento....');
+		}
+		
+		//////////////////
+		$query="select count(riftimbre) as cuantos from timbresfiscales where riftimbre = '".$_SESSION['rif']."' group by riftimbre";
+		// echo $query;
+		$result=$con->consulta($query);
+		$res=$con->fetch_assoc($result);
+		if ($con->num_rows($result)>0)
+		{
+			echo "<form action='opciones.php' name='form1' id='form1' method='post'>";
+			echo '<div class="col-xs-12 col-sm-2 col-md-2`">';
+			// echo '<button class="btn btn-primary" value="VerTramites" name="VerTramites" onclick="cargarContenidoReloj(\'cargartributos.php?\')">Ver Tr&aacute;mites Realizados ';
+			echo '<button class="btn btn-primary" value="VerTramites" name="VerTramites">Ver Tr&aacute;mites Realizados ';	
+			echo '<span class="badge"><div id="botontramites" name="botontramites">'.$res['cuantos'].'</div></span></button>';
+		//	 	echo '<a href="cargarContenidoReloj(\'cargartributos.php?rif=V093773884\')" class="btn btn-primary" data-toggle="collapse" data-target="#mostrartributosadq">Ver Tr&aacute;mites Realizados </a>';
+			if (($_POST['razon']=='') or ($_POST['subtotal'] <= 0))
+				echo '<button class="btn btn-danger" value="Regresar" name="Regresar">Regresar al Men&uacute;</button>'; 
+			echo '<div>';
+			echo '</form>';
+		}
+		//////////////////
+		$con->desconectar();
+	}
+	
+	function enviar_mail_compra($conexion, $tributo, $subtotal, $vence)
+	{
+		$buscar = "select * from usuarios where rif_usuario = '".$_SESSION['rif']."'";
+		$resb=$conexion->consulta($buscar);
+		$enviara = $conexion->fetch_assoc($resb);
+		$enviara = $enviara['email'];
+
+		$buscar = "select * from campos where idregistro = '".$tributo."'";
+		$resb=$conexion->consulta($buscar);
+		$eltrib = $conexion->fetch_assoc($resb);
+		$eltrib = $eltrib['articulo']. ' / '.$eltrib['concepto'];
+		
+		$buscar="select * from configuracion where nombreparametro = 'mailenviadopor'";
+		$resb=$conexion->consulta($buscar);
+		$enviadopor = $conexion->fetch_assoc($resb);
+		$enviadopor = $enviadopor['valorparametro'];
+		
+		$buscar="select * from configuracion where nombreparametro = 'responderemail'";
+		$resb=$conexion->consulta($buscar);
+		$respondera = $conexion->fetch_assoc($resb);
+		$respondera = $respondera['valorparametro'];
+
+		$buscar="select * from configuracion where nombreparametro = 'direccionweb'";
+		$resb=$conexion->consulta($buscar);
+		$dirweb = $conexion->fetch_assoc($resb);
+		$dirweb = $dirweb['valorparametro'];
+
+		include_once('enviarmail.php');
+
+		$cuento= '<table>';
+		$cuento.= '<tr>';
+		$cuento.= '<td><img src="'.$dirweb.'/identificacion/logo.jpg"/></td>';
+		$cuento.= '</tr>';
+		$cuento.= '<tr>';
+		$cuento.= '<td><strong>Estimada(o) Contribuyente:</strong></td>';
+		$cuento.= '</tr>';
+		$cuento.= '<tr>';
+		$cuento.= '<td><strong>'.$_SESSION['nombre_usuario'] .'</strong> ('.$_SESSION['rif'].')</td>';
+		$cuento.= '</tr>';
+		$cuento.= '<tr>';
+		$cuento.= '</tr>';
+		$cuento.= '<tr>';
+		$cuento.= '<td>El presente email es para confirmar la adici&oacute;n del siguiente tributo en su cuenta</td>';
+		$cuento.= '</tr>';
+
+		$cuento.= '<tr>';
+		$cuento.= '<td>Tributo = '.$eltrib;
+		$cuento.= '</td>';
+		$cuento.= '</tr>';
+
+		$cuento.= '<tr>';
+		$cuento.= '<td>Monto en BsF= '.number_format($subtotal,2,'.',',');
+		$cuento.= '</td>';
+		$cuento.= '</tr>';
+
+		$cuento.= '<tr>';
+		$cuento.= '<td>Lapso para el pago = 30 Dias';
+		$cuento.= '</td>';
+		$cuento.= '</tr>';
+
+
+		$cuento.= '<tr>';
+		$cuento.= '<td>Gracias por su atenci&oacuten</td>';
+		$cuento.= '</tr>';
+		$cuento.= '</table>';
+
+		return (enviar_email('Solicitud de Timbre Fiscal', $cuento, true, '', $enviadopor, $respondera , $enviara ) >0);
+	}
+	
+	function procesar_email($conexion, $enviara, $razon, $rif)
+	{
+		$buscar="select * from configuracion where nombreparametro = 'mailenviadopor'";
+		$resb=$conexion->consulta($buscar);
+		$enviadopor = $conexion->fetch_assoc($resb);
+		$enviadopor = $enviadopor['valorparametro'];
+		
+		$buscar="select * from configuracion where nombreparametro = 'responderemail'";
+		$resb=$conexion->consulta($buscar);
+		$respondera = $conexion->fetch_assoc($resb);
+		$respondera = $respondera['valorparametro'];
+
+		$buscar="select * from configuracion where nombreparametro = 'direccionweb'";
+		$resb=$conexion->consulta($buscar);
+		$dirweb = $conexion->fetch_assoc($resb);
+		$dirweb = $dirweb['valorparametro'];
+
+		include_once('enviarmail.php');
+
+		$cuento= '<table>';
+		$cuento.= '<tr>';
+		$cuento.= '<td><strong>Estimada(o) Contribuyente:</strong></td>';
+		$cuento.= '</tr>';
+		$cuento.= '<tr>';
+		$cuento.= '<td><strong>'.$razon.'</strong> ('.$rif.')</td>';
+		$cuento.= '</tr>';
+		$cuento.= '<tr>';
+		$cuento.= '</tr>';
+		$cuento.= '<tr>';
+		$cuento.= '<td>El presente email es para confirmar su direcci&oacute;n de correo electr&oacute;nico y al mismo tiempo, validar su inscripci&oacute;n en nuestros registros.</td>';
+		$cuento.= '</tr>';
+		$cuento.= '<tr>';
+		$cuento.= '<td>Favor hacer clic en el siguiente enlace ';
+		
+///////////
+		require 'aes/aes.class.php';     // AES PHP implementation
+		require 'aes/aesctr.class.php';  // AES Counter Mode implementation
+		$comando = "select * from configuracion where nombreparametro = 'PasoIdUnico'";
+		$resuni = $conexion->consulta($comando);
+		if ($conexion->num_rows($resuni) < 1)
+		{
+			echo '<div class="alert alert-danger" role="alert">';
+				echo '<button type="button" class="close" data-dismiss="alert">&times;</button>';
+				echo '<strong>Error!</strong> No se ha definido el parametro de Tiempo';
+				echo '</div>';
+			die('');
+		}
+		$pw=$conexion->fetch_assoc($resuni);
+		$pw=$pw['valorparametro'];
+		$pt=$rif;
+		$encr = AesCtr::encrypt($pt, $pw, 128);
+		$encrHex = str_pad($this->strToHex($encr), 40, '0', STR_PAD_LEFT);
+///////////
+		$direccion=$dirweb.'/activacion.php?id='.$encrHex;
+		
+		$cuento.= '<a target="_blank" href="'.$direccion.'">'.$direccion."</a>";
+		$cuento.= ', en caso de no funcionar favor copiar y pegar la siguiente linea en el navegador de su preferencia</td>';
+		$cuento.= '</tr>';
+		$cuento.= '<tr>';
+		$cuento.= '<td>'.$direccion."</td>";
+		$cuento.= '</tr>';
+		$cuento.= '<tr>';
+		$cuento.= '<td>Gracias por su atenci&oacuten</td>';
+		$cuento.= '</tr>';
+		$cuento.= '</table>';
+
+		return (enviar_email('Confirmacion de registro', $cuento, true, '', $enviadopor, $respondera , $enviara ) >0);
+	}
+	
+	function procesar_recuperar_email($conexion, $enviara, $razon, $rif, $nueva)
+	{
+		$buscar="select * from configuracion where nombreparametro = 'mailenviadopor'";
+		$resb=$conexion->consulta($buscar);
+		$enviadopor = $conexion->fetch_assoc($resb);
+		$enviadopor = $enviadopor['valorparametro'];
+		
+		$buscar="select * from configuracion where nombreparametro = 'responderemail'";
+		$resb=$conexion->consulta($buscar);
+		$respondera = $conexion->fetch_assoc($resb);
+		$respondera = $respondera['valorparametro'];
+
+		$buscar="select * from configuracion where nombreparametro = 'direccionweb'";
+		$resb=$conexion->consulta($buscar);
+		$dirweb = $conexion->fetch_assoc($resb);
+		$dirweb = $dirweb['valorparametro'];
+
+		include_once('enviarmail.php');
+
+		$cuento= '<table>';
+		$cuento.= '<tr>';
+		$cuento.= '<td><strong>Estimada(o) Contribuyente:</strong></td>';
+		$cuento.= '</tr>';
+		$cuento.= '<tr>';
+		$cuento.= '<td><strong>'.$razon.'</strong> ('.$rif.')</td>';
+		$cuento.= '</tr>';
+		$cuento.= '<tr>';
+		$cuento.= '</tr>';
+		$cuento.= '<tr>';
+		$cuento.= '<td>El presente email es para confirmar la solicitud de Recuperacion de clave en registros.</td>';
+		$cuento.= '</tr>';
+		$cuento.= '<tr>';
+		$cuento.= '<td>Su nueva clave es <strong>'.$nueva."</strong></td>";
+		$cuento.= '</tr>';
+		$cuento.= '<tr>';
+		$cuento.= '<td>Gracias por su atenci&oacuten</td>';
+		$cuento.= '</tr>';
+		$cuento.= '</table>';
+
+		return (enviar_email('Recuperacion de Clave', $cuento, true, '', $enviadopor, $respondera , $enviara ) >0);
+	}
+	
+	function ventana_alerta($tipo, $titulo, $mensaje)
+	{
+		echo '<div class="alert alert-'.$tipo.'" role="alert">';
+//		echo '<div class="alert alert-success alert-dismissable">';
+		echo '<button type="button" class="close" data-dismiss="alert">&times;</button>';
+		echo '<strong>'.$titulo.'</strong>'.$mensaje;
+		echo '</div>';
+
+/*
+							echo '<div class="alert alert-success alert-dismissable">';
+							echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+							echo '<h4>Gracias.... Se ha registrado satisfactoriamente</h4>';
+							echo '<h4>Recibir&aacute; un email para realizar la activaci&oacute;n, <br>de no hacerlo en la pr&oacute;ximas 24 horas ser&aacute eliminada la informaci&oacute;n</h4>';
+							echo '</div>';
+*/
+	}
+
+		
+	function recuperar_clave()
+	{
+		$con = new classbasededatos();
+		$con->conectar();
+		$ahora=$this->ahora();
+		$elrif=$_POST['nacionalidad'].$_POST['numero'].$_POST['digito'];
+		$chequeo="select * from usuarios where rif_usuario = '$elrif' and (email = '".$_POST['inputEmail']."')";
+		$consulta=$con->consulta($chequeo);
+		$registros = $con->num_rows($consulta);
+		if ($registros < 1)
+			echo '<h2>Disculpe... No se encuentra registrado</h2>';
+		else 
+		{
+			$email = $con->fetch_assoc($consulta);
+			$nombre= $email['nombre_usuario'];
+			$email = $email['email'];
+			$nueva = "SELECT SUBSTR(MD5('".$ahora."'),2,10) as nueva";
+			$nueva =$con->consulta($nueva);
+			$nueva = $con->fetch_assoc($nueva);
+			$nueva = $nueva['nueva'];
+			
+			$sql="UPDATE usuarios SET clave = substr(MD5('".$nueva."'),2,8) WHERE rif_usuario = '".$elrif."' and (email = '".$_POST['inputEmail']."')";
+			// echo $sql;
+			$consulta=$con->consulta($sql);
+			$chequeo="select * from usuarios where rif_usuario = '$elrif' and (email = '".$_POST['inputEmail']."')";
+			$this->ventana_alerta('info', 'Informacion!!!', 'Asignando nueva clave....');
+			if ($this->procesar_recuperar_email($con, $_POST['inputEmail'], $nombre,$elrif,$nueva) > 0)
+			{
+				$this->ventana_alerta('success', 'Informacion!!!', 'Enviando datos a su correo '.$email.'....');
+			}
+		}
+	}
+	
+	function guardar_registro()
+	{
+		if (($_POST['numero']!='') and ($_POST['nombre'] !=' '))
+		{
+			$con = new classbasededatos();
+			$con->conectar();
+			$ahora=$this->ahora();
+			$elrif=$_POST['nacionalidad'].$_POST['numero'].$_POST['digito'];
+			$chequeo="select * from usuarios where rif_usuario = '$elrif'";
+			$consulta=$con->consulta($chequeo);
+			$registros = $con->num_rows($consulta);
+			if ($registros > 0)
+				echo '<h2>Disculpe... Ya se encuentra registrado</h2>';
+			else 
+			{
+				// chequeo el email
+				$chequeo="select * from usuarios where email = '".$_POST['inputEmail']."'";
+				$consulta=$con->consulta($chequeo);
+				$registros = $con->num_rows($consulta);
+				if ($registros > 0)
+				{
+//					echo '<h2>Disculpe... Ya se encuentra registrado</h2>';
+					echo '<div class="alert alert-warning alert-dismissable">';
+					echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+					echo '<h4>Disculpe!!!</h4> Ya se encuentra registrado</h4>';
+					echo '</div>';
+				}
+				else 
+				{				
+					$ip = $_SERVER['HTTP_CLIENT_IP'];
+					if (!$ip) {$ip = $_SERVER['REMOTE_ADDR'];}
+					$comando="INSERT INTO usuarios (rif_usuario, nombre_usuario, email, fechagenerada, ipgenerada, klave, confirmado) VALUES 
+						('$elrif', '".$_POST['nombre']."', '".$_POST['inputEmail']."', '".$ahora."', '$ip', MD5('".$_POST['newpw']."'), 0)";
+//						echo $comando;
+					if ($con->consulta($comando))
+					{
+//						echo '<h1>Gracias.... Se ha registrado satisfactoriamente</h1>';
+						if ($this->procesar_email($con, $_POST['inputEmail'], $_POST['nombre'],$elrif) > 0)
+						{
+							echo '<div class="alert alert-success alert-dismissable">';
+							echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+							echo '<h4>Gracias.... Se ha registrado satisfactoriamente</h4>';
+							echo '<h4>Recibir&aacute; un email para realizar la activaci&oacute;n, <br>de no hacerlo en la pr&oacute;ximas 24 horas ser&aacute eliminada la informaci&oacute;n</h4>';
+							echo '</div>';
+						}
+						else
+						{
+							$comando="delete from usuarios where (rif_usuario = '$elrif')";
+							$con->consulta($comando);
+							echo '<div class="alert alert-danger alert-dismissable">';
+							echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+							echo '<h4>Lo sentimos .... No se ha podido registrar la informaci&oacute;n... intente luego</h4>';
+							echo '</div>';
+						}
+					}
+					else 
+					{
+//						echo '<h2>Disculpe... hubo inconvenientes para almacenar la informaci&oacute;n. Intente mas tarde</h2>';
+						echo '<div class="alert alert-warning alert-dismissable">';
+						echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+						echo '<h4>Disculpe... hubo inconvenientes para almacenar la informaci&oacute;n. Intente mas tarde</h4>';
+						echo '</div>';
+					}
+				}
+			}
+		}
+		else
+		{			
+			echo ' <h1>Disculpe... hubo inconvenientes para almacenar la informaci&oacute;n. Intente mas tarde</h1>';
+		}
+		// $con->desconectar();
+	}
+
+/*
+	function vertramites()
+	{
+		$tributo->generarTablaTributos('');
+		phpfinfo();
+		
+	}
+	
+
+	function generarTablaTributos($rifbuscar)
+	{
+		$con = new classbasededatos();
+		$con->conectar();
+		$valores='';
+
+		$query="select ";
+		foreach ($this->campos as $campos)
+		{
+			$valores.=$campos[campo].',';
+		}
+		$valores=rtrim($valores,',');
+		$query.=$valores. ' from '.$this->tabla;
+		$query.=' WHERE riftimbre = "'.$rifbuscar.'" ';
+		echo '<table class="table table-bordered">'; // striped">';
+
+
+		
+		foreach ($this->campos as $title)
+		{
+			if ($title['tipo'] == 'NoMostrar') $esconder=" style='display:none'";
+			else $esconder='';
+			echo '<th '.$esconder.'>'.$title['titulo'].'</th>';
+		}
+
+		///paginacion
+		include 'pagination.php'; //incluir el archivo de paginación
+		//las variables de paginación
+		$page = (isset($_REQUEST['page']) && !empty($_REQUEST['page']))?$_REQUEST['page']:1;
+		$per_page = 3; //la cantidad de registros que desea mostrar
+		$adjacents  = 4; //brecha entre páginas después de varios adyacentes
+		$offset = ($page - 1) * $per_page;
+echo $query;
+		$result = $con->execute_query($query);
+//		echo 'query='.$query;
+
+		//Cuenta el número total de filas de la tabla
+		$numrows = $con->num_rows($result);
+		// echo 'filas'.$numrows;
+		// if ($row= mysqli_fetch_array($count_query)){$numrows = $row['numrows'];}
+		$total_pages = ceil($numrows/$per_page);
+		if ($numrows>0){
+		///
+
+		$query.=' LIMIT '.$offset.','.$per_page;
+		// $reload = 'index.php';
+		$result = $con->execute_query($query);
+		while ($fila = $con->fetch_assoc($result))
+		{
+			echo '<tr>';
+			foreach ($this->campos as $tipo)
+			{
+				switch ($tipo['tipo'])
+				{
+					case 'text':
+						echo '<td>'.$fila[$tipo["campo"]].'</td>';
+					break;
+				}
+			}
+			echo '<td><a href='.$_SERVER['PHP_SELF'].'?'.$this->id.'='.$fila[$this->id].'&method=modificar class="btn btn-success">Modificar</a></td>';
+			echo '<td><a href='.$_SERVER['PHP_SELF'].'?'.$this->id.'='.$fila[$this->id].'&method=eliminar class="btn btn-danger">Eliminar</a></td>';
+			echo '</tr>';
+		}
+		echo '<tr colspan=""><tfoot>';
+		echo '<td><a href='.$_SERVER['PHP_SELF'].'?&method=agregar class="btn btn-primary">Agregar</a></td></tfoot>';
+		echo '</table>';
+		?>
+		<div class="table-pagination pull-right">
+			<?php 
+			//echo paginate($reload, $page, $total_pages, $adjacents);
+			echo paginate($_SERVER['PHP_SELF'], $page, $total_pages, $adjacents);
+			?>
+			
+		</div>
+		
+		<?php
+//		} else {
+//			?>
+<!--
+			<div class="alert alert-warning alert-dismissable">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              <h4>Aviso!!!</h4> No hay datos para mostrar
+            </div>
+-->
+			<?php
+
+		}
+		$con->desconectar();
+		echo '<div id="termine">..............ooooooooooooooo</div>';
+	}
+	
+*/	
+}
+	
+
+/*
+
+	if (isset($_POST['adquiRir']))
+	{
+		
+	}
+
+
+if ((isset($_POST['consulTar'])) or (isset($_POST['adquiRir'])))
+{
+	
+}
+
+
+if ((isset($_POST['method'])) && (isset($_GET['method'])!=''))
+{
+	echo 'metodo '.$_GET['method'];
+	switch ($_GET['method'])
+	{
+		default:
+			$crud->generarTabla();
+			break;
+		case agregar:
+			$crud->agregarRegistro();
+			break;
+		case eliminar:
+			$crud->eliminarRegistro();
+			break;
+		case modificar:
+			echo 'voy';
+			$crud->modificarRegistro();
+			echo 'regreso';
+		break;
+	}
+}
+else
+$crud->generarTabla();
+
+
+/*
+echo $crud->header;
+$crud->tabla = 'timbresfiscales';
+$crud->id	= 'idregistro';
+$crud->campos = array(
+	array('campo'=>'idregistro',
+		'tipo'=>'NoMostrar',
+		'titulo'=>'idregistro',
+		'required'=>'required'),
+	array('campo'=>'fechatimbre',
+		'tipo'=>'text',
+		'titulo'=>'Generado el',
+		'required'=>'required'),
+	array('campo'=>'montobs',
+		'tipo'=>'text',
+		'titulo'=>'Monto Bs',
+		'required'=>'required'),
+array('campo'=>'montout',
+		'tipo'=>'text',
+		'titulo'=>'Cantidad UT',
+		'required'=>'required')
+	);
+		
+if ((isset($_GET['method'])) && (isset($_GET['method'])!=''))
+{
+	echo 'metodo '.$_GET['method'];
+	switch ($_GET['method'])
+	{
+		default:
+			$crud->generarTabla();
+			break;
+		case agregar:
+			$crud->agregarRegistro();
+			break;
+		case eliminar:
+			$crud->eliminarRegistro();
+			break;
+		case modificar:
+			echo 'voy';
+			$crud->modificarRegistro();
+			echo 'regreso';
+		break;
+	}
+}
+else
+$crud->generarTabla();
+*/
+
+	
+?>

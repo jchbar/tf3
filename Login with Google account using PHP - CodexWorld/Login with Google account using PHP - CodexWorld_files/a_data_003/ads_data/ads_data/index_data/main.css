@@ -1,0 +1,98 @@
+body {
+
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  background-color: #FFFFFF;
+  cursor: pointer;
+
+}
+
+#adRoot {
+    top: 0px;
+    left: 0px;
+    width: 728px;
+    height: 90px;
+    background-color: #FFFFFF;
+    position: absolute;
+    cursor: pointer;
+    opacity: 0;
+	overflow: hidden;
+}
+
+#resizeLogo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1000px;
+    height: 1000px;
+    opacity: 0;
+}
+
+#SVG_container {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 1000px;
+    height: 1000px;
+}
+
+/* Position button vertically with 'top' property on ctaContainer */
+#ctaContainer {
+    position: absolute;
+    /* change top and left as needed for resizes. For centered button left will remain 0px */
+	top: 30px;
+
+    right: 28px;
+    width: 100%;
+	/* change text-align to to 'left' for 728 and sizes which are not centerlayouts */
+	text-align: right;
+	/* background: red; */
+	
+}
+
+#cta{
+
+	
+	font-family: 'Open Sans', sans-serif;
+    color: #fff !important;
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.1;
+    padding: 8px 27.5px;
+    text-align: center;
+    text-decoration: none !important;
+    text-shadow: 1px 1px 1px #076bd2;
+    /* background: #0370ea; */
+    background: -moz-linear-gradient(top,#008dfd 0,#0370ea 100%);
+    /* background: -webkit-gradient(linear,left top,left bottom,color-stop(0,#008dfd),color-stop(100%,#0370ea)); */
+    background: -webkit-linear-gradient(top,#008dfd 0,#0370ea 100%);
+    background: -o-linear-gradient(top,#008dfd 0,#0370ea 100%);
+    background: -ms-linear-gradient(top,#008dfd 0,#0370ea 100%);
+    background: linear-gradient(top,#008dfd 0,#0370ea 100%);
+    border: 1px solid #076bd2;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+#cta:hover {
+    background: -moz-linear-gradient(top,#008dfd 30%,#0370ea 100%);
+    background: -webkit-gradient(linear,left top,left bottom,color-stop(30%,#008dfd),color-stop(100%,#0370ea));
+    background: -webkit-linear-gradient(top,#008dfd 30%,#0370ea 100%);
+    background: -o-linear-gradient(top,#008dfd 30%,#0370ea 100%);
+    background: -ms-linear-gradient(top,#008dfd 30%,#0370ea 100%);
+    background: linear-gradient(top,#008dfd 30%,#0370ea 100%);
+    cursor: pointer;
+}
+
+#copyContainer{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 728px;
+	height: 90px;
+	background-image: url(../images/chromeCopy.svg);
+}
+
+

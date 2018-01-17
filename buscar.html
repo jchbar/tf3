@@ -1,0 +1,57 @@
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen"> 
+<script type="text/javascript" src="bootstrap/js/jquery3.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-4 col-xs well">
+      <a href="#info1" class="inf">Block 1</a>
+    </div>
+    <div class="col-sm-4 col-xs well">
+      <a href="#info2" class="inf">Block 2</a>
+    </div>
+    <div class="col-sm-4 col-xs well">
+    <a href="#info3" class="inf">Block 3</a>
+    </div>
+  </div>
+  <!-- contenido informacion adicional -->
+  <div class="row">
+    <div id="info1" class="col-xs-12 well oculto">
+      <p>Texto 1</p>
+    </div>
+    <div id="info2" class="col-xs-12 well oculto">
+      <p>Texto 2</p>
+    </div>
+    <div id="info3" class="col-xs-12 well oculto">
+    <p>Texto 3</p>
+    </div>
+  </div>
+
+	<a href="#porapl" class="btn btn-primary" data-toggle="collapse">mostrar</a>
+	<div class="collapse" id="porapl" >
+		<div class="well">
+		<p>askdadakjdslajldj laj a</p>
+		</div>
+	</div>
+</div>
+
+	
+<script>
+	jQuery(document).ready(function(){
+  $(".oculto").hide();              
+    $(".inf").click(function(){
+          var nodo = $(this).attr("href");  
+ 
+          if ($(nodo).is(":visible")){
+               $(nodo).hide();
+               return false;
+          }else{
+        $(".oculto").hide("slow");                             
+        $(nodo).fadeToggle("fast");
+        return false;
+          }
+    });
+}); 
+</script>

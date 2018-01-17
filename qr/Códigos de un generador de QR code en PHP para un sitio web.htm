@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Códigos de un generador de QR code en PHP para un sitio web</title>
+<meta name="Description" content="Crear un formulario para una página web o usar en la computadora offline que permita crear códigos QR. Códigos para copiar y archivos para descargar gratis">
+<meta name="author" content="Norfi Carrodeguas">
+<meta name="Robots" content="index, follow">
+<link rel="shortcut icon" href="https://norfipc.com/favicon.ico" type="image/x-icon">
+<link rel="alternate" title="RSS" href="http://norfipc.com/rss.xml" type="application/rss+xml">
+<link href="C%C3%B3digos%20de%20un%20generador%20de%20QR%20code%20en%20PHP%20para%20un%20sitio%20web_files/blue.css" rel="stylesheet" type="text/css" media="screen">
+<link rel="canonical" href="C%C3%B3digos%20de%20un%20generador%20de%20QR%20code%20en%20PHP%20para%20un%20sitio%20web_files/codigos-generador-qr-code-php-sitio-web_006.htm">
+<link rel="apple-touch-icon" href="http://norfipc.com/img/icon/iphone.png"> 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style type="text/css" media="screen">
+<!--
+.codex{color:green;font-family:monospace;padding:6px;}
+.texta{border:1px solid #ff9900;padding:12px;width:90%;margin:16px 0 16px 0;}
+@media screen and (min-width:300px) and (max-width:800px) {
+#mapholder{width:92%;} 
+}
+-->
+</style>
+<meta property="og:title" content="Códigos de un generador de QR code en PHP para un sitio web">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://norfipc.com/codigos/codigos-generador-qr-code-php-sitio-web.php">
+<meta property="og:image" content="http://norfipc.com/img/otros3/codigos-generador-qr-code.jpeg">
+<meta property="og:site_name" content="NorfiPC">
+<meta property="og:description" content="Crear un formulario para una página web o usar en la computadora offline que permita crear códigos QR. Códigos para copiar y archivos para descargar gratis">
+<script async="" src="C%C3%B3digos%20de%20un%20generador%20de%20QR%20code%20en%20PHP%20para%20un%20sitio%20web_files/async-ads.js"></script><script type="text/javascript" charset="utf-8" async="" src="C%C3%B3digos%20de%20un%20generador%20de%20QR%20code%20en%20PHP%20para%20un%20sitio%20web_files/button.js"></script><script src="C%C3%B3digos%20de%20un%20generador%20de%20QR%20code%20en%20PHP%20para%20un%20sitio%20web_files/jsapi" type="text/javascript"></script><link type="text/css" href="C%C3%B3digos%20de%20un%20generador%20de%20QR%20code%20en%20PHP%20para%20un%20sitio%20web_files/defaultes.css" rel="stylesheet"><link type="text/css" href="C%C3%B3digos%20de%20un%20generador%20de%20QR%20code%20en%20PHP%20para%20un%20sitio%20web_files/default.css" rel="stylesheet"><script type="text/javascript" src="C%C3%B3digos%20de%20un%20generador%20de%20QR%20code%20en%20PHP%20para%20un%20sitio%20web_files/defaultes.js"></script><style type="text/css">
+.gsc-control-cse {
+font-family: Arial, sans-serif;
+border-color: #FFFFFF;
+background-color: #FFFFFF;
+}
+.gsc-control-cse .gsc-table-result {
+font-family: Arial, sans-serif;
+}
+input.gsc-input {
+border-color: #BCCDF0;
+}
+input.gsc-search-button {
+border-color: #CECECE;
+background-color: #CECECE;
+}
+.gsc-tabHeader.gsc-tabhInactive {
+border-color: #E9E9E9;
+background-color: #E9E9E9;
+}
+.gsc-tabHeader.gsc-tabhActive {
+border-top-color: #FF9900;
+border-left-color: #E9E9E9;
+border-right-color: #E9E9E9;
+background-color: #FFFFFF;
+}
+.gsc-tabsArea {
+border-color: #E9E9E9;
+}
+.gsc-webResult.gsc-result,
+.gsc-results .gsc-imageResult {
+border-color: #FFFFFF;
+background-color: #FFFFFF;
+}
+.gsc-webResult.gsc-result:hover,
+.gsc-imageResult:hover {
+border-color: #FFFFFF;
+background-color: #FFFFFF;
+}
+.gsc-webResult.gsc-result.gsc-promotion:hover {
+border-color: #FFFFFF;
+background-color: #FFFFFF;
+}
+.gs-webResult.gs-result a.gs-title:link,
+.gs-webResult.gs-result a.gs-title:link b,
+.gs-imageResult a.gs-title:link,
+.gs-imageResult a.gs-title:link b {
+color: #0000CC;
+}
+.gs-webResult.gs-result a.gs-title:visited,
+.gs-webResult.gs-result a.gs-title:visited b,
+.gs-imageResult a.gs-title:visited,
+.gs-imageResult a.gs-title:visited b {
+color: #0000CC;
+}
+.gs-webResult.gs-result a.gs-title:hover,
+.gs-webResult.gs-result a.gs-title:hover b,
+.gs-imageResult a.gs-title:hover,
+.gs-imageResult a.gs-title:hover b {
+color: #0000CC;
+}
+.gs-webResult.gs-result a.gs-title:active,
+.gs-webResult.gs-result a.gs-title:active b,
+.gs-imageResult a.gs-title:active,
+.gs-imageResult a.gs-title:active b {
+color: #0000CC;
+}
+.gsc-cursor-page {
+color: #0000CC;
+}
+a.gsc-trailing-more-results:link {
+color: #0000CC;
+}
+.gs-webResult .gs-snippet,
+.gs-imageResult .gs-snippet,
+.gs-fileFormatType {
+color: #000000;
+}
+.gs-webResult div.gs-visibleUrl,
+.gs-imageResult div.gs-visibleUrl {
+color: #008000;
+}
+.gs-webResult div.gs-visibleUrl-short {
+color: #008000;
+}
+.gs-webResult div.gs-visibleUrl-short {
+display: none;
+}
+.gs-webResult div.gs-visibleUrl-long {
+display: block;
+}
+.gs-promotion div.gs-visibleUrl-short {
+display: none;
+}
+.gs-promotion div.gs-visibleUrl-long {
+display: block;
+}
+.gsc-cursor-box {
+border-color: #FFFFFF;
+}
+.gsc-results .gsc-cursor-box .gsc-cursor-page {
+border-color: #E9E9E9;
+background-color: #FFFFFF;
+color: #0000CC;
+}
+.gsc-results .gsc-cursor-box .gsc-cursor-current-page {
+border-color: #FF9900;
+background-color: #FFFFFF;
+color: #0000CC;
+}
+.gsc-webResult.gsc-result.gsc-promotion {
+border-color: #336699;
+background-color: #FFFFFF;
+}
+.gsc-completion-title {
+color: #0000CC;
+}
+.gsc-completion-snippet {
+color: #000000;
+}
+.gs-promotion a.gs-title:link,
+.gs-promotion a.gs-title:link *,
+.gs-promotion .gs-snippet a:link {
+color: #0000CC;
+}
+.gs-promotion a.gs-title:visited,
+.gs-promotion a.gs-title:visited *,
+.gs-promotion .gs-snippet a:visited {
+color: #0000CC;
+}
+.gs-promotion a.gs-title:hover,
+.gs-promotion a.gs-title:hover *,
+.gs-promotion .gs-snippet a:hover {
+color: #0000CC;
+}
+.gs-promotion a.gs-title:active,
+.gs-promotion a.gs-title:active *,
+.gs-promotion .gs-snippet a:active {
+color: #0000CC;
+}
+.gs-promotion .gs-snippet,
+.gs-promotion .gs-title .gs-promotion-title-right,
+.gs-promotion .gs-title .gs-promotion-title-right * {
+color: #000000;
+}
+.gs-promotion .gs-visibleUrl,
+.gs-promotion .gs-visibleUrl-short {
+color: #008000;
+}</style><style type="text/css">.gscb_a{display:inline-block;font:27px/13px arial,sans-serif}.gsst_a .gscb_a{color:#a1b9ed;cursor:pointer}.gsst_a:hover .gscb_a,.gsst_a:focus .gscb_a{color:#36c}.gsst_a{display:inline-block}.gsst_a{cursor:pointer;padding:0 4px}.gsst_a:hover{text-decoration:none!important}.gsst_b{font-size:16px;padding:0 2px;position:relative;user-select:none;-moz-user-select:none;white-space:nowrap}.gsst_e{opacity:0.55;}.gsst_a:hover .gsst_e,.gsst_a:focus .gsst_e{opacity:0.72;}.gsst_a:active .gsst_e{opacity:1;}.gsst_f{background:white;text-align:left}.gsst_g{background-color:white;border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-moz-box-shadow:0 2px 4px rgba(0,0,0,0.2);margin:-1px -3px;padding:0 6px}.gsst_h{background-color:white;height:1px;margin-bottom:-1px;position:relative;top:-1px}.gsib_a{width:100%;padding:4px 6px 0}.gsib_a,.gsib_b{vertical-align:top}.gssb_c{border:0;position:absolute;z-index:989}.gssb_e{border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-moz-box-shadow:0 2px 4px rgba(0,0,0,0.2);cursor:default}.gssb_f{visibility:hidden;white-space:nowrap}.gssb_k{border:0;display:block;position:absolute;top:0;z-index:988}.gsdd_a{border:none!important}.gsq_a{padding:0}.gscsep_a{display:none}.gssb_a{padding:0 7px}.gssb_a,.gssb_a td{white-space:nowrap;overflow:hidden;line-height:22px}#gssb_b{font-size:11px;color:#36c;text-decoration:none}#gssb_b:hover{font-size:11px;color:#36c;text-decoration:underline}.gssb_g{text-align:center;padding:8px 0 7px;position:relative}.gssb_h{font-size:15px;height:28px;margin:0.2em}.gssb_i{background:#eee}.gss_ifl{visibility:hidden;padding-left:5px}.gssb_i .gss_ifl{visibility:visible}a.gssb_j{font-size:13px;color:#36c;text-decoration:none;line-height:100%}a.gssb_j:hover{text-decoration:underline}.gssb_l{height:1px;background-color:#e5e5e5}.gssb_m{color:#000;background:#fff}.gsfe_a{border:1px solid #b9b9b9;border-top-color:#a0a0a0;box-shadow:inset 0px 1px 2px rgba(0,0,0,0.1);-moz-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.1);-webkit-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.1);}.gsfe_b{border:1px solid #4d90fe;outline:none;box-shadow:inset 0px 1px 2px rgba(0,0,0,0.3);-moz-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.3);-webkit-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.3);}.gssb_a{padding:0 7px}.gssb_e{border:0}.gssb_l{margin:5px 0}.gssb_c .gsc-completion-container{position:static}.gssb_c{z-index:5000}.gsc-completion-container table{background:transparent;font-size:inherit;font-family:inherit}.gssb_c > tbody > tr,.gssb_c > tbody > tr > td,.gssb_d,.gssb_d > tbody > tr,.gssb_d > tbody > tr > td,.gssb_e,.gssb_e > tbody > tr,.gssb_e > tbody > tr > td{padding:0;margin:0;border:0}.gssb_a table,.gssb_a table tr,.gssb_a table tr td{padding:0;margin:0;border:0}</style><link rel="stylesheet" type="text/css" href="C%C3%B3digos%20de%20un%20generador%20de%20QR%20code%20en%20PHP%20para%20un%20sitio%20web_files/light-bottom.css"><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yL/r/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yL/r/s816eWC-2sl.gif)}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yL/r/s816eWC-2sl.gif)}.fb_dialog_loader{background-color:#f6f7f9;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{width:auto;height:auto;min-height:initial;min-width:initial;background:none}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{color:#fff;display:block;padding-top:20px;clear:both;font-size:18px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;bottom:0;left:0;right:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29487d;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f6f7f9;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-repeat:no-repeat;background-position:50% 50%;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}</style></head>
+<body><div class="cc_banner-wrapper "><div class="cc_banner cc_container cc_container--open"><a href="#null" data-cc-event="click:dismiss" class="cc_btn cc_btn_accept_all">Entendido!</a><p class="cc_message">Este sitio web usa cookies para personalizar los anuncios y la publicidad y para analizar el tráfico.  <a data-cc-if="options.link" class="cc_more_info" target="_blank" href="https://norfipc.com/politica-de-cookies.php">Lee más información detallada</a></p></div></div><div id="inicio"></div>
+<a href="https://norfipc.com/"><img src="C%C3%B3digos%20de%20un%20generador%20de%20QR%20code%20en%20PHP%20para%20un%20sitio%20web_files/logo-simple-norfipc.jpg" alt="NorfiPC" title="NorfiPC, informática, internet y redes sociales" width="600" height="74"></a> 
+<div itemscope="" itemtype="http://schema.org/Article">
+	<div id="page">
+		<div id="content">
+		  <div class="post">
+<div id="migaspan">
+<a href="https://norfipc.com/index.html">NorfiPC</a> » 
+<a href="https://norfipc.com/codigos/index.php">Códigos</a> »
+Generador de QR code
+</div>	
+<div id="sobrante">   
+<br></div> 
+
+ 	  	  
+<h1 itemprop="name">Códigos de un generador de QR code en PHP para un sitio web</h1>
+
+<!-- +1 asincrono -->
+<div style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent none repeat scroll 0% 0%; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 292px; height: 24px;" id="___plusone_0"><iframe hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 292px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 24px;" tabindex="0" vspace="0" id="I0_1478355233282" name="I0_1478355233282" src="C%C3%B3digos%20de%20un%20generador%20de%20QR%20code%20en%20PHP%20para%20un%20sitio%20web_files/fastbutton.htm" data-gapiattached="true" title="+1" width="100%" frameborder="0"></iframe></div>
+<script src="C%C3%B3digos%20de%20un%20generador%20de%20QR%20code%20en%20PHP%20para%20un%20sitio%20web_files/cbgapi.loaded_2" async=""></script><script type="text/javascript" async="" src="C%C3%B3digos%20de%20un%20generador%20de%20QR%20code%20en%20PHP%20para%20un%20sitio%20web_files/ga.js"></script><script type="text/javascript" async="" src="C%C3%B3digos%20de%20un%20generador%20de%20QR%20code%20en%20PHP%20para%20un%20sitio%20web_files/cse.js"></script><script src="C%C3%B3digos%20de%20un%20generador%20de%20QR%20code%20en%20PHP%20para%20un%20sitio%20web_files/cbgapi.loaded_1" async=""></script><script src="C%C3%B3digos%20de%20un%20generador%20de%20QR%20code%20en%20PHP%20para%20un%20sitio%20web_files/cbgapi.loaded_0" async=""></script><script src="C%C3%B3digos%20de%20un%20generador%20de%20QR%20code%20en%20PHP%20para%20un%20sitio%20web_files/ca-pub-1427807059973185.js"></script><script id="twitter-wjs" src="C%C3%B3digos%20de%20un%20generador%20de%20QR%20code%20en%20PHP%20para%20un%20sitio%20web_files/widgets.js"></script><script id="facebook-jssdk" src="C%C3%B3digos%20de%20un%20generador%20de%20QR%20code%20en%20PHP%20para%20un%20sitio%20web_files/sdk.js"></script><script type="text/javascript" async="" src="C%C3%B3digos%20de%20un%20generador%20de%20QR%20code%20en%20PHP%20para%20un%20sitio%20web_files/plusone.js" gapi_processed="true"></script><script type="text/javascript">
+window.___gcfg = {lang: 'es-419'};
+(function() 
+{var po = document.createElement("script");
+po.type = "text/javascript"; po.async = true;
+po.src = "https://apis.google.com/js/plusone.js";
+var s = document.getElementsByTagName("script")[0];
+s.parentNode.insertBefore(po, s);
+})();
+</script>
+<!-- Facebook I Like asincrono-->
+<div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_https" allowtransparency="true" allowfullscreen="true" scrolling="no" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" style="border: medium none;" src="C%C3%B3digos%20de%20un%20generador%20de%20QR%20code%20en%20PHP%20para%20un%20sitio%20web_files/fTmIQU3LxvB.htm" frameborder="0"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.3";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script> 
+<div style="margin:3px;" class="fb-like fb_iframe_widget" data-href="https://norfipc.com/codigos/codigos-generador-qr-code-php-sitio-web.php" data-send="true" data-width="292" data-show-faces="true" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=&amp;container_width=746&amp;href=https%3A%2F%2Fnorfipc.com%2Fcodigos%2Fcodigos-generador-qr-code-php-sitio-web.php&amp;locale=es_ES&amp;sdk=joey&amp;send=true&amp;show_faces=true&amp;width=292"><span style="vertical-align: bottom; width: 292px; height: 46px;"><iframe name="f3a0fb8ddad49ea" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:like Facebook Social Plugin" style="border: medium none; visibility: visible; width: 292px; height: 46px;" src="C%C3%B3digos%20de%20un%20generador%20de%20QR%20code%20en%20PHP%20para%20un%20sitio%20web_files/like.htm" class="" width="292px" height="1000px" frameborder="0"></iframe></span></div><br>
+<iframe id="twitter-widget-1" scrolling="no" allowtransparency="true" class="twitter-share-button twitter-share-button-rendered twitter-tweet-button" style="position: static; visibility: visible; width: 70px; height: 20px;" title="Twitter Tweet Button" src="C%C3%B3digos%20de%20un%20generador%20de%20QR%20code%20en%20PHP%20para%20un%20sitio%20web_files/tweet_button.htm" frameborder="0"></iframe>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script> <div class="entry">	 
+<div itemprop="description" class="intro">
+Crear un formulario para insertar en una página web o usar en la 
+computadora offline que permita crear códigos QR. Código para impedir la
+ inyección de códigos SQL e imagen de verificación para impedir la 
+validación automática. Códigos para copiar y archivos para descargar 
+gratis.
+</div>
+<img itemprop="image" style="margin:0;" src="C%C3%B3digos%20de%20un%20generador%20de%20QR%20code%20en%20PHP%20para%20un%20sitio%20web_files/codigos-generador-qr-code.jpg" alt="Códigos de un generador de QR code en PHP para un sitio web" title="Códigos de un generador de QR code en PHP para un sitio web" width="640" height="340"><br>
+<div itemprop="articleBody">
+En <a href="#rela">otras páginas</a> de nuestro sitio habrás visto generadores que los lectores usan para crear sus propios códigos QR.<br>
+Funcionan con un sencillo script en PHP que cualquiera puede crear para 
+insertar en su sitio web o incluso para utilizar en la computadora sin 
+conexión a internet.<br>
+Es este articulo compartimos los códigos necesarios para crearlo.
+<br><br>
+
+<script src="C%C3%B3digos%20de%20un%20generador%20de%20QR%20code%20en%20PHP%20para%20un%20sitio%20web_files/cookieconsent4.js"></script> 
+<script async="" src="C%C3%B3digos%20de%20un%20generador%20de%20QR%20code%20en%20PHP%20para%20un%20sitio%20web_files/adsbygoogle.js"></script>
+<!-- Adaptable -->
+<ins class="adsbygoogle" style="display: block; height: 90px;" data-ad-client="ca-pub-1427807059973185" data-ad-slot="8210280102" data-ad-format="auto" data-adsbygoogle-status="done"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:752px;background-color:transparent"><ins id="aswift_0_anchor" style="display:block;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:752px;background-color:transparent"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;" width="752" height="90" frameborder="0"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br><br> 
+
+<h2>Requisitos para crear el generador de códigos QR</h2><br>
+
+Los requisitos para crear el generador son solo dos, un servidor que 
+ofrezca soporte para PHP y que tenga habilitada la librería GL.<br>
+Existen dos opciones:<br>
+- Subir los archivos a cualquier servidor en la red.<br>
+- Instalar Apache con PHP en el equipo local, en este caso se podrá disponer de la función offline.<br>
+Lee más información sobre <a href="http://norfipc.com/internet/instalar-servidor-apache.html" target="_blank">Apache</a> y <a href="http://norfipc.com/internet/como-instalar-configurar-php-servidor-apache-iis-windows.html" target="_blank">PHP</a>.
+<br><br>
+
+<script src="C%C3%B3digos%20de%20un%20generador%20de%20QR%20code%20en%20PHP%20para%20un%20sitio%20web_files/cookieconsent4.js"></script> 
+<script async="" src="C%C3%B3digos%20de%20un%20generador%20de%20QR%20code%20en%20PHP%20para%20un%20sitio%20web_files/adsbygoogle.js"></script>
+<!-- Adaptable -->
+<ins class="adsbygoogle" style="display: block; height: 90px;" data-ad-client="ca-pub-1427807059973185" data-ad-slot="8210280102" data-ad-format="auto" data-adsbygoogle-status="done"><ins id="aswift_1_expand" style="display:inline-table;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:752px;background-color:transparent"><ins id="aswift_1_anchor" style="display:block;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:752px;background-color:transparent"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;" width="752" height="90" frameborder="0"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br><br> 
+
+<h3>Archivos del generador</h3><br>
+
+Hay una pequeña librería del software libre disponible en Sourceforge.net llamada: "PHPQRCode".<br>
+Contiene todos los archivos necesarios para crear el generador de códigos QR.<br>
+Puedes descargarla completa a tu equipo usando el siguiente enlace: <a rel="nofollow" href="http://phpqrcode.sourceforge.net/">http://phpqrcode.sourceforge.net/</a>.<br>
+Más abajo en esta misma página tienes la opción de descargar solo los archivos elementales.<br>
+<hr class="sep">
+
+<h3>Código del generador de códigos QR</h3><br>
+
+Hacer funcionar PHPQRCode no es difícil.<br>
+Si tienes conocimientos de PHP no necesitas leer más, el archivo que 
+descargues contiene en su interior todo lo necesario, cada archivo 
+incluye comentarios con explicación de su uso.<br>
+Si no sabes nada de PHP no te desanimes, sigue los siguientes pasos:<br>
+<div class="marco1">
+• Descomprime el archivo que descargues y extrae de su interior solo los archivos llamados: "index.php" y "phpqrcode.php"<br>
+• Crea una carpeta de nombre "generador-qr" y copia los archivos anteriores a su interior.<br>
+• Edita el archivo index.php con el Bloc de notas u otro editor de texto plano como Notepad++ o PSPad.<br>
+• Busca la línea 33 con el siguiente contenido:
+<div class="codex">
+  include "qrlib.php";</div>
+
+Sustitúyela por:<br>
+<div class="codex">
+  include "phpqrcode.php";</div>
+
+• Es todo, guarda los cambios.<br>
+• Sube o mueve la carpeta generador-qr con sus archivos al servidor.<br>
+• Para iniciar el generador solo carga en un navegador web: http://servidor/generador-qr/index.php<br>
+</div>
+<br>
+
+<script src="C%C3%B3digos%20de%20un%20generador%20de%20QR%20code%20en%20PHP%20para%20un%20sitio%20web_files/cookieconsent4.js"></script> 
+<script async="" src="C%C3%B3digos%20de%20un%20generador%20de%20QR%20code%20en%20PHP%20para%20un%20sitio%20web_files/adsbygoogle.js"></script>
+<!-- Adaptable -->
+<ins class="adsbygoogle" style="display: block; height: 90px;" data-ad-client="ca-pub-1427807059973185" data-ad-slot="8210280102" data-ad-format="auto" data-adsbygoogle-status="done"><ins id="aswift_2_expand" style="display:inline-table;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:752px;background-color:transparent"><ins id="aswift_2_anchor" style="display:block;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:752px;background-color:transparent"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_2" name="aswift_2" style="left:0;position:absolute;top:0;" width="752" height="90" frameborder="0"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br><br> 
+
+<h3>Código completo con formulario para crear códigos QR</h3><br>
+
+Más fácil aun y más completa es la siguiente opción.<br>
+El siguiente código lo hemos empleado en nuestro sitio durante mucho tiempo.<br>
+Incluye un formulario, el código para impedir la inyección de códigos 
+SQL en la entrada y una imagen de verificación para impedir la 
+validación automática.<br>
+<div class="blue1">
+&#10003; En la primera y segunda línea del código se hace referencia a la 
+carpeta de nombre "temp" que se debe crear para albergar los archivos 
+temporales.<br>
+&#10003; Se hace referencia al archivo "phpqrcode.php"<br>
+&#10003; Se hace referencia al archivo "image.php" que crea la imagen de verificación, el código para crearlo está más abajo.<br>
+</div>
+
+<textarea onclick="this.select()" cols="80" rows="12" class="texta">&lt;?php
+    
+    $PNG_TEMP_DIR = 
+dirname(__FILE__).DIRECTORY_SEPARATOR.'../temp'.DIRECTORY_SEPARATOR;
+    $PNG_WEB_DIR = '../test/qr/temp/';   
+    include "phpqrcode.php"; 
+    if (!file_exists($PNG_TEMP_DIR))
+        mkdir($PNG_TEMP_DIR);    
+    $filename = $PNG_TEMP_DIR.'test.png';
+
+    $errorCorrectionLevel = 'L';
+    if (isset($_REQUEST['level']) &amp;&amp; 
+in_array($_REQUEST['level'], array('L','M','Q','H')))
+        $errorCorrectionLevel = $_REQUEST['level'];    
+
+    $matrixPointSize = 4;
+    if (isset($_REQUEST['size']))
+        $matrixPointSize = min(max((int)$_REQUEST['size'], 1), 10);
+
+    if (isset($_REQUEST['data'])) { 
+
+        if (trim($_REQUEST['data']) == '')
+            die('No hay datos! &lt;a href="?"&gt;Volver&lt;/a&gt;');    
+        
+
+        $filename = 
+$PNG_TEMP_DIR.'test'.md5($_REQUEST['data'].'|'.$errorCorrectionLevel.'|'.$matrixPointSize).'.png';
+        
+    }     
+    echo '&lt;img src="'.$PNG_WEB_DIR.basename($filename).'" alt="Imagen
+ con el código QR generado"&gt;&lt;br&gt;&lt;br&gt;';  
+
+    echo '&lt;form action="" method="post"&gt;&lt;div&gt;		
+Introduce los datos a codificar:&lt;br&gt;&lt;textarea rows="4" 
+cols="58" class="ent" 
+name="data"&gt;'.(isset($_REQUEST['data'])?htmlspecialchars($_REQUEST['data']):'
+ ').'&lt;/textarea&gt;&lt;br&gt;		
+        ECC:&amp;nbsp;&lt;select class="campos" name="level"&gt;
+            &lt;option value="L"'.(($errorCorrectionLevel=='L')?' 
+selected':'').'&gt;L - menor&lt;/option&gt;
+            &lt;option value="M"'.(($errorCorrectionLevel=='M')?' 
+selected':'').'&gt;M&lt;/option&gt;
+            &lt;option value="Q"'.(($errorCorrectionLevel=='Q')?' 
+selected':'').'&gt;Q&lt;/option&gt;
+            &lt;option value="H"'.(($errorCorrectionLevel=='H')?' 
+selected':'').'&gt;H - el mejor&lt;/option&gt;
+        &lt;/select&gt;&amp;nbsp;
+        Tamaño de la imagen:&amp;nbsp;&lt;select class="campos" 
+name="size"&gt;';
+        
+    for($i=1;$i&lt;=10;$i++)
+        echo '&lt;option value="'.$i.'"'.(($matrixPointSize==$i)?' 
+selected':'').'&gt;'.$i.'&lt;/option&gt;';
+        
+    echo '&lt;/select&gt;&lt;br&gt;
+	Introduce los caracteres que ves en la imagen&lt;br&gt;
+	    &lt;img style="margin-top:4px;" alt="Numeros aleatorios" 
+src="../image.php"&gt;  
+        &lt;input class="campos" type="text" name="num"&gt;&lt;br&gt;
+        &lt;input class="campos" type="submit" 
+value="GENERAR"&gt;&lt;/div&gt;
+		&lt;/form&gt;&lt;br&gt;';
+ session_start(); 
+$_REQUEST = (get_magic_quotes_gpc() ? array_map('stripslashes', 
+$_REQUEST) : $_REQUEST); //satinizar
+if($_SESSION['img_number'] != $_POST['num']){ 
+  echo'&lt;div style="color:red;"&gt;Los caracteres no se 
+corresponden.&lt;br&gt; 
+ Trate de nuevo por favor&lt;/div&gt;'; 
+}else{ 	
+QRcode::png($_REQUEST['data'], $filename, $errorCorrectionLevel, 
+$matrixPointSize, 2); 
+}         
+?&gt; 
+</textarea>
+<br>
+Copia el código anterior y pégalo en el lugar de la página donde debe mostrarse el formulario.<br>
+La página debe poseer la extensión .PHP<br>
+<br>
+
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-1427807059973185";
+/* vertical extra */
+google_ad_slot = "1839373434";
+google_ad_width = 200;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript" src="C%C3%B3digos%20de%20un%20generador%20de%20QR%20code%20en%20PHP%20para%20un%20sitio%20web_files/show_ads.js">
+</script><ins id="aswift_3_expand" style="display:inline-table;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:200px;background-color:transparent"><ins id="aswift_3_anchor" style="display:block;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:200px;background-color:transparent"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_3" name="aswift_3" style="left:0;position:absolute;top:0;" width="200" height="90" frameborder="0"></iframe></ins></ins>  
+<br><br> 
+
+<h4>Código para crear el archivo en PHP que crea la imagen de verificación</h4><br>
+
+<textarea onclick="this.select()" cols="80" rows="8" class="texta">&lt;?php 
+header("Content-type: image/png"); 
+$string = "abcdefghijklmnopqrstuvwxyz0123456789"; 
+for($i=0;$i&lt;5;$i++){ 
+    $pos = rand(0,36); 
+    $str .= $string{$pos}; 
+} 
+
+$img_handle = ImageCreate (60, 22) or die ("Es imposible crear la imagen"); 
+//Image size (x,y) 
+$back_color = ImageColorAllocate($img_handle,102,102,153); 
+//Background color RBG 
+$txt_color = ImageColorAllocate($img_handle,255,255,255); 
+//Text Color RBG 
+ImageString($img_handle, 31, 5, 0, $str, $txt_color); 
+Imagepng($img_handle); 
+
+session_start(); 
+$_SESSION['img_number'] = $str; 
+?&gt;  
+</textarea>
+<br>
+Copia el código anterior, pégalo en un archivo de texto y renómbralo a: "image.php"
+<br><br>
+
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-1427807059973185";
+/* vertical extra */
+google_ad_slot = "1839373434";
+google_ad_width = 200;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript" src="C%C3%B3digos%20de%20un%20generador%20de%20QR%20code%20en%20PHP%20para%20un%20sitio%20web_files/show_ads.js">
+</script><ins id="aswift_4_expand" style="display:inline-table;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:200px;background-color:transparent"><ins id="aswift_4_anchor" style="display:block;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:200px;background-color:transparent"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_4" name="aswift_4" style="left:0;position:absolute;top:0;" width="200" height="90" frameborder="0"></iframe></ins></ins>  
+<br><br> 
+
+<h3>Descargar todos los archivos del generador</h3><br>
+
+Más fácil aun es descargar todos los archivos necesarios, incluyendo el formulario, el archivo "phpqrcode.php" y el "image.php".<br>
+Usa el siguiente enlace.
+<br>
+<div id="lk1" style="margin:18px 0 16px 0;">
+<div style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent none repeat scroll 0% 0%; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 50px; height: 24px;" id="___plusone_1"><iframe hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 50px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 24px;" tabindex="0" vspace="0" id="I1_1478355234772" name="I1_1478355234772" src="C%C3%B3digos%20de%20un%20generador%20de%20QR%20code%20en%20PHP%20para%20un%20sitio%20web_files/fastbutton_002.htm" data-gapiattached="true" title="+1" width="100%" frameborder="0"></iframe></div>
+</div>
+<br>
+
+<div class="blue1">
+<h4>Crear un generador de códigos QR en Javascript</h4><br>
+En otro artículo de nuestro sitio puedes leer como hacer un formulario para crear los códigos empleando Javascript.<br>
+En este caso funciona perfectamente offline sin conexión a internet ya que JavaScript se ejecuta en el navegador web.<br>
+Lee como hacerlo y descarga gratis los archivos necesarios.<br>
+<a href="http://norfipc.com/codigos/codigos-generador-qr-code-javascript-offline.php">Como crear un generador de QR code en Javascript que funciona offline</a><br>
+</div><br>
+
+<!--end articleBody-->
+</div>
+
+<h4>Síguenos en las redes sociales</h4><br>
+<div style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent none repeat scroll 0% 0%; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 91px; height: 60px;" id="___follow_0"><iframe hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 91px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 60px;" tabindex="0" vspace="0" id="I2_1478355234796" name="I2_1478355234796" src="C%C3%B3digos%20de%20un%20generador%20de%20QR%20code%20en%20PHP%20para%20un%20sitio%20web_files/follow.htm" data-gapiattached="true" width="100%" frameborder="0"></iframe></div><br>
+<iframe id="twitter-widget-0" scrolling="no" allowtransparency="true" class="twitter-follow-button twitter-follow-button-rendered" style="position: static; visibility: visible; width: 222px; height: 20px;" title="Twitter Follow Button" src="C%C3%B3digos%20de%20un%20generador%20de%20QR%20code%20en%20PHP%20para%20un%20sitio%20web_files/follow_button.htm" data-screen-name="NorfiPC" frameborder="0"></iframe><br>
+<div class="fb-page fb_iframe_widget" data-href="https://www.facebook.com/norfipc.trucos" data-width="500" data-height="300" data-show-posts="false" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=&amp;container_width=752&amp;height=300&amp;href=https%3A%2F%2Fwww.facebook.com%2Fnorfipc.trucos&amp;locale=es_ES&amp;sdk=joey&amp;show_posts=false&amp;width=500"><span style="vertical-align: bottom; width: 500px; height: 214px;"><iframe name="f2c60947725a2ec" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:page Facebook Social Plugin" style="border: medium none; visibility: visible; width: 500px; height: 214px;" src="C%C3%B3digos%20de%20un%20generador%20de%20QR%20code%20en%20PHP%20para%20un%20sitio%20web_files/page.htm" class="" width="500px" height="300px" frameborder="0"></iframe></span></div>
+<br><br> 
+ 
+<br>
+
+<div id="rela"></div>
+<h3>Páginas relacionadas</h3><br>
+
+<div class="relp">
+&#10003; <a href="https://norfipc.com/codigos/como-escribir-con-php-paginas-web.php">Como escribir con PHP en las páginas web</a><br>
+&#10003; <a href="https://norfipc.com/codigos/codigos-generador-qr-code-javascript-offline.php">Códigos para un generador de QR code en Javascript offline</a><br>
+&#10003; <a href="https://norfipc.com/web/hacer-codigo-qr-leer-camara-telefono-celular.php">Hacer un código QR para leerlo con la cámara de un celular o tableta</a><br>
+&#10003; <a href="https://norfipc.com/descargas-gratis/como-usar-crear-leer-codigos-qr-generador-gratis.php">Cómo crear, usar y leer los códigos QR, generador gratis</a><br>
+&#10003; <a href="https://norfipc.com/codigos/como-crear-codigos-qr-se-ejecuten-forma-automatica.php">Como crear códigos QR que se ejecuten de forma automática</a><br>
+&#10003; <a href="https://norfipc.com/web/como-mostrar-codigo-qr-cada-pagina-blog-sitio-web.php">Como mostrar el código QR de cada página de un blog o sitio web</a><br>
+&#10003; <a href="https://norfipc.com/celulares/aplicaciones-para-leer-codigos-qr-android-windows.php">Aplicaciones para leer códigos QR en Android y Windows</a><br>
+</div><br>
+
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-1427807059973185";
+/* vertical extra */
+google_ad_slot = "1839373434";
+google_ad_width = 200;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript" src="C%C3%B3digos%20de%20un%20generador%20de%20QR%20code%20en%20PHP%20para%20un%20sitio%20web_files/show_ads.js">
+</script><ins id="aswift_5_expand" style="display:inline-table;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:200px;background-color:transparent"><ins id="aswift_5_anchor" style="display:block;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:200px;background-color:transparent"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_5" name="aswift_5" style="left:0;position:absolute;top:0;" width="200" height="90" frameborder="0"></iframe></ins></ins>  
+<br><br> 
+
+<script>
+  (function() {
+    var cx = '017965998053920683407:WMX-1630844121';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<div id="buscar">
+¿Necesitas buscar algo en nuestro sitio? ¡Usa a Google!</div>
+<div id="___gcse_0"><div class="gsc-control-cse gsc-control-cse-es"><div class="gsc-control-wrapper-cse" dir="ltr"><form class="gsc-search-box" accept-charset="utf-8"><table class="gsc-search-box" cellspacing="0" cellpadding="0"><tbody><tr><td class="gsc-input"><input autocomplete="off" size="10" class=" gsc-input" name="search" title="buscar" id="gsc-i-id1" dir="ltr" spellcheck="false" style="outline: medium none; background: rgb(255, 255, 255) url(&quot;https://www.google.com/cse/static/es/google_custom_search_watermark.gif&quot;) no-repeat scroll left center;" type="text"><input name="bgresponse" id="bgresponse" type="hidden"></td><td class="gsc-search-button"><input value="Buscar" class="gsc-search-button" title="buscar" type="button"></td><td class="gsc-clear-button"><div class="gsc-clear-button" title="borrar resultados">&nbsp;</div></td></tr></tbody></table><table class="gsc-branding" cellspacing="0" cellpadding="0"><tbody><tr><td class="gsc-branding-user-defined"></td><td class="gsc-branding-text"><div class="gsc-branding-text">con la tecnología de</div></td><td class="gsc-branding-img"><img src="C%C3%B3digos%20de%20un%20generador%20de%20QR%20code%20en%20PHP%20para%20un%20sitio%20web_files/small-logo.png" class="gsc-branding-img"></td></tr></tbody></table></form><div class="gsc-results-wrapper-nooverlay"><div class="gsc-tabsAreaInvisible"><div class="gsc-tabHeader gsc-inline-block gsc-tabhActive">web</div><span class="gs-spacer"> </span><div tabindex="0" class=" gsc-tabHeader gsc-tabhInactive gsc-inline-block">Imagen</div><span class="gs-spacer"> </span></div><div class="gsc-refinementsAreaInvisible"></div><div class="gsc-above-wrapper-area-invisible"><table class="gsc-above-wrapper-area-container" cellspacing="0" cellpadding="0"><tbody><tr><td class="gsc-result-info-container"><div class="gsc-result-info-invisible"></div></td></tr></tbody></table></div><div class="gsc-adBlockInvisible"></div><div class="gsc-wrapper"><div class="gsc-adBlockInvisible"></div><div class="gsc-resultsbox-invisible"><div class="gsc-resultsRoot gsc-tabData gsc-tabdActive"><table class="gsc-resultsHeader" cellspacing="0" cellpadding="0"><tbody><tr><td class="gsc-twiddleRegionCell"><div class="gsc-twiddle"><div class="gsc-title">web</div></div><div class="gsc-stats"></div><div class="gsc-results-selector gsc-all-results-active"><div class="gsc-result-selector gsc-one-result" title="mostrar un resultado">&nbsp;</div><div class="gsc-result-selector gsc-more-results" title="mostrar más resultados">&nbsp;</div><div class="gsc-result-selector gsc-all-results" title="mostrar todos los resultados">&nbsp;</div></div></td><td class="gsc-configLabelCell"></td></tr></tbody></table><div><div class="gsc-expansionArea"></div></div></div><div class="gsc-resultsRoot gsc-tabData gsc-tabdInactive"><table class="gsc-resultsHeader" cellspacing="0" cellpadding="0"><tbody><tr><td class="gsc-twiddleRegionCell"><div class="gsc-twiddle"><div class="gsc-title">Imagen</div></div><div class="gsc-stats"></div><div class="gsc-results-selector gsc-all-results-active"><div class="gsc-result-selector gsc-one-result" title="mostrar un resultado">&nbsp;</div><div class="gsc-result-selector gsc-more-results" title="mostrar más resultados">&nbsp;</div><div class="gsc-result-selector gsc-all-results" title="mostrar todos los resultados">&nbsp;</div></div></td><td class="gsc-configLabelCell"></td></tr></tbody></table><div><div class="gsc-expansionArea"></div></div></div></div></div></div></div></div></div><br>  
+
+</div> 
+</div>
+</div><!-- end #content -->
+<!-- sidebar -->
+<div id="sidebar"><ul><li><div class="post2">Secciones</div><ul><li><a href="https://norfipc.com/index.html">Inicio</a></li><li><a href="https://norfipc.com/facebook/index.html">Para Facebook</a></li><li><a href="https://norfipc.com/amor/index.php">Para el Amor</a></li><li><a href="https://norfipc.com/mensajes-cristianos/index.php">Mensajes cristianos</a></li><li><a href="https://norfipc.com/articulos/index.html">Como lo hago</a></li><li><a href="https://norfipc.com/utiles/index.html">Modificar Windows</a></li><li><a href="https://norfipc.com/celulares/index.html">Celulares y tabletas</a></li><li><a href="https://norfipc.com/internet/index.html">Navegar en internet</a></li><li><a href="https://norfipc.com/redes-sociales/index.html">Redes sociales</a></li><li><a href="https://norfipc.com/descargas-gratis/index.html">Descargas gratis</a></li><li><a href="https://norfipc.com/redes/index.html">Redes informáticas</a></li><li><a href="https://norfipc.com/virus/index.html">Virus y Malware</a></li><li><a href="https://norfipc.com/trucos/index.php">Trucos e Ideas</a></li><li><a href="https://norfipc.com/comandos/index.html">Comandos</a></li><li><a href="https://norfipc.com/inf/index.html">Informaciones varias</a></li><li><a href="https://norfipc.com/recuperar/index.html">Recuperar</a></li><li><a href="https://norfipc.com/registro/index.html">El Registro</a></li><li><a href="https://norfipc.com/infografia/index.html">Infografías</a></li><li><a href="https://norfipc.com/web/index.html">Creación y diseño web</a></li><li><a href="https://norfipc.com/web/publicar-blog-sitio-web-servicios-internet.php">Publicación web</a></li><li><a href="https://norfipc.com/web/optimizar-mejorar-posicionamiento-web-buscadores.php">Posicionamiento web</a></li><li><a href="https://norfipc.com/codigos/index.php">Códigos</a></li><li><a href="https://norfipc.com/herramientas/index.php">Herramientas web</a></li><li><a href="https://norfipc.com/leer/index.php">Leer</a></li><li><a href="https://norfipc.com/cuba/index.html">Conocer Cuba</a></li><li><a href="https://norfipc.com/fotos-naturaleza/index.php">Fotos de la naturaleza</a></li><li><a href="https://norfipc.com/about/index.php">Como lo hacemos</a></li></ul></li></ul><a href="https://norfipc.com/ultimas-publicaciones-del-sitio.php" target="_blank" title="Páginas y artículos más recientes publicados en el sitio web NorfiPC">Últimas publicaciones del sitio</a><br><br><div id="qrcode"><img src="C%C3%B3digos%20de%20un%20generador%20de%20QR%20code%20en%20PHP%20para%20un%20sitio%20web_files/chart.png" width="150" height="150"></div></div>
+<script src="C%C3%B3digos%20de%20un%20generador%20de%20QR%20code%20en%20PHP%20para%20un%20sitio%20web_files/barb1.js"></script><br>
+<div style="clear: both;">&nbsp;</div>
+
+
+	</div>	
+<div id="post3">
+<div><a href="javascript:history.go(-1)">Anterior</a>&nbsp;|&nbsp;  <a href="#inicio">Subir</a>  &nbsp;|&nbsp;<a href="javascript:history.go(1)">Siguiente</a></div></div>
+	<div id="footer">
+<p>NorfiPC, Copyright © 2016 <a href="https://norfipc.com/about.html" title="Sobre mí">Norfi Carrodeguas</a>
+		<a rel="author" href="https://plus.google.com/+NorfiCarrodeguas/" title="Mi perfil en Google+">Google+</a></p>
+	</div>
+	<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-17996196-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>	
+	 
+ 
+
+</div>
+<script>
+function verlk1() {
+var url = "http://norfipc.com/ftp/varios/generador-codigos-qr.zip";  
+url = "<b><a href='" + url + "'>Descarga el archivo</a></b>";
+document.getElementById("lk1").innerHTML = url;}   
+</script>
+
+
+<iframe name="oauth2relay728283323" id="oauth2relay728283323" src="C%C3%B3digos%20de%20un%20generador%20de%20QR%20code%20en%20PHP%20para%20un%20sitio%20web_files/postmessageRelay.htm" style="width: 1px; height: 1px; position: absolute; top: -100px;" tabindex="-1" aria-hidden="true"></iframe><iframe id="rufous-sandbox" scrolling="no" allowtransparency="true" allowfullscreen="true" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: medium none;" frameborder="0"></iframe><table style="width: 634px; display: none; top: 5095px; position: absolute; left: 459px;" class="gstl_50 gssb_c" cellspacing="0" cellpadding="0"><tbody><tr><td class="gssb_f"></td><td class="gssb_e" style="width: 100%;"></td></tr></tbody></table></body></html>
